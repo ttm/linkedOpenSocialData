@@ -1,0 +1,112 @@
+\documentclass[review]{elsarticle}
+
+\usepackage{hyperref}
+\usepackage{multirow}
+\usepackage{pgfplots}
+\usepackage{float}
+\usepackage{amssymb}
+\usepackage{cleveref}
+\usepackage[english]{babel}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+%
+\pgfplotsset{compat=1.5}
+\pgfplotsset
+{
+	width=0.5\textwidth,
+	x tick label style={/pgf/number format/1000 sep=},
+  enlarge x limits = 0.0,
+  ymajorgrids=true,
+	major tick style={draw=none},
+  ymin = 0.0,
+	every axis/.append style={
+		every x tick label/.append style={font=\tiny},
+    every y tick label/.append style={font=\tiny},
+    every axis label/.append style={font=\small},
+    height=37mm,
+    width=37mm,
+    title style={at={(0.5,0.90)}, font=\normalfont},
+    xticklabel style={yshift=4pt}
+	}
+}
+
+%% `Elsevier LaTeX' style
+\bibliographystyle{elsarticle-num}
+%
+\makeatletter
+\def\ps@pprintTitle{%
+    \let\@oddhead\@empty
+    \let\@evenhead\@empty
+    \def\@oddfoot{}%
+\let\@evenfoot\@oddfoot}
+\makeatother
+\begin{document}
+%
+\begin{frontmatter}
+%
+\title{Open Linked Social Data for Scientific Benchmarking}
+%
+\author[pwr]{Renato Fabbri\corref{corresponding}\fnref{kio-url}}
+\ead{fabbri@usp.br}
+%
+\author[pwr]{Osvaldo Novais de Oliveira Junior\fnref{kio-url}}
+\ead{chu@ifsc.usp.br}
+%
+\cortext[corresponding]{Corresponding author}
+\address[pwr]{S\~ao Carlos Institute of Physics, S\~ao Paulo
+University, Brazil}
+%
+\fntext[kio-url]{\textit{URL:} \url{http://www.ifsc.usp.br/}}
+%
+\begin{abstract}
+The field of social network analysis and the topic of complex networks
+are widely researched.
+Recently, a myriad of results have been reported which are based in
+diverse datasets most often not accessible to other researchers.
+This work exposes an open dataset with diverse provenance and oriented
+to provide the scientific community a friendly and common repertoire.
+Current data was obtained from Facebook, Twitter, IRC, Email and the specific
+instances of ParticipaBR, AA and Cidade Democr\'atica.
+These were translated to linked data format to homonenize access,
+conform to current best practices and ease analyzes which integrate third
+party and provided instances.
+This document presents an outline and overall statistics of given
+dataset which should favor subsequent work.
+\end{abstract}
+%
+\begin{keyword}
+Benchmark Data, Facebook, Twitter, IRC, Email, Complex Networkx
+%Hierarchy of Clusters \sep HoC \sep Benchmark Dataset \sep Benchmark Data Generator \sep Artificial Data \sep Cluster Analysis \sep Tree Structured Stick Breaking Process \sep TSSB \sep ...
+\end{keyword}
+
+\end{frontmatter}
+
+\section{Introduction}
+The enormity of the digital data makes a rapid development of various methods of data analysis,
+giving an opportunity to analyze the data from a different perspectives.
+
+\subsection{Benchmarking in the analysis of complexity}
+%
+Every designer of a new method wants to know how good the proposed method is in comparison with others.
+Usually such comparison is made by run different methods on some commonly used benchmark datasets and use some of the proposed evaluation measures, e.g.,~\cite{Dreiseitl200128,Cooper1997107,Douglas2011544,Kampichler2010441,DBLP:journals/corr/abs-1301-7401,steinbach00comparison,Kakkar2014}.
+%
+% karate club, whatelse?
+
+\section{Materials: data from diverse provenance}
+
+\section{Methods: linked open data}
+\subsection{RDF}
+\subsection{Data-driven ontology synthesis}
+
+\section{Results: data outline}
+\label{outline}
+
+\section{Conclusions}
+\label{conclusions}
+
+\section*{References}
+%
+\bibliography{paper}
+%\bibliography{myLastBibfile.bib}
+%
+\end{document}
