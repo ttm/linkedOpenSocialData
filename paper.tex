@@ -1,5 +1,6 @@
 \documentclass[review]{elsarticle}
 
+\usepackage{enumitem}
 \usepackage{hyperref}
 \usepackage{multirow}
 \usepackage{pgfplots}
@@ -82,21 +83,124 @@ Benchmark Data, Facebook, Twitter, IRC, Email, Complex Networks
 \end{frontmatter}
 
 \section{Introduction}
+In recent years, the web of linked data~\cite{lee1} has attracted wide attention in
+both research and application realms.
+However, there is is a lack of datasets for research benchmarking,
+specially in the complex networks field, yielding diverse results from 
+poorly related data.
+
 The enormity of the digital data propels a rapid development of analysis methods
 from different perspectives.
+The used datasets differ within the scope of each research with
+scarce and historical exception such as the
+karate club dataset~\cite{newmanBook}.
+ 
+This work presents a linked data dataset with data from diverse
+provenance, including Facebook, Twitter, IRC, Email and detached
+instances.
+Such data is proposed as a common repertoire for scientific
+reseach involving networks and textual content.
 
+% \subsection{Benchmarking in the analysis of complexity}
 
-\subsection{Benchmarking in the analysis of complexity}
-%
-Karate club, whatelse?
-
-\section{Materials: data from diverse provenance}\label{materials}
+\section{Materials}\label{materials}
+\subsection{Facebook data}
+\subsection{Twitter data}
+\subsection{IRC data}
+\subsection{Email data}
+\subsection{ParticipaBR data}
+\subsection{AA data}
+\subsection{Cidade Democr\'atica data}
 
 \section{Methods}
-
 \subsection{Linked open data}
+Linked data refers to data published in the web in such a way that it is
+machine readable and conforms to a set of best practices.
+The web of data is constructed with documents on the web 
+such as the web of hypertext.
+In practice, the idea of linked data can me summarized
+by 1) the use of RDF to publish data on the web and 2) the use of RDF
+links to interlink data from different sources.
+The web is expected to be interconnected and to grow by the systematic application of four
+steps~\cite{lee1}:
+\begin{itemize}
+    \item Use URIs to identify things~\cite{uri}.
+    \item Use HTTP URIs.
+    \item Provide useful information when an URI is accessed via HTTP.
+    \item Provide other URIs in the description of resources so human
+        and machine agents can perform discovery.
+\end{itemize}
+
+The Linked Open Data~\cite{lod} builds an ever growing cloud of data,
+the global data space, which is usually
+conceived as centered around the DBPedia, a linked data representation
+of data from Wikipedia~\cite{dbpedia0,dbpedia}.
+
 \subsection{RDF}
+The Resource Description Framework (RDF), a W3C
+recommendation, is a model for data
+interchange.
+It is based on the idea of making statements about resources in the form
+of triples, i.e. expressions in the form ``subject - predicate -
+object''.
+RDF can be serialized in several file formats, including RDF/XML,
+Turtle and Manchester all which, in essence, represent a labeled and
+directed multi-graph.
+RDF may be stored in a type of database called a triplestore~\cite{rdf}.
+
+As an example of an RDF statement, the following triple in the Turtle
+format asserts that ``the paper has color white'':\\
+\texttt{http://example.org/paper http://example.org/hasColor\\
+http://example.org/White .}
+
 \subsection{Data-driven ontology synthesis}
+OWL Ontologies are critical tools to describe taxonomies and the
+structure of knowledge.
+Most ontologies are created by domain experts even though the data they
+arrange is often given by a software system.  
+
+We developed an ontology synthesis method that probes the ontological structure in data with
+SPARQL queries and post-processing which can be divided in the following steps:
+\begin{enumerate}[leftmargin=0cm]
+    \item Obtaining all distinct classes with the query:\\
+        \texttt{SELECT DISTINCT ?class WHERE \{ ?s a ?class \}}
+    \item Obtaining all distinct properties with the query:\\
+        \texttt{SELECT DISTINCT ?p WHERE \{ ?s ?p ?o \}}
+    \item For each class, get distinct subject classes and predicates where the
+        the object is an instance of the class:\\
+        \texttt{SELECT DISTINCT ?p ?cs WHERE \{ ?i a <class\_uri> . ?s ?p ?i . ?s
+        a ?cs . \}}
+    \item For each class, get distinct predicates and object classes or
+        datatypes where the subject is an instance of such class:\\
+        \texttt{SELECT DISTINCT ?p ?co (datatype(?o) as ?do) WHERE \{ ?i
+                a <class\_uri> . ?i ?p ?o . OPTIONAL \{ ?o a ?co . \} \}}
+    \item For each property, check if it is functional, i.e. if it
+        occurs only once with each subject:\\
+        \texttt{SELECT DISTINCT (COUNT(?o) as ?co) WHERE \{ ?s
+            <property\_uri> ?o \} GROUP BY ?s}
+    \item For each property, find the incident range and domain with the
+        queries:\\
+        \texttt{SELECT DISTINCT ?co (datatype(?o) as ?do) WHERE \{ ?s
+                <property\_uri> ?o . OPTIONAL \{ ?o a ?co . \} \}}
+        \texttt{SELECT DISTINCT ?cs WHERE \{ ?s <property\_uri> ?o . ?s a ?cs . \}}
+    \item For each instance of each class, get all distinct predicates.
+        For each predicate, check if all instances of the class
+        hold such relationship (existential restriction):\\
+        \texttt{SELECT DISTINCT ?p WHERE \{ ?s a <class\_uri>. ?s ?p ?o
+        . \}}\\
+        \texttt{SELECT DISTINCT ?s WHERE \{ ?s a <class\_uri> \}}\\
+        \texttt{SELECT DISTINCT ?s ?co  (datatype(?o) as ?do) WHERE \{?s
+                a <class\_uri>. ?s <property\_uri> ?o . OPTIONAL \{?o a ?co . \}\}}
+    \item and if all instances that hold such relationship are instances of the class
+        (universal restriction):\\
+        \texttt{SELECT DISTINCT ?s WHERE \{ ?s <property\_uri> ?o . \}}
+    \item Draw each class, each property and the overall figure.
+    \item Make \texttt{rdfs:subClassOf} and \texttt{rdfs:subPropertyOf}
+        statements to better organize knowledge and link to third party
+        ontologies and data.
+    \item
+\end{enumerate}
+ 
 
 \section{Results}
 \label{outline}
