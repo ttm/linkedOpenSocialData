@@ -45,7 +45,7 @@
 %
 \begin{frontmatter}
 %
-\title{Open Linked Social Data for Scientific Benchmarking}
+\title{Linked Open Social Data for Scientific Benchmarking}
 %
 \author[pwr]{Renato Fabbri\corref{corresponding}\fnref{kio-url}}
 \ead{fabbri@usp.br}
@@ -66,12 +66,12 @@ Recently, a myriad of results have been reported which are based in
 diverse datasets most often not accessible to other researchers.
 This work exposes an open dataset with diverse provenance and oriented
 to provide the scientific community a friendly and common repertoire.
-Current data was obtained from Facebook, Twitter, IRC, Email and the specific
-instances of ParticipaBR, AA and Cidade Democr\'atica.
-These were translated to linked data format to homonenize access,
+Current data was obtained from Facebook, Twitter, IRC, Email and the
+detached instances of ParticipaBR, AA and Cidade Democr\'atica.
+These were represented as linked data to homonenize access,
 conform to current best practices and ease analyzes which integrate third
 party and provided instances.
-This document presents an outline and overall statistics of given
+This document presents an outline and overall statistics of the given
 dataset which should favor subsequent work.
 \end{abstract}
 %
@@ -94,8 +94,11 @@ from different perspectives.
 The used datasets differ within the scope of each research with
 scarce and historical exception such as the
 karate club dataset~\cite{newmanBook}.
+On the other hand, the available linked data is not 
+stable or rigorous enough to be
+a public reference on statistical physics and social networks research.
  
-This work presents a linked data dataset with data from diverse
+This work presents a linked open social data (LOSD) dataset with data from diverse
 provenance, including Facebook, Twitter, IRC, Email and detached
 instances.
 Such data is proposed as a common repertoire for scientific
@@ -104,15 +107,76 @@ reseach involving networks and textual content.
 % \subsection{Benchmarking in the analysis of complexity}
 
 \section{Materials}\label{materials}
+Data was gathered either from:
+\begin{itemize}
+    \item public APIs (Twitter, Email); or
+    \item public logs (IRC and AA); or
+    \item Netvizz software~\cite{netvizz} (Facebook); or
+    \item donated data from users (Facebook); or
+    \item donated data from system administrators (AA, ParticipaBR,
+        Cidade Democr\'atica).
+\end{itemize}
+
+Integration and uniformity of access is obtained through linked data
+representation, as exposed in Section~\ref{queries}.
+
+Of central importance to presented LOSD is the concept of a snapshot.
+A snapshot is a set of data gathered together, at a contiguous time
+unit.
+Examples: the first 20 thousand email messages of an email list
+comprises a snapshot; the tweets from the MAMA event is a
+snapshot; the friendship, interaction and posts structures of a facebook
+group, prospected at the same time, is a snapshot.
+
 \subsection{Facebook data}
+Friendship ego networks (networks whose reference is an user)
+were donated from individual users in 2013 and 2014.
+Friendship and interaction networks from groups were gathered from
+groups where the first author was a participant.
+Additionally, some groups have post texts along some metadata, such as
+the number of likes.
+
 \subsection{Twitter data}
+Tweets were gathered through the streaming public API.
+Each snapshot is unified by a distinct hashtag.
+Edges are canonically yield by retweets but replies and user mentions
+are also kept in the LOSD.
+
 \subsection{IRC data}
+Public IRC logs were used to render LOSD IRC snapshots.
+LOSD has record of users to which the message is directed to or
+mentions.
+
 \subsection{Email data}
+Email snapshots refer to individual email lists.
+All messages were taken from the Gmane public email~\cite{gmane}.
+Each message has the original text and the text without some of the lines
+from previous messages or that are pasted software code.
+Most importantly, each message item holds the ID of the message it is
+a reply to, if any.
+
 \subsection{ParticipaBR data}
+The ParticipaBR is a platform for social participation once regarded as
+the Brazilian portal of social participation.
+Texts are derived from blog posts and networks are derived from
+friendship and interaction criteria.
+
 \subsection{AA data}
+The Algorithmic Autoregulation~\cite{aa} is a methodology for testifying
+and sharing ongoing work.
+The data was gathered from different versions of the system and from IRC
+logs and is presented as part of the LOSD as one of the detached
+platforms.
+
 \subsection{Cidade Democr\'atica data}
+Cidade Democr\'atica is a civil society social participation portal.
 
 \section{Methods}
+Data in the presented LOSD is represented as linked open data through
+RDF and ontologicaly described through a data-driven ontology synthesis
+method.
+These steps are described in the following sections.
+
 \subsection{Linked open data}
 Linked data refers to data published in the web in such a way that it is
 machine readable and conforms to a set of best practices.
@@ -198,18 +262,33 @@ SPARQL queries and post-processing which can be divided in the following steps:
     \item Make \texttt{rdfs:subClassOf} and \texttt{rdfs:subPropertyOf}
         statements to better organize knowledge and link to third party
         ontologies and data.
-    \item
 \end{enumerate}
  
 
 \section{Results}
 \label{outline}
 \subsection{Data outline}
+% stats:
+%% number of chars
+%% number of users
+%% number of edges
+%% number of triples
+% diagrams
 \subsection{Software tools}
-\subsection{SPARQL queries}
+% triplification routines
+% analysis routines
+\subsection{SPARQL queries}\label{queries}
+% all text from user
+% users with the most friendships
+% users with most interactions
+% search string in messages
 
 \section{Conclusions}
 \label{conclusions}
+The Linked Open Social Data (LOSD) presented in this article
+should be available online in the \url{http://linkedopensocialdata.org}
+address in near future to fulfill the purpose of being a common
+repertoire in current research.
 
 \section*{References}
 %
