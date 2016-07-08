@@ -10,6 +10,10 @@
 \usepackage[english]{babel}
 \usepackage[utf8]{inputenc}
 \usepackage[T1]{fontenc}
+% \usepackage{changepage}
+\usepackage{longtable}
+\usepackage{tabularx}
+% \usepackage[showframe=true]{geometry}
 %
 \pgfplotsset{compat=1.5}
 \pgfplotsset
@@ -268,11 +272,12 @@ SPARQL queries and post-processing which can be divided in the following steps:
 \section{Results}
 \label{outline}
 \subsection{Data outline}
+\input{tables/basicOverall}
 % stats:
+%% number of triples
+%% number of edges
 %% number of chars
 %% number of users
-%% number of edges
-%% number of triples
 % diagrams
 \subsection{Software tools}
 % triplification routines
