@@ -292,11 +292,32 @@ Relations only (Facebook), text only (AA, Cidade Democratica).
 %% number of edges
 %% number of chars
 %% number of users
-% diagrams
+% diagrams in the supporting information file
 \subsection{Software tools}
-% triplification routines
-% analysis routines
-% envisioned multimedia routines    
+The LOSD is released with a software for rendering itself, analyses and
+multimedia artifacts.
+\subsubsection{Triplification routines}
+For each social platform there is a \emph{triplification} routine,
+i.e. a script for translating data to RDF.
+Original formats and further observations are presented in
+Table~\ref{tab:provenance}.
+\begin{table*}[h!]\scriptsize
+\begin{center}
+\caption{Social platforms, original formats and further observations for
+the LOSD dataset.}
+\begin{tabular}{| l || c | c |}\hline
+    \textbf{social platform} & \textbf{original format} & \textbf{further observations} \\\hline\hline
+    AA & MySQL and MongoDB databases; IRC text logs & donated by AA users \\\hline
+    Cidade Democrática & MySQL database & donated by admins \\\hline
+    Email & mbox & obtained through Gmane public database \\\hline
+    Facebook & GDF, GML and TAB & obtained through Netvizz~\cite{netvizz} \\\hline
+    IRC & plain text log & obtained through Supybot logging \\\hline
+    ParticipaBR & PostgreSQL database & donated by admins \\\hline
+    Twitter & Json & obtained through Twitter streaming API \\\hline
+\end{tabular}\end{center}
+\end{table*}                    
+\subsubsection{Topological and textual Analysis}
+\subsubsection{Multimedia rendering}
 \subsection{SPARQL queries}\label{queries}
 % all text from user
 % users with the most friendships
@@ -309,6 +330,8 @@ The Linked Open Social Data (LOSD) presented in this article
 should be available online in the \url{http://linkedopensocialdata.org}
 address in near future to fulfill the purpose of being a common
 repertoire in current research.
+One should access \url{http://wiki.nosdigitais.teia.org.br/LOSD}
+for reaching the address where LOSD is currently reachable.
 
 \section*{References}
 %
