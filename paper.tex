@@ -15,6 +15,7 @@
 \usepackage{tabularx}
 % \usepackage[showframe=true]{geometry}
 %
+\newcommand{\textttt}[1] {\texttt{\footnotesize#1}}
 \pgfplotsset{compat=1.5}
 \pgfplotsset
 {
@@ -231,39 +232,39 @@ We developed an ontology synthesis method that probes the ontological structure 
 SPARQL queries and post-processing which can be divided in the following steps:
 \begin{enumerate}[leftmargin=0cm]
     \item Obtaining all distinct classes with the query:\\
-        \texttt{SELECT DISTINCT ?class WHERE \{ ?s a ?class \}}
+        \textttt{SELECT DISTINCT ?class WHERE \{ ?s a ?class \}}
     \item Obtaining all distinct properties with the query:\\
-        \texttt{SELECT DISTINCT ?p WHERE \{ ?s ?p ?o \}}
+        \textttt{SELECT DISTINCT ?p WHERE \{ ?s ?p ?o \}}
     \item For each class, get distinct subject classes and predicates where the
         the object is an instance of the class:\\
-        \texttt{SELECT DISTINCT ?p ?cs WHERE \{ ?i a <class\_uri> . ?s ?p ?i . ?s
+        \textttt{SELECT DISTINCT ?p ?cs WHERE \{ ?i a <class\_uri> . ?s ?p ?i . ?s
         a ?cs . \}}
     \item For each class, get distinct predicates and object classes or
         datatypes where the subject is an instance of such class:\\
-        \texttt{SELECT DISTINCT ?p ?co (datatype(?o) as ?do) WHERE \{ ?i
+        \textttt{SELECT DISTINCT ?p ?co (datatype(?o) as ?do) WHERE \{ ?i
                 a <class\_uri> . ?i ?p ?o . OPTIONAL \{ ?o a ?co . \} \}}
     \item For each property, check if it is functional, i.e. if it
         occurs only once with each subject:\\
-        \texttt{SELECT DISTINCT (COUNT(?o) as ?co) WHERE \{ ?s
+        \textttt{SELECT DISTINCT (COUNT(?o) as ?co) WHERE \{ ?s
             <property\_uri> ?o \} GROUP BY ?s}
     \item For each property, find the incident range and domain with the
         queries:\\
-        \texttt{SELECT DISTINCT ?co (datatype(?o) as ?do) WHERE \{ ?s
-                <property\_uri> ?o . OPTIONAL \{ ?o a ?co . \} \}}
-        \texttt{SELECT DISTINCT ?cs WHERE \{ ?s <property\_uri> ?o . ?s a ?cs . \}}
+        \textttt{SELECT DISTINCT ?co (datatype(?o) as ?do) WHERE \{ ?s
+                <property\_uri> ?o . OPTIONAL \{ ?o a ?co . \} \}} \\
+        and \\
+        \textttt{SELECT DISTINCT ?cs WHERE \{ ?s <property\_uri> ?o . ?s a ?cs . \}}
     \item For each instance of each class, get all distinct predicates.
         For each predicate, check if all instances of the class
         hold such relationship (existential restriction):\\
-        \texttt{SELECT DISTINCT ?p WHERE \{ ?s a <class\_uri>. ?s ?p ?o
-        . \}}\\
-        \texttt{SELECT DISTINCT ?s WHERE \{ ?s a <class\_uri> \}}\\
-        \texttt{SELECT DISTINCT ?s ?co  (datatype(?o) as ?do) WHERE \{?s
+        \textttt{SELECT DISTINCT ?p WHERE \{ ?s a <class\_uri>. ?s ?p ?o . \}}\\
+        \textttt{SELECT DISTINCT ?s WHERE \{ ?s a <class\_uri> \}}\\
+        \textttt{SELECT DISTINCT ?s ?co  (datatype(?o) as ?do) WHERE \{?s
                 a <class\_uri>. ?s <property\_uri> ?o . OPTIONAL \{?o a ?co . \}\}}
     \item and if all instances that hold such relationship are instances of the class
         (universal restriction):\\
-        \texttt{SELECT DISTINCT ?s WHERE \{ ?s <property\_uri> ?o . \}}
+        \textttt{SELECT DISTINCT ?s WHERE \{ ?s <property\_uri> ?o . \}}
     \item Draw each class, each property and the overall figure.
-    \item Make \texttt{rdfs:subClassOf} and \texttt{rdfs:subPropertyOf}
+    \item Make \textttt{rdfs:subClassOf} and \texttt{rdfs:subPropertyOf}
         statements to better organize knowledge and link to third party
         ontologies and data.
 \end{enumerate}
@@ -304,25 +305,43 @@ Table~\ref{tab:provenance}.
 \begin{table*}[h!]\scriptsize
 \begin{center}
 \caption{Social platforms, original formats and further observations for
-the LOSD dataset.}
-\begin{tabular}{| l || c | c |}\hline
-    \textbf{social platform} & \textbf{original format} & \textbf{further observations} \\\hline\hline
-    AA & MySQL and MongoDB databases; IRC text logs & donated by AA users \\\hline
-    Cidade Democrática & MySQL database & donated by admins \\\hline
-    Email & mbox & obtained through Gmane public database \\\hline
-    Facebook & GDF, GML and TAB & obtained through Netvizz~\cite{netvizz} \\\hline
-    IRC & plain text log & obtained through Supybot logging \\\hline
-    ParticipaBR & PostgreSQL database & donated by admins \\\hline
-    Twitter & Json & obtained through Twitter streaming API \\\hline
+the LOSD dataset.}\label{tab:provenance}
+\begin{tabular}{| l || p{3cm} | p{3cm} | c |}\hline
+    \textbf{social platform} & \textbf{original format} & \textbf{further observations} & \textbf{toolbox} \\\hline\hline
+    AA & MySQL and MongoDB databases; IRC text logs & donated by AA users & Participation \\\hline
+    Cidade Democrática & MySQL database & donated by admins & Participation \\\hline
+    Email & mbox & obtained through Gmane public database & Gmane \\\hline
+    Facebook & GDF, GML and TAB & obtained through Netvizz~\cite{netvizz} & Social \\\hline
+    IRC & plain text log & obtained through Supybot logging & Social \\\hline
+    ParticipaBR & PostgreSQL database & donated by admins & Participation \\\hline
+    Twitter & JSON & obtained through Twitter streaming API & Social \\\hline
 \end{tabular}\end{center}
 \end{table*}                    
-\subsubsection{Topological and textual Analysis}
-\subsubsection{Multimedia rendering}
+\subsubsection{Topological and textual Analysis}\label{ana}
+Routines are available for taking topological and textual measures from
+the dataset.
+Principal Component Analysis (PCA) is performed with available measures
+to ease pattern recognition both in a timeline and in a multiscale
+fashion.
+
+\subsubsection{Multimedia rendering}\label{media}
+It is a core purpose of LOSD framework to provide routines for rendering
+audiovisualizations of the LOSD data.
+Social structures are rendered into music, images and video animations
+through the Percolation toolbox~\cite{percolation} in association with
+the Music and Visuals toolboxes~\cite{music,visuals}.
+
+\subsubsection{Migration from deprecated toolboxes}
+Routines mentioned in Sections~\ref{ana} and~\ref{media} are being migrated from deprecated
+toolboxes~\cite{gmaneLegacy,percolationLegacy} into newly designed
+toolboxes~\cite{percolation,visuals}.
+
 \subsection{SPARQL queries}\label{queries}
 % all text from user
 % users with the most friendships
 % users with most interactions
 % search string in messages
+
 
 \section{Conclusions}
 \label{conclusions}
