@@ -70,7 +70,7 @@ are widely researched.
 Recently, a myriad of results have been reported which are based in
 diverse datasets most often not accessible to other researchers.
 This work exposes an open dataset with diverse provenance and oriented
-to provide the scientific community a friendly and common repertoire.
+to furnish the scientific community with a friendly and common repertoire.
 Current data was obtained from Facebook, Twitter, IRC, Email and the
 detached instances of ParticipaBR, AA and Cidade Democr\'atica.
 These were represented as linked data to homonenize access,
@@ -90,20 +90,20 @@ Big Data, Data Mining, Benchmark Data, Facebook, Twitter, IRC, Email, Complex Ne
 \section{Introduction}
 In recent years, the web of linked data~\cite{lee1} has attracted wide attention in
 both research and application realms.
-However, there is is a lack of datasets for research benchmarking,
+However, there is a lack of datasets for research benchmarking,
 specially in the complex networks field, yielding diverse results from 
 poorly related data.
 
 The enormity of the digital data propels a rapid development of analysis methods
 from different perspectives.
-The used datasets differ within the scope of each research with
-scarce and historical exception such as the
+However, the used datasets in the literature differ within the scope of each research with
+scarce and historical exceptions such as the
 karate club dataset~\cite{newmanBook}.
 On the other hand, the available linked data is not 
 stable or rigorous enough to be
 a public reference on statistical physics and social networks research.
  
-This work presents a linked open social data (LOSD) dataset with data from diverse
+This work presents a linked open social data (LOSD) dataset with diverse
 provenance, including Facebook, Twitter, IRC, Email and detached
 instances.
 Such data is proposed as a common repertoire for scientific
@@ -117,8 +117,8 @@ Data was gathered either from:
     \item public APIs (Twitter, Email); or
     \item public logs (IRC and AA); or
     \item Netvizz software~\cite{netvizz} (Facebook); or
-    \item donated data from users (Facebook); or
-    \item donated data from system administrators (AA, ParticipaBR,
+    \item donated data by users (Facebook); or
+    \item donated data by system administrators (AA, ParticipaBR,
         Cidade Democr\'atica).
 \end{itemize}
 
@@ -272,22 +272,35 @@ SPARQL queries and post-processing which can be divided in the following steps:
 
 \section{Results}
 \label{outline}
-Knowledge Discovery in Databases finished untill data preparation phase.
+Current overall results concern data selection and preparation for knowledge discovery.
+The main result is the data made available, which enables benchmarking of scientific results
+and easy experimentations.
+Secondary results include software support and SparQL queries made beforehand.
+
 \subsection{Standardization}
-Standards: snapshot ids: <platform>-legacy-<further\_identifier>;
-ex: irc-legacy-labmacambira; email-legacy-c++;
-facebook-legacy-RenatoFabbri, etc., participants and transactions linkage to
-snapshots.
+The LOSD is a collection of data translated into RDF and embedded into standard URIs and triples.
+Such standards constitute the LOSD itself, but some of the conventions are outlined in this section.
 
-Participation ontology URIs. Concept URIs are the same for different
-snapshot provenance, being differetiable by the snapshot metadata.
+URIs have the root \url{http://purl.org/socialparticipation/participationontology/} which are identified with
+the radical \textttt{po:}.
+Classes and properties are build by adding a suffix to the root, as in \textttt{po:Participant} or \textttt{po:text}.
+Classes have ``UpperCamelCase'' suffixes while properties have ``lowerCamelCase'' suffixes.
+All participants and transactions (messages, friendships, interactions) are linked to
+snapshots through the triple \textttt{<resource> po:snapshot <snapshot\_uri>}.
+Message texts, including comments, are objectives in the triple: \textttt{<message\_id> po:text <message\_text>}.
+Individuals (also called instances) are built on top of the class they derive from plus a hashtag character,
+the snapshot id of the snapshot they refer to, and an identifier;
+i.e. \textttt{po:Participant\#<snapshot\_id>-<local\_id>}.
+All snapshot URIs follow the formation rule: \textttt{po:<SnapshotProvenance>\#<snapshot\_id>}.
+All snapshot ids follow the formation rule: \textttt{<platform>-legacy-<further\_identifier>}; e.g.
+\textttt{irc-legacy-labmacambira} or \textttt{email-legacy-c++...}.
 
-Big data.
 \subsection{Data outline}
-Relations only (Facebook), text only (AA, Cidade Democratica).
 \input{misc/overallText}
-\input{tables/nsnapshots}
+
 \input{tables/basicOverall}
+
+\input{tables/nsnapshots}
 % stats:
 %% number of triples
 %% number of edges
@@ -337,11 +350,18 @@ toolboxes~\cite{gmaneLegacy,percolationLegacy} into newly designed
 toolboxes~\cite{percolation,visuals}.
 
 \subsection{SPARQL queries}\label{queries}
-% all text from user
-% users with the most friendships
-% users with most interactions
-% search string in messages
-
+There are numerous useful and general purpose SPARQL queries to be performed agaist the LOSD database.
+Here we write some of the most basic of such queries selected by their potential to be varied.
+All queries assume the use the preable \textttt{PREFIX po: <http://purl.org/socialparticipation/po/>}.
+\begin{enumerate}[leftmargin=0cm]
+	\item Retrieve the number of participants
+	\item Retrieve the number of relations, be them interactions of friendships
+	\item Retrieve the number of relations, be them interactions of friendships
+	\item Retrieve all text produced by an specific user
+	\item List 100 users with the most friendships
+	\item List 100 users with most interactions
+	\item Search string in messages
+\end{enumerate}
 
 \section{Conclusions}
 \label{conclusions}
