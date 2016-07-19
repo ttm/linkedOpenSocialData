@@ -354,13 +354,28 @@ There are numerous useful and general purpose SPARQL queries to be performed aga
 Here we write some of the most basic of such queries selected by their potential to be varied.
 All queries assume the use the preable \textttt{PREFIX po: <http://purl.org/socialparticipation/po/>}.
 \begin{enumerate}[leftmargin=0cm]
-	\item Retrieve the number of participants
-	\item Retrieve the number of relations, be them interactions of friendships
-	\item Retrieve the number of relations, be them interactions of friendships
-	\item Retrieve all text produced by an specific user
-	\item List 100 users with the most friendships
-	\item List 100 users with most interactions
-	\item Search string in messages
+	\item Retrieve the number of participants:\\
+            \textttt{SELECT (COUNT(DISTINCT ?author) as ?c) WHERE \{
+            ?author a po:Participant . \} }
+	\item Retrieve the number of relations, be them interactions or
+            friendships:\\
+            \textttt{ SELECT (COUNT(?interaction) as ?c) WHERE \{ \{
+                    ?interaction a po:Friendship \} UNION \{ ?interaction
+                    a po:Interaction \} UNION \{ ?interaction po:retweetOf
+                    ?message \} UNION \{ ?interaction po:replyTo ?message
+                    \} UNION \{ ?interaction po:directedTo ?participant
+                    \} \} }
+	\item Retrieve all text produced by an specific user:\\
+            \textttt{SELECT (CONCAT(?text) as ?texts) WHERE \{ ?activity
+            po:author <user\_uri> . ?activity po:text ?text . \}}
+	\item List users with the most friendships and the number of
+            friendships in descending order by the number of friendships:\\
+            \textttt{SELECT DISTINCT ?participant (COUNT(?interaction)
+            as ?c) WHERE \{ ?interaction a po:Friendship . ?interaction
+        po:member ?participant . \} ORDER BY DESC(?c)}
+	\item Search string ``pineapple'' in LOSD messages:\\
+            \textttt{SELECT ?text WHERE \{ ?activity po:text ?text .
+            FILTER regex(?text, 'pineapple', 'i') \}}
 \end{enumerate}
 
 \section{Conclusions}
