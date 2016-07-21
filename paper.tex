@@ -16,6 +16,11 @@
 % \usepackage[showframe=true]{geometry}
 %
 \newcommand{\textttt}[1] {\texttt{\footnotesize#1}}
+\newcommand{\h} {\hphantom ~ }
+% \newcommand{\textttt}[1] {\mbox{\texttt{\footnotesize#1}}}
+% \newcommand{\textttt}[1] {
+% \begin{verbatim} #1 \end{verbatim}
+% }
 \pgfplotsset{compat=1.5}
 \pgfplotsset
 {
@@ -229,9 +234,14 @@ Most ontologies are created by domain experts even though the data they
 arrange is often given by a software system.  
 
 We developed an ontology synthesis method that probes the ontological structure in data with
-SPARQL queries and post-processing which can be divided in the following steps:
+SPARQL queries and post-processing.
+The results are OWL code and figures which are available in the
+Supporting Information file.
+The method can be improved to comprise further OWL axioms,
+but is currently performed to fit present needs as follows:
 \begin{enumerate}[leftmargin=0cm]
     \item Obtaining all distinct classes with the query:\\
+        % \textttt{SELECT DISTINCT ?class WHERE { ?s a ?class }}
         \textttt{SELECT DISTINCT ?class WHERE \{ ?s a ?class \}}
     \item Obtaining all distinct properties with the query:\\
         \textttt{SELECT DISTINCT ?p WHERE \{ ?s ?p ?o \}}
@@ -359,23 +369,28 @@ All queries assume the use the preable \textttt{PREFIX po: <http://purl.org/soci
             ?author a po:Participant . \} }
 	\item Retrieve the number of relations, be them interactions or
             friendships:\\
-            \textttt{ SELECT (COUNT(?interaction) as ?c) WHERE \{ \{
-                    ?interaction a po:Friendship \} UNION \{ ?interaction
-                    a po:Interaction \} UNION \{ ?interaction po:retweetOf
+            \textttt{SELECT (COUNT(?interaction) as ?c) WHERE \{\\
+                    \h \{ ?interaction a po:Friendship \} UNION \{ ?interaction
+                    a po:Interaction \} UNION\\
+                    \h \{ ?interaction po:retweetOf
                     ?message \} UNION \{ ?interaction po:replyTo ?message
-                    \} UNION \{ ?interaction po:directedTo ?participant
-                    \} \} }
+                    \}\\
+                    \h UNION \{ ?interaction po:directedTo ?participant
+                    \}\\ \} }
 	\item Retrieve all text produced by an specific user:\\
-            \textttt{SELECT (CONCAT(?text) as ?texts) WHERE \{ ?activity
-            po:author <user\_uri> . ?activity po:text ?text . \}}
-	\item List users with the most friendships and the number of
+            \textttt{SELECT (CONCAT(?text) as ?texts) WHERE \{\\
+                    \h ?activity po:author <user\_uri> . ?activity po:text ?text .\\
+    \}}
+        \item List 1000 users (URIs and names) with the most friendships and the number of
             friendships in descending order by the number of friendships:\\
             \textttt{SELECT DISTINCT ?participant (COUNT(?interaction)
-            as ?c) WHERE \{ ?interaction a po:Friendship . ?interaction
-        po:member ?participant . \} ORDER BY DESC(?c)}
+            as ?c) WHERE \{\\
+                \h ?interaction a po:Friendship . ?interaction po:member ?participant . \\
+            \} ORDER BY DESC(?c) LIMIT 1000}
 	\item Search string ``pineapple'' in LOSD messages:\\
-            \textttt{SELECT ?text WHERE \{ ?activity po:text ?text .
-            FILTER regex(?text, 'pineapple', 'i') \}}
+            \textttt{SELECT ?text WHERE \{ \\
+                    \h ?activity po:text ?text . FILTER regex(?text, 'pineapple', 'i')\\
+    \}}
 \end{enumerate}
 
 \section{Conclusions}
