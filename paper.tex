@@ -73,7 +73,7 @@ University, Brazil}
 The field of social network analysis and the topic of complex networks
 are widely researched.
 Recently, a myriad of results have been reported which are based in
-diverse datasets most often not accessible to other researchers.
+diverse datasets most often not accessible to researchers other than the publishing authors.
 This work exposes an open dataset with diverse provenance and oriented
 to furnish the scientific community with a friendly and common repertoire.
 Current data was obtained from Facebook, Twitter, IRC, Email and the
@@ -95,7 +95,7 @@ Big Data, Data Mining, Benchmark Data, Facebook, Twitter, IRC, Email, Complex Ne
 \section{Introduction}
 In recent years, the web of linked data~\cite{lee1} has attracted wide attention in
 both research and application realms.
-However, there is a lack of datasets for research benchmarking,
+However, there is a lack of datasets for benchmarking results,
 specially in the complex networks field, yielding diverse results from 
 poorly related data.
 
@@ -112,29 +112,29 @@ This work presents a linked open social data (LOSD) dataset with diverse
 provenance, including Facebook, Twitter, IRC, Email and detached
 instances.
 Such data is proposed as a common repertoire for scientific
-reseach involving networks and textual content.
+research involving networks and textual content.
 
 % \subsection{Benchmarking in the analysis of complexity}
 
 \section{Materials}\label{materials}
-Data was gathered either from:
+Data was gathered from:
 \begin{itemize}
-    \item public APIs (Twitter, Email); or
-    \item public logs (IRC and AA); or
-    \item Netvizz software~\cite{netvizz} (Facebook); or
-    \item donated data by users (Facebook); or
-    \item donated data by system administrators (AA, ParticipaBR,
-        Cidade Democr\'atica).
+    \item public APIs (Twitter, Email);
+    \item public logs (IRC and AA);
+    \item Netvizz software~\cite{netvizz} (Facebook);
+    \item donated data by users (Facebook);
+    \item donated data by system administrators (AA, ParticipaBR, Cidade Democr\'atica).
 \end{itemize}
 
 Integration and uniformity of access is obtained through linked data
 representation, as exposed in Section~\ref{queries}.
 
-Of central importance to presented LOSD is the concept of a snapshot.
+\subsection{Snapshots}
+Of central importance to presented dataset is the concept of a snapshot.
 A snapshot is a set of data gathered together, at a contiguous time
 unit.
 Examples: the first 20 thousand email messages of an email list
-comprises a snapshot; the tweets from the MAMA event is a
+comprises a snapshot; the tweets from the MAMA music event is a
 snapshot; the friendship, interaction and posts structures of a facebook
 group, prospected at the same time, is a snapshot.
 
@@ -147,19 +147,19 @@ Additionally, some groups have post texts along some metadata, such as
 the number of likes.
 
 \subsection{Twitter data}
-Tweets were gathered through the streaming public API.
+Tweets were gathered through the Twitter streaming public API.
 Each snapshot is unified by a distinct hashtag.
 Edges are canonically yield by retweets but replies and user mentions
-are also kept in the LOSD.
+are also kept in the dataset.
 
 \subsection{IRC data}
-Public IRC logs were used to render LOSD IRC snapshots.
-LOSD has record of users to which the message is directed to or
+Public IRC logs were used to render IRC snapshots.
+The dataset has records of users to which the message is directed to or
 mentions.
 
 \subsection{Email data}
 Email snapshots refer to individual email lists.
-All messages were taken from the Gmane public email~\cite{gmane}.
+All messages were taken from the Gmane public email database~\cite{gmane}.
 Each message has the original text and the text without some of the lines
 from previous messages or that are pasted software code.
 Most importantly, each message item holds the ID of the message it is
@@ -233,53 +233,76 @@ structure of knowledge.
 Most ontologies are created by domain experts even though the data they
 arrange is often given by a software system.  
 
-We developed an ontology synthesis method that probes the ontological structure in data with
+We developed a simple ontology synthesis method that probes
+the ontological structure in data with
 SPARQL queries and post-processing.
 The results are OWL code and figures which are available in the
 Supporting Information file.
-The method can be improved to comprise further OWL axioms,
-but is currently performed to fit present needs as follows:
+The method can be extended to comprise further OWL axioms and restrictions,
+but is currently performed to fit present needs with maximum simplicity.
+Present needs are limited to informative figures and
+the steps implemented are as follows:
 \begin{enumerate}[leftmargin=0cm]
-    \item Obtaining all distinct classes with the query:\\
+    \item Obtain all distinct classes with the query:\\
         % \textttt{SELECT DISTINCT ?class WHERE { ?s a ?class }}
-        \textttt{SELECT DISTINCT ?class WHERE \{ ?s a ?class \}}
-    \item Obtaining all distinct properties with the query:\\
+        \textttt{SELECT DISTINCT ?class\_uri WHERE \{ ?s a ?class\_uri \}}
+%    \item For each class, get distinct subject classes and predicates where the
+%        the object is an instance of the class:\\
+%        \textttt{SELECT DISTINCT ?p ?cs WHERE \{ ?i a <class\_uri> . ?s ?p ?i . ?s
+%        a ?cs . \}}
+% \item For each class, obtain distinct predicates (\textttt{?p}) and object classes or
+% 	datatypes (\textttt{?co}, \textttt{?do}) where the subject is an instance (\textttt{?i}) of such class:\\
+% 	\textttt{SELECT DISTINCT ?p ?co (datatype(?o) as ?do) WHERE \{ \\
+% 		\h ?i a <class\_uri> . ?i ?p ?o . OPTIONAL \{ ?o a ?co . \} \\
+% \}}
+\item For each class, obtain the properties that occur as predicates in triples where the subject is an instance of the class:\\
+	\textttt{SELECT DISTINCT ?property\_uri WHERE \{ ?s a <class\_uri> . ?s ?property\_uri ?o . \}}\\
+Such properties are used to assert existential and universal restrictions for the class.
+\item Compare the total number of individuals (\textttt{?cs1}) of the class (\textttt{class\_uri}) with
+	the number of such individuals (\textttt{?cs2}) that are subjects of at least one triple where 
+	the predicate is the property (\textttt{property\_uri}).
+	If the numbers match, there is an existential restriction of the class. The queries are:\\
+	\textttt{SELECT (COUNT(DISTINCT ?s) as ?cs1) WHERE \{ ?s a <class\_uri> \}}\\
+	\textttt{SELECT (COUNT(DISTINCT ?s) as ?cs) WHERE \{\\
+	\h ?s a <class\_uri>. ?s <property\_uri> ?o .\\ \}}
+\item Find the number of instances which are subjects of triples where the predicate is the property but are not instances of the class.
+	If there is zero of such instances, there is an universal restriction:\\
+	\textttt{SELECT (COUNT(DISTINCT ?s)=0 as ?cs) WHERE \{\\
+	\h ?s <property\_uri> ?o . ?s a ?ca . FILTER(str(?ca) != 'class\_uri')\\ \}}
+\item To keep a record of the restrictions (and occurring triples), get all object classes or datatypes where the subject is an instance of the class and the predicate is the property:\\
+	\textttt{SELECT DISTINCT ?co (datatype(?o) as ?do) WHERE \{\\
+		\h ?s a <class\_uri>. ?s <property\_uri> ?o . OPTIONAL \{ ?o a ?co . \}\\
+\}}
+    \item Obtain all distinct properties:\\
         \textttt{SELECT DISTINCT ?p WHERE \{ ?s ?p ?o \}}
-    \item For each class, get distinct subject classes and predicates where the
-        the object is an instance of the class:\\
-        \textttt{SELECT DISTINCT ?p ?cs WHERE \{ ?i a <class\_uri> . ?s ?p ?i . ?s
-        a ?cs . \}}
-    \item For each class, get distinct predicates and object classes or
-        datatypes where the subject is an instance of such class:\\
-        \textttt{SELECT DISTINCT ?p ?co (datatype(?o) as ?do) WHERE \{ ?i
-                a <class\_uri> . ?i ?p ?o . OPTIONAL \{ ?o a ?co . \} \}}
-    \item For each property, check if it is functional, i.e. if it
+    \item Check if each property is functional, i.e. if it
         occurs only once with each subject:\\
         \textttt{SELECT DISTINCT (COUNT(?o) as ?co) WHERE \{ ?s
             <property\_uri> ?o \} GROUP BY ?s}
     \item For each property, find the incident range and domain with the
         queries:\\
-        \textttt{SELECT DISTINCT ?co (datatype(?o) as ?do) WHERE \{ ?s
-                <property\_uri> ?o . OPTIONAL \{ ?o a ?co . \} \}} \\
+        \textttt{SELECT DISTINCT ?co (datatype(?o) as ?do) WHERE \{\\
+			\h ?s <property\_uri> ?o . OPTIONAL \{ ?o a ?co . \}\\\}} \\
         and \\
         \textttt{SELECT DISTINCT ?cs WHERE \{ ?s <property\_uri> ?o . ?s a ?cs . \}}
-    \item For each instance of each class, get all distinct predicates.
-        For each predicate, check if all instances of the class
-        hold such relationship (existential restriction):\\
-        \textttt{SELECT DISTINCT ?p WHERE \{ ?s a <class\_uri>. ?s ?p ?o . \}}\\
-        \textttt{SELECT DISTINCT ?s WHERE \{ ?s a <class\_uri> \}}\\
-        \textttt{SELECT DISTINCT ?s ?co  (datatype(?o) as ?do) WHERE \{?s
-                a <class\_uri>. ?s <property\_uri> ?o . OPTIONAL \{?o a ?co . \}\}}
-    \item and if all instances that hold such relationship are instances of the class
-        (universal restriction):\\
-        \textttt{SELECT DISTINCT ?s WHERE \{ ?s <property\_uri> ?o . \}}
-    \item Draw each class, each property and the overall figure.
-    \item Make \textttt{rdfs:subClassOf} and \texttt{rdfs:subPropertyOf}
-        statements to better organize knowledge and link to third party
-        ontologies and data.
+%     \item For each instance of each class, get all distinct predicates.
+%         For each predicate, check if all instances of the class
+%         hold such relationship (existential restriction):\\
+%         \textttt{SELECT DISTINCT ?p WHERE \{ ?s a <class\_uri>. ?s ?p ?o . \}}\\
+%         \textttt{SELECT DISTINCT ?s WHERE \{ ?s a <class\_uri> \}}\\
+%         \textttt{SELECT DISTINCT ?s ?co  (datatype(?o) as ?do) WHERE \{?s
+%                 a <class\_uri>. ?s <property\_uri> ?o . OPTIONAL \{?o a ?co . \}\}}
+%     \item and if all instances that hold such relationship are instances of the class
+%         (universal restriction):\\
+%         \textttt{SELECT DISTINCT ?s WHERE \{ ?s <property\_uri> ?o . \}}
+%     \item Draw each class, each property and the overall figure.
+\item Draw the overall figure. This results in diagrams such as given in Figure~\ref{fig:facebook}.
+	Other diagrams are given in the Supporting Information file.
+%      \item Make \textttt{rdfs:subClassOf} and \texttt{rdfs:subPropertyOf}
+%          statements to better organize knowledge and link to third party
+%          ontologies and data. This step is left aside in current LOSD as 
 \end{enumerate}
  
-
 \section{Results}
 \label{outline}
 Current overall results concern data selection and preparation for knowledge discovery.
