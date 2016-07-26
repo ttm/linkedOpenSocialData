@@ -88,33 +88,62 @@ University, Brazil}
 \begin{abstract}
 This is a Supporting Information document which exposes ontological
 diagrams and auxiliary tables for the Linked Open Social Data (LOSD)
-database. The main article is in~\cite{losd}.
+database. The main document of the article is in~\cite{losd}.
 \end{abstract}
 %
 \begin{keyword}
-Big Data, Data Mining, Benchmark Data, Facebook, Twitter, IRC, Email, Complex Networks
+Big Data, Data Mining, Benchmark Data, Facebook, Twitter, IRC, Email,
+Complex Networks, Text Mining
 %Hierarchy of Clusters \sep HoC \sep Benchmark Dataset \sep Benchmark Data Generator \sep Artificial Data \sep Cluster Analysis \sep Tree Structured Stick Breaking Process \sep TSSB \sep ...
 \end{keyword}
 
 \end{frontmatter}
-\pdfpageheight 8in
+% \pdfpageheight 8in
 \tableofcontents
 \section{General guidance}
+% \paperheight = 200pt
 In this document we provide diagrams
-the provenances in the LOSD:
+for the provenances in the LOSD:
 Facebook, Twitter, IRC, Email, ParticipaBR, Cidade Democrática and AA.
-Each provenance diagram was broken in two, one present the relations
-among main classes and datatypes, the other present metadata on the
+Each provenance diagram was broken in two, one presents the relations
+among main classes (blue nodes) and data types (orange nodes), the other presents metadata on the
 snapshot.
+Every class instance is related to the snapshot instance
+by the triple \textttt{class\_uri po:snapshot snapshot\_uri}.
+Such triples are omitted for simplicity.
+Due to the large number of relations, the rendering of diagrams are
+automatized and displays imperfections.
+Even so, the images are useful for grasping what is in current LOSD
+and for conducting explorations.
+Edges in the diagrams have:
+\begin{itemize}
+    \item green color if representing an OWL existential
+class restriction (all individuals from the class present at least one triple with
+the property as predicate);
+    \item inverted nip if representing an OWL universal class
+        restriction (all individuals presenting triples with the
+        property as predicate are from the class);
+    \item full edges (non-dashed) if representing a functional property
+        axiom (there is at most one triple with the property as the
+        predicate for each individual).
+\end{itemize}
 
-Furthermore, this document ends with two sets of tables, one with countings of
+% \textheight = 100pt
+% \pdfpageheight 300pt
+Furthermore, this document ends with two sets of tables, one with counts of
 triples, participants, edges/interactions/relations and characters,
 the other with references for snapshot groups, such as wikipedia or
 contact links.
 
 
-
 \section{Facebook data}
+Each Facebook snapshot is yield through either an user, from which the
+friends constitute a friendship network, or a group, which participants
+can yield friendship and interaction networks and posts information with
+text and some metadata.
+Further information is found on the following diagrams, the tables on
+the end of this document or in the main document of this
+article~\cite{losd}.
 
 % \includepdf{ontologies/aairc.ttl/draw.pdf}
 \incgraph[
@@ -138,7 +167,7 @@ contact links.
 \incgraph[
   overlay={\node[red,below right] at (page.north west) {\Huge Twitter};}
     paper=graphics
-][scale=.5]{ontologies/twitter-legacy-arenaNETmundialMeta.ttl/draw.png}
+][scale=.7]{ontologies/twitter-legacy-arenaNETmundialMeta.ttl/draw.png}
 
 \section{IRC data}
 \incgraph[
@@ -158,7 +187,7 @@ contact links.
 \incgraph[
   overlay={\node[red,below right] at (page.north west) {\Huge Email};}
     paper=graphics
-][scale=.5]{ontologies/gmane-legacy-.linux.audio.devel1-20000Meta.ttl/draw.png}
+][scale=.5]{ontologies/gmane-legacy-linux.audio.devel1-20000Meta.ttl/draw.png}
 
 \section{ParticipaBR data}
 \incgraph[
