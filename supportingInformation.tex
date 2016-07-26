@@ -3,6 +3,14 @@
 
 \usepackage{enumitem}
 \usepackage{hyperref}
+\usepackage{xcolor}
+\hypersetup{
+    colorlinks,
+    linkcolor={red!50!black},
+    citecolor={blue!50!black},
+    urlcolor={blue!80!black},
+    pdfborder={0 0 0}
+}
 \usepackage{multirow}
 \usepackage{pgfplots}
 \usepackage{float}
@@ -16,6 +24,10 @@
 \usepackage{tabularx}
 \usepackage{pdfpages}
 \usepackage{incgraph,tikz}
+\usepackage[titles]{tocloft}
+\setlength{\cftbeforesecskip}{-.5ex}
+\renewcommand{\cftsecleader}{\cftdotfill{\cftdotsep}}
+
 % \usepackage[showframe=true]{geometry}
 %
 \newcommand{\textttt}[1] {\texttt{\footnotesize#1}}
@@ -58,7 +70,8 @@
 %
 \begin{frontmatter}
 %
-\title{Linked Open Social Data for Scientific Benchmarking}
+\title{Linked Open Social Data for Scientific Benchmarking (Supporting
+Information document)}
 %
 \author[pwr]{Renato Fabbri\corref{corresponding}\fnref{kio-url}}
 \ead{fabbri@usp.br}
@@ -73,6 +86,9 @@ University, Brazil}
 \fntext[kio-url]{\textit{URL:} \url{http://www.ifsc.usp.br/}}
 %
 \begin{abstract}
+This is a Supporting Information document which exposes ontological
+diagrams and auxiliary tables for the Linked Open Social Data (LOSD)
+database. The main article is in~\cite{losd}.
 \end{abstract}
 %
 \begin{keyword}
@@ -81,23 +97,117 @@ Big Data, Data Mining, Benchmark Data, Facebook, Twitter, IRC, Email, Complex Ne
 \end{keyword}
 
 \end{frontmatter}
-\pdfpageheight 6in
-\section{Introduction}
+\pdfpageheight 8in
+\tableofcontents
+\section{General guidance}
+In this document we provide diagrams
+the provenances in the LOSD:
+Facebook, Twitter, IRC, Email, ParticipaBR, Cidade Democrática and AA.
+Each provenance diagram was broken in two, one present the relations
+among main classes and datatypes, the other present metadata on the
+snapshot.
+
+Furthermore, this document ends with two sets of tables, one with countings of
+triples, participants, edges/interactions/relations and characters,
+the other with references for snapshot groups, such as wikipedia or
+contact links.
+
+
+
+\section{Facebook data}
+
 % \includepdf{ontologies/aairc.ttl/draw.pdf}
 \incgraph[
-  overlay={\node[red,below right] at (page.north west) {\Huge Paper sized to picture};}
+  overlay={\node[red,below right] at (page.north west) {\Huge Facebook};}
     paper=graphics
-    ]{ontologies/aairc.ttl/draw.png}
+][scale=.6]{ontologies/facebook-legacy-Auricultura10042013Friendship.ttl/draw.png}
 
-\section{Conclusions}
-\label{conclusions}
-\pdfpageheight 2in
-The Linked Open Social Data (LOSD) presented in this article
-should be available online in the \url{http://linkedopensocialdata.org}
-address in near future to fulfill the purpose of being a common
-repertoire in current research.
-One should access \url{http://wiki.nosdigitais.teia.org.br/LOSD}
-for reaching the address where LOSD is currently reachable.
+\incgraph[
+  overlay={\node[red,below right] at (page.north west) {\Huge Facebook};}
+    paper=graphics
+][scale=.5]{ontologies/facebook-legacy-Auricultura10042013Meta.ttl/draw.png}
+
+\section{Twitter data}
+\pdfpageheight 4in
+\incgraph[
+  overlay={\node[red,below right] at (page.north west) {\Huge
+  Twitter };}
+    paper=graphics
+][scale=.5]{ontologies/twitter-legacy-arenaNETmundialTweet00000.ttl/draw.png}
+
+\incgraph[
+  overlay={\node[red,below right] at (page.north west) {\Huge Twitter};}
+    paper=graphics
+][scale=.5]{ontologies/twitter-legacy-arenaNETmundialMeta.ttl/draw.png}
+
+\section{IRC data}
+\incgraph[
+  overlay={\node[red,below right] at (page.north west) {\Huge IRC};}
+    paper=graphics
+][scale=.7]{ontologies/irc-legacy-hackerspace-cpsLog00000.ttl/draw.png}
+\incgraph[
+  overlay={\node[red,below right] at (page.north west) {\Huge IRC};}
+    paper=graphics
+][scale=.6]{ontologies/irc-legacy-hackerspace-cpsMeta.ttl/draw.png}
+
+\section{Email data}
+\incgraph[
+  overlay={\node[red,below right] at (page.north west) {\Huge Email};}
+    paper=graphics
+][scale=.4]{ontologies/gmane-legacy-.linux.audio.devel1-20000Email00000.ttl/draw.png}
+\incgraph[
+  overlay={\node[red,below right] at (page.north west) {\Huge Email};}
+    paper=graphics
+][scale=.5]{ontologies/gmane-legacy-.linux.audio.devel1-20000Meta.ttl/draw.png}
+
+\section{ParticipaBR data}
+\incgraph[
+  overlay={\node[red,below right] at (page.north west) {\Huge
+  ParticipaBR};}
+    paper=graphics
+][scale=.5]{ontologies/participabr.ttl/draw.png}
+\incgraph[
+  overlay={\node[red,below right] at (page.north west) {\Huge
+  ParticipaBR};}
+    paper=graphics
+][scale=.7]{ontologies/participabr.ttl/draw_circo.png}
+\incgraph[
+  overlay={\node[red,below right] at (page.north west) {\Huge
+  ParticipaBR};}
+    paper=graphics
+][scale=.7]{ontologies/participabrMeta.ttl/draw.png}
+
+\section{Cidade Democrática data}
+\incgraph[
+  overlay={\node[red,below right] at (page.north west) {\Huge Cidade
+  Democrática};}
+    paper=graphics
+][scale=.4]{ontologies/cidadedemocratica00000.ttl/draw.png}
+\incgraph[
+  overlay={\node[red,below right] at (page.north west) {\Huge Cidade
+  Democrática};}
+    paper=graphics
+][scale=.4]{ontologies/cidadedemocratica00000.ttl/draw_circo.png}
+
+\incgraph[
+  overlay={\node[red,below right] at (page.north west) {\Huge Cidade
+  Democrática};}
+    paper=graphics
+][scale=.7]{ontologies/cidadedemocraticaMeta.ttl/draw.png}
+\section{AA data}
+\incgraph[
+  overlay={\node[red,below right] at (page.north west) {\Huge AA};}
+    paper=graphics
+][scale=.6]{ontologies/aairc.ttl/draw.png}
+\incgraph[
+  overlay={\node[red,below right] at (page.north west) {\Huge AA};}
+    paper=graphics
+][scale=.7]{ontologies/aaircMeta.ttl/draw.png}
+
+\section{Snapshot references}
+\label{sreferences}
+\pdfpageheight 10in
+\section{Elementary counting in snapshots}
 
 \section*{References}
 %
