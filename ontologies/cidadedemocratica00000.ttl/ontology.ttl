@@ -1,0 +1,752 @@
+@prefix ns1: <http://www.w3.org/2002/07/owl#> .
+@prefix po: <http://purl.org/socialparticipation/po/> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix xml: <http://www.w3.org/XML/1998/namespace> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+<N006623e951be45a6810813a3c2af0c1c> a ns1:Restriction ;
+    ns1:allValuesFrom "http://www.w3.org/2001/XMLSchema#string" ;
+    ns1:onProperty po:cep .
+
+<N0f2bc0c034014d5e9a41a1faff10949d> ns1:unionOf po:Competition,
+        po:Inspiration,
+        po:Topic .
+
+<N0f3dc76b8ab548ea9bfe7870265b60dc> a ns1:Restriction ;
+    ns1:onProperty po:createdAt ;
+    ns1:someValuesFrom "http://www.w3.org/2001/XMLSchema#string" .
+
+<N11819dd007bd485aa6e5f651babb8bbf> a ns1:Restriction ;
+    ns1:onProperty po:title ;
+    ns1:someValuesFrom "http://www.w3.org/2001/XMLSchema#string" .
+
+<N12d634fe98ce4162981cbebc39a82efc> a ns1:Restriction ;
+    ns1:onProperty po:name ;
+    ns1:someValuesFrom "http://www.w3.org/2001/XMLSchema#string" .
+
+<N12e74cad0d224592aad43af1f78ef1cb> a ns1:Restriction ;
+    ns1:onProperty po:description ;
+    ns1:someValuesFrom "http://www.w3.org/2001/XMLSchema#string" .
+
+<N13e7a91dced840e39eb13a120dfedfcc> ns1:unionOf po:City,
+        po:Comment,
+        po:Competition,
+        po:Inspiration,
+        po:Neighborhood,
+        po:Observatory,
+        po:Participant,
+        po:Place,
+        po:Prize,
+        po:State,
+        po:Support,
+        po:Topic .
+
+<N145015ed7ca04afcab28aea409d0b51b> a ns1:Restriction ;
+    ns1:onProperty po:partners ;
+    ns1:someValuesFrom "http://www.w3.org/2001/XMLSchema#string" .
+
+<N1767405be6de46b48317730b8c4efa3e> a ns1:Restriction ;
+    ns1:allValuesFrom "http://www.w3.org/2001/XMLSchema#string" ;
+    ns1:onProperty po:fax .
+
+<N1bae3d0d21344f659d4036b18dd3c0bc> a ns1:Restriction ;
+    ns1:onProperty po:abbreviatio ;
+    ns1:someValuesFrom "http://www.w3.org/2001/XMLSchema#string" .
+
+<N1f4102913e8a4ce78c2ea86babf35110> a ns1:Restriction ;
+    ns1:onProperty po:commentCount ;
+    ns1:someValuesFrom "http://www.w3.org/2001/XMLSchema#integer" .
+
+<N1f644677d9c448eabc1bb843c11a792b> a ns1:Restriction ;
+    ns1:onProperty po:startAt ;
+    ns1:someValuesFrom "http://www.w3.org/2001/XMLSchema#date" .
+
+<N1fb2ec5bcf5d4fb8afeec4f8559cd540> a ns1:Restriction ;
+    ns1:onProperty po:name ;
+    ns1:someValuesFrom "http://www.w3.org/2001/XMLSchema#string" .
+
+<N21da0e7e3cee44398618296fcf663c09> a ns1:Restriction ;
+    ns1:onProperty po:topic ;
+    ns1:someValuesFrom "http://purl.org/socialparticipation/po/Topic" .
+
+<N249f7858d62843fe94a037ab6ab3f836> a ns1:Restriction ;
+    ns1:onProperty po:city ;
+    ns1:someValuesFrom "http://purl.org/socialparticipation/po/City" .
+
+<N2d38def4b0aa4ab99d6c01227b7b5215> a ns1:Restriction ;
+    ns1:allValuesFrom "http://www.w3.org/2001/XMLSchema#string" ;
+    ns1:onProperty po:participantType .
+
+<N324966458179401d85a888642565762f> a ns1:Restriction ;
+    ns1:allValuesFrom "http://www.w3.org/2001/XMLSchema#string" ;
+    ns1:onProperty po:topicType .
+
+<N38159e17f5fe4445ad24d65e0976edd4> a ns1:Restriction ;
+    ns1:onProperty po:updatedAt ;
+    ns1:someValuesFrom "http://www.w3.org/2001/XMLSchema#dateTime" .
+
+<N392185790d4d46489f945612c9c9d039> a ns1:Restriction ;
+    ns1:onProperty po:createdAt ;
+    ns1:someValuesFrom "http://www.w3.org/2001/XMLSchema#dateTime" .
+
+<N41b71e520a164b8a800096586e1305f3> ns1:unionOf po:Comment,
+        po:Prize,
+        po:Support .
+
+<N43acb00e63174a7dac8e52c42f504cca> a ns1:Restriction ;
+    ns1:allValuesFrom "http://www.w3.org/2001/XMLSchema#string" ;
+    ns1:onProperty po:shortDescription .
+
+<N43bf34b846e744b59352598b652e65b5> a ns1:Restriction ;
+    ns1:allValuesFrom "http://www.w3.org/2001/XMLSchema#string" ;
+    ns1:onProperty po:awards .
+
+<N45423aa99d8a494aa1c4963a91669020> ns1:unionOf po:City,
+        po:Place .
+
+<N4c2980b8a33944b0bdaf740db217cb47> a ns1:Restriction ;
+    ns1:onProperty po:slug ;
+    ns1:someValuesFrom "http://www.w3.org/2001/XMLSchema#string" .
+
+<N4dbd65f3ba4e49bda0be7af5997d83af> ns1:unionOf po:Comment,
+        po:Topic .
+
+<N4ff176a1203b4feb8be7fbaac6da9e6e> a ns1:Restriction ;
+    ns1:onProperty po:participant ;
+    ns1:someValuesFrom "http://purl.org/socialparticipation/po/Participant" .
+
+<N5048c6ed2c454caa986271a2c8ca47c8> a ns1:Restriction ;
+    ns1:allValuesFrom "http://www.w3.org/2001/XMLSchema#string" ;
+    ns1:onProperty po:slug .
+
+<N53b2b78a47954588b1644382c488f013> ns1:unionOf po:City,
+        po:Competition,
+        po:Inspiration,
+        po:Neighborhood,
+        po:Observatory,
+        po:Participant,
+        po:Place,
+        po:Prize,
+        po:State,
+        po:Support,
+        po:Topic .
+
+<N53f9ecc1be2b4b34954bf8ae40417147> ns1:unionOf po:City,
+        po:Neighborhood,
+        po:Participant,
+        po:State,
+        po:Topic .
+
+<N55f344baa747430eb47786cb797455eb> a ns1:Restriction ;
+    ns1:onProperty po:createdAt ;
+    ns1:someValuesFrom "http://www.w3.org/2001/XMLSchema#dateTime" .
+
+<N57d798dc73c9404aba957d63bb7a5363> a ns1:Restriction ;
+    ns1:allValuesFrom "http://www.w3.org/2001/XMLSchema#string" ;
+    ns1:onProperty po:longDescription .
+
+<N5d05c1c3bba24dbf9687caf9a47753f0> a ns1:Restriction ;
+    ns1:onProperty po:authorDescription ;
+    ns1:someValuesFrom "http://www.w3.org/2001/XMLSchema#string" .
+
+<N5fc8976d93ea456a953bb52404ca384a> ns1:unionOf po:Comment,
+        po:Prize,
+        po:Support .
+
+<N60628445a1794f359a67cbe4b7e3ce21> a ns1:Restriction ;
+    ns1:onProperty po:shortDescription ;
+    ns1:someValuesFrom "http://www.w3.org/2001/XMLSchema#string" .
+
+<N60a11cc0e0034724816494495d528337> a ns1:Restriction ;
+    ns1:onProperty po:competition ;
+    ns1:someValuesFrom "http://purl.org/socialparticipation/po/Competition" .
+
+<N6216bcd77be049569275b91ac05e30ff> a ns1:Restriction ;
+    ns1:allValuesFrom "http://www.w3.org/2001/XMLSchema#integer" ;
+    ns1:onProperty po:commentCount .
+
+<N6219fbcb39c04731a4deea55b9e69cde> a ns1:Restriction ;
+    ns1:onProperty po:participant ;
+    ns1:someValuesFrom "http://purl.org/socialparticipation/po/Participant" .
+
+<N671ce05fb51b4d939b1270ac3a1957de> a ns1:Restriction ;
+    ns1:allValuesFrom "http://www.w3.org/2001/XMLSchema#string" ;
+    ns1:onProperty po:gender .
+
+<N676af0f02e5d41b68d25ec876d87a15c> a ns1:Restriction ;
+    ns1:allValuesFrom "http://www.w3.org/2001/XMLSchema#string" ;
+    ns1:onProperty po:abbreviatio .
+
+<N6bc1a21e3d2340caadc887569a7a5b0c> a ns1:Restriction ;
+    ns1:allValuesFrom "http://purl.org/socialparticipation/po/Topic" ;
+    ns1:onProperty po:accountable .
+
+<N6bd442965de94d9882eded590663637f> ns1:unionOf po:City,
+        po:Competition,
+        po:Inspiration,
+        po:Neighborhood,
+        po:Observatory,
+        po:Participant,
+        po:Place,
+        po:Prize,
+        po:State,
+        po:Support,
+        po:Topic .
+
+<N6d2c5c602f924542a3ea1d2a94f4ecd8> a ns1:Restriction ;
+    ns1:allValuesFrom "http://www.w3.org/2001/XMLSchema#string" ;
+    ns1:onProperty po:partners .
+
+<N709f2991fdeb42b9a6dc35998617b8f7> a ns1:Restriction ;
+    ns1:onProperty po:author ;
+    ns1:someValuesFrom "http://purl.org/socialparticipation/po/Participant" .
+
+<N74fb7bd5297d4175acb7f9b9ecc892ad> a ns1:Restriction ;
+    ns1:allValuesFrom "http://www.w3.org/2001/XMLSchema#string" ;
+    ns1:onProperty po:selfDescription .
+
+<N7729e60aaf324b6bba0cbb1e364fa199> a ns1:Restriction ;
+    ns1:onProperty po:competition ;
+    ns1:someValuesFrom "http://purl.org/socialparticipation/po/Competition" .
+
+<N781e940fa0b94e749450a496a9081bc7> a ns1:Restriction ;
+    ns1:onProperty po:createdAt ;
+    ns1:someValuesFrom "http://www.w3.org/2001/XMLSchema#dateTime" .
+
+<N7d174d57e9864e809c1baa2472363f0d> ns1:unionOf po:Place .
+
+<N7f060f15a25d4a94afae777c408bb7a3> a ns1:Restriction ;
+    ns1:allValuesFrom "http://www.w3.org/2001/XMLSchema#string" ;
+    ns1:onProperty po:regulations .
+
+<N8960d97d209c4761856fd2a5c37c13a1> a ns1:Restriction ;
+    ns1:onProperty po:topicType ;
+    ns1:someValuesFrom "http://www.w3.org/2001/XMLSchema#string" .
+
+<N8d386f690da1485aa4897b0e54b6f029> a ns1:Restriction ;
+    ns1:onProperty po:createdAt ;
+    ns1:someValuesFrom "http://www.w3.org/2001/XMLSchema#dateTime" .
+
+<N9319f8b398f94b77aacd3ea7f84f5e84> a ns1:Restriction ;
+    ns1:onProperty po:name ;
+    ns1:someValuesFrom "http://www.w3.org/2001/XMLSchema#string" .
+
+<N934fa9fc781f4c049356e3801228bf7e> a ns1:Restriction ;
+    ns1:onProperty po:text ;
+    ns1:someValuesFrom "http://www.w3.org/2001/XMLSchema#string" .
+
+<N98b8ded8771c440fb7dd5a6a280c37d7> a ns1:Restriction ;
+    ns1:onProperty po:relevance ;
+    ns1:someValuesFrom "http://www.w3.org/2001/XMLSchema#integer" .
+
+<N9b40aebf204f4d9d81f45356fae53af5> a ns1:Restriction ;
+    ns1:allValuesFrom "http://www.w3.org/2001/XMLSchema#string" ;
+    ns1:onProperty po:authorDescription .
+
+<N9c6f0cb0bef84b1d84b34470781c4c3c> a ns1:Restriction ;
+    ns1:allValuesFrom "http://www.w3.org/2001/XMLSchema#string" ;
+    ns1:onProperty po:website .
+
+<N9cfe87ad937a4b90a55fc16ec1e0159a> a ns1:Restriction ;
+    ns1:onProperty po:relevance ;
+    ns1:someValuesFrom "http://www.w3.org/2001/XMLSchema#integer" .
+
+<Na17ae4cba00b4fea806035ded38063fb> a ns1:Restriction ;
+    ns1:allValuesFrom "http://www.w3.org/2001/XMLSchema#string" ;
+    ns1:onProperty po:email .
+
+<Na542c9ced3d54726a512449f64be8b0c> a ns1:Restriction ;
+    ns1:onProperty po:topic ;
+    ns1:someValuesFrom "http://purl.org/socialparticipation/po/Topic" .
+
+<Na9b639b493ad484194ff625c3d555dc5> a ns1:Restriction ;
+    ns1:onProperty po:createdAt ;
+    ns1:someValuesFrom "http://www.w3.org/2001/XMLSchema#dateTime" .
+
+<Nac46fabb3e62466ba5fff0e29c9e5ee2> ns1:unionOf po:City,
+        po:Comment,
+        po:Competition,
+        po:Inspiration,
+        po:Neighborhood,
+        po:Observatory,
+        po:Participant,
+        po:Place,
+        po:Prize,
+        po:State,
+        po:Support,
+        po:Topic .
+
+<Nad6c5d91e8eb404fb7ff7c0183d9b9d1> a ns1:Restriction ;
+    ns1:onProperty po:description ;
+    ns1:someValuesFrom "http://www.w3.org/2001/XMLSchema#string" .
+
+<Nadf19b0b189e47368f5fb0f212be9222> a ns1:Restriction ;
+    ns1:onProperty po:description ;
+    ns1:someValuesFrom "http://www.w3.org/2001/XMLSchema#string" .
+
+<Nae8e661fc40c49b9ab37dd3942dc2b25> a ns1:Restriction ;
+    ns1:onProperty po:awards ;
+    ns1:someValuesFrom "http://www.w3.org/2001/XMLSchema#string" .
+
+<Naf02c0aa617d4aab8022131598ef8471> a ns1:Restriction ;
+    ns1:onProperty po:filename ;
+    ns1:someValuesFrom "http://www.w3.org/2001/XMLSchema#string" .
+
+<Naf1d84d38b4d4d6ea69ed91bb0b0359e> a ns1:Restriction ;
+    ns1:onProperty po:followersCount ;
+    ns1:someValuesFrom "http://www.w3.org/2001/XMLSchema#integer" .
+
+<Nb1b61d871f6c476fb6c8b26ba57f0f52> a ns1:Restriction ;
+    ns1:onProperty po:createdAt ;
+    ns1:someValuesFrom "http://www.w3.org/2001/XMLSchema#dateTime" .
+
+<Nb33b69253fd043d1b132a28c8773ea22> ns1:unionOf po:City,
+        po:Neighborhood,
+        po:Participant,
+        po:Prize,
+        po:State .
+
+<Nb452fed1b784469abd982802642dbc88> a ns1:Restriction ;
+    ns1:allValuesFrom "http://www.w3.org/2001/XMLSchema#string" ;
+    ns1:onProperty po:birthday .
+
+<Nb4a1629fd37b48e19c174e2965d50a8a> ns1:unionOf po:Neighborhood,
+        po:Place .
+
+<Nb52a670f736a42538e0b9dee5c5a2cc1> ns1:unionOf po:Inspiration,
+        po:Observatory,
+        po:Support .
+
+<Nb803692db6e2437881de6f312797bfb4> a ns1:Restriction ;
+    ns1:onProperty po:adhesionCount ;
+    ns1:someValuesFrom "http://www.w3.org/2001/XMLSchema#integer" .
+
+<Nbac4b0779ebd4228a699f810fab9d4d3> a ns1:Restriction ;
+    ns1:onProperty po:offerer ;
+    ns1:someValuesFrom "http://purl.org/socialparticipation/po/Participant" .
+
+<Nbb031d0d743a470ba5eda6bdaf65a154> a ns1:Restriction ;
+    ns1:onProperty po:createdAt ;
+    ns1:someValuesFrom "http://www.w3.org/2001/XMLSchema#dateTime" .
+
+<Nbc0a5cf1dde6466f9c63e234dee7acf6> a ns1:Restriction ;
+    ns1:onProperty po:title ;
+    ns1:someValuesFrom "http://www.w3.org/2001/XMLSchema#string" .
+
+<Nbce4998f3f3a402d99f16ca4f9b1a4ab> a ns1:Restriction ;
+    ns1:onProperty po:createdAt ;
+    ns1:someValuesFrom "http://www.w3.org/2001/XMLSchema#dateTime" .
+
+<Nbdcf34ea692a4f8b9517a3d2964a23e2> a ns1:Restriction ;
+    ns1:allValuesFrom "http://www.w3.org/2001/XMLSchema#string" ;
+    ns1:onProperty po:filename .
+
+<Nbe5e3f1f75f04b3e8388392aa9dbbe3d> a ns1:Restriction ;
+    ns1:onProperty po:title ;
+    ns1:someValuesFrom "http://www.w3.org/2001/XMLSchema#string" .
+
+<Nc09625d9cd1e446eaf157456f642242a> a ns1:Restriction ;
+    ns1:onProperty po:regulations ;
+    ns1:someValuesFrom "http://www.w3.org/2001/XMLSchema#string" .
+
+<Nc0e542bac2094fddb36be73165f074a3> a ns1:Restriction ;
+    ns1:onProperty po:relevance ;
+    ns1:someValuesFrom "http://www.w3.org/2001/XMLSchema#integer" .
+
+<Nc136867bfafe427990950e5f1ea5233d> ns1:unionOf po:Inspiration,
+        po:Prize,
+        po:Topic .
+
+<Nc343feb9ffb846958709df5295797ce0> a ns1:Restriction ;
+    ns1:onProperty po:createdAt ;
+    ns1:someValuesFrom "http://www.w3.org/2001/XMLSchema#dateTime" .
+
+<Nccb002fb4edc4e5fa6b5c36ae9305587> a ns1:Restriction ;
+    ns1:onProperty po:relevance ;
+    ns1:someValuesFrom "http://www.w3.org/2001/XMLSchema#integer" .
+
+<Nce2c8f1fcf134a42b227362bec43de00> a ns1:Restriction ;
+    ns1:allValuesFrom "http://www.w3.org/2001/XMLSchema#string" ;
+    ns1:onProperty po:profileCondition .
+
+<Nd088d415c90740d6840265afbd21d9ef> ns1:unionOf po:Inspiration,
+        po:Observatory,
+        po:Support .
+
+<Nd41a124b9c9a48e5b63030885564e6f6> a ns1:Restriction ;
+    ns1:allValuesFrom "http://www.w3.org/2001/XMLSchema#string" ;
+    ns1:onProperty po:phoneNumber .
+
+<Ndbefd02167df4b9db5f683e19e512db9> a ns1:Restriction ;
+    ns1:allValuesFrom "http://purl.org/socialparticipation/po/Neighborhood" ;
+    ns1:onProperty po:neighborhood .
+
+<Nde5d689a2fca4c6f968d7294e16131c9> a ns1:Restriction ;
+    ns1:allValuesFrom "http://www.w3.org/2001/XMLSchema#integer" ;
+    ns1:onProperty po:inspirationCount .
+
+<Ne04283070a2740b2837dff25090b9b18> ns1:unionOf po:Inspiration,
+        po:Prize,
+        po:Topic .
+
+<Ne438c4601a0a44d3b79fdce69b778cd8> a ns1:Restriction ;
+    ns1:allValuesFrom "http://www.w3.org/2001/XMLSchema#dateTime" ;
+    ns1:onProperty po:deletedAt .
+
+<Ne8ec4718347b46db994b64d736c85a94> a ns1:Restriction ;
+    ns1:allValuesFrom "http://purl.org/socialparticipation/po/Participant" ;
+    ns1:onProperty po:offerer .
+
+<Ned6d66595d3445bea40dc20836795061> ns1:unionOf po:Inspiration,
+        po:Prize,
+        po:Topic .
+
+<Nf0293bf3fc654cef971879304698bd9a> ns1:unionOf po:City,
+        po:Place .
+
+<Nf0adbd9231ac4211ab399cddb3b26c4f> ns1:unionOf po:Neighborhood,
+        po:Place .
+
+<Nf1ab6c9e5d0c4f2b9a2da10de7c3bc7f> ns1:unionOf po:Place .
+
+<Nf3bd1c8f516d450d9a1f493ec9e0f79b> ns1:unionOf po:Comment,
+        po:Topic .
+
+<Nf45e6db782ab4a2ab54668845a77b615> ns1:unionOf po:City,
+        po:Competition,
+        po:Inspiration,
+        po:Neighborhood,
+        po:Observatory,
+        po:Participant,
+        po:Place,
+        po:Prize,
+        po:State,
+        po:Support,
+        po:Topic .
+
+<Nf4aa8d30f3ca45c5b7e834316aef56d5> a ns1:Restriction ;
+    ns1:allValuesFrom "http://www.w3.org/2001/XMLSchema#integer" ;
+    ns1:onProperty po:adhesionCount .
+
+<Nf540274ecb7b45afb19bd75700a54c73> ns1:unionOf po:Prize .
+
+<Nfb62e5bd758b40abb7ec229850965658> a ns1:Restriction ;
+    ns1:onProperty po:longDescription ;
+    ns1:someValuesFrom "http://www.w3.org/2001/XMLSchema#string" .
+
+<Nfc7343fb55ce48d48297fc934d5e80b0> a ns1:Restriction ;
+    ns1:onProperty po:name ;
+    ns1:someValuesFrom "http://www.w3.org/2001/XMLSchema#string" .
+
+po:snapshot a ns1:FunctionalProperty,
+        ns1:ObjectProperty ;
+    rdfs:domain "Nac46fabb3e62466ba5fff0e29c9e5ee2" ;
+    rdfs:range "[]" .
+
+po:state a ns1:FunctionalProperty,
+        ns1:ObjectProperty ;
+    rdfs:domain "N45423aa99d8a494aa1c4963a91669020" ;
+    rdfs:range "Nf0293bf3fc654cef971879304698bd9a" .
+
+po:type a ns1:DataProperty,
+        ns1:FunctionalProperty ;
+    rdfs:domain po:Comment ;
+    rdfs:range xsd:string .
+
+rdf:type a ns1:FunctionalProperty,
+        ns1:ObjectProperty ;
+    rdfs:domain "N13e7a91dced840e39eb13a120dfedfcc" ;
+    rdfs:range "[]" .
+
+po:accountable a ns1:FunctionalProperty,
+        ns1:ObjectProperty ;
+    rdfs:domain po:Place ;
+    rdfs:range "Nf1ab6c9e5d0c4f2b9a2da10de7c3bc7f" .
+
+po:author a ns1:FunctionalProperty,
+        ns1:ObjectProperty ;
+    rdfs:domain "Nf3bd1c8f516d450d9a1f493ec9e0f79b" ;
+    rdfs:range "N4dbd65f3ba4e49bda0be7af5997d83af" .
+
+po:birthday a ns1:DataProperty,
+        ns1:FunctionalProperty ;
+    rdfs:domain po:Participant ;
+    rdfs:range xsd:string .
+
+po:cep a ns1:DataProperty,
+        ns1:FunctionalProperty ;
+    rdfs:domain po:Place ;
+    rdfs:range xsd:string .
+
+po:city a ns1:FunctionalProperty,
+        ns1:ObjectProperty ;
+    rdfs:domain "Nb4a1629fd37b48e19c174e2965d50a8a" ;
+    rdfs:range "Nf0adbd9231ac4211ab399cddb3b26c4f" .
+
+po:deletedAt a ns1:DataProperty,
+        ns1:FunctionalProperty ;
+    rdfs:domain po:Participant ;
+    rdfs:range xsd:dateTime .
+
+po:email a ns1:DataProperty,
+        ns1:FunctionalProperty ;
+    rdfs:domain po:Participant ;
+    rdfs:range xsd:string .
+
+po:fax a ns1:DataProperty,
+        ns1:FunctionalProperty ;
+    rdfs:domain po:Participant ;
+    rdfs:range xsd:string .
+
+po:followersCount a ns1:DataProperty,
+        ns1:FunctionalProperty ;
+    rdfs:domain po:Topic ;
+    rdfs:range xsd:integer .
+
+po:gender a ns1:DataProperty,
+        ns1:FunctionalProperty ;
+    rdfs:domain po:Participant ;
+    rdfs:range xsd:string .
+
+po:inspirationCount a ns1:DataProperty,
+        ns1:FunctionalProperty ;
+    rdfs:domain po:Participant ;
+    rdfs:range xsd:integer .
+
+po:neighborhood a ns1:FunctionalProperty,
+        ns1:ObjectProperty ;
+    rdfs:domain po:Place ;
+    rdfs:range "N7d174d57e9864e809c1baa2472363f0d" .
+
+po:participantType a ns1:DataProperty,
+        ns1:FunctionalProperty ;
+    rdfs:domain po:Participant ;
+    rdfs:range xsd:string .
+
+po:phoneNumber a ns1:DataProperty,
+        ns1:FunctionalProperty ;
+    rdfs:domain po:Participant ;
+    rdfs:range xsd:string .
+
+po:profileCondition a ns1:DataProperty,
+        ns1:FunctionalProperty ;
+    rdfs:domain po:Participant ;
+    rdfs:range xsd:string .
+
+po:selfDescription a ns1:DataProperty,
+        ns1:FunctionalProperty ;
+    rdfs:domain po:Participant ;
+    rdfs:range xsd:string .
+
+po:startAt a ns1:DataProperty,
+        ns1:FunctionalProperty ;
+    rdfs:domain po:Competition ;
+    rdfs:range xsd:date .
+
+po:text a ns1:DataProperty,
+        ns1:FunctionalProperty ;
+    rdfs:domain po:Comment ;
+    rdfs:range xsd:string .
+
+po:updatedAt a ns1:DataProperty ;
+    rdfs:domain "Nf45e6db782ab4a2ab54668845a77b615" ;
+    rdfs:range xsd:dateTime .
+
+po:website a ns1:DataProperty,
+        ns1:FunctionalProperty ;
+    rdfs:domain po:Participant ;
+    rdfs:range xsd:string .
+
+po:abbreviatio a ns1:DataProperty,
+        ns1:FunctionalProperty ;
+    rdfs:domain po:State ;
+    rdfs:range xsd:string .
+
+po:adhesionCount a ns1:DataProperty,
+        ns1:FunctionalProperty ;
+    rdfs:domain po:Topic ;
+    rdfs:range xsd:integer .
+
+po:authorDescription a ns1:DataProperty,
+        ns1:FunctionalProperty ;
+    rdfs:domain po:Competition ;
+    rdfs:range xsd:string .
+
+po:awards a ns1:DataProperty,
+        ns1:FunctionalProperty ;
+    rdfs:domain po:Competition ;
+    rdfs:range xsd:string .
+
+po:commentCount a ns1:DataProperty,
+        ns1:FunctionalProperty ;
+    rdfs:domain po:Topic ;
+    rdfs:range xsd:integer .
+
+po:competition a ns1:FunctionalProperty,
+        ns1:ObjectProperty ;
+    rdfs:domain "Ned6d66595d3445bea40dc20836795061" ;
+    rdfs:range "Nc136867bfafe427990950e5f1ea5233d" .
+
+po:filename a ns1:DataProperty,
+        ns1:FunctionalProperty ;
+    rdfs:domain po:Inspiration ;
+    rdfs:range xsd:string .
+
+po:longDescription a ns1:DataProperty,
+        ns1:FunctionalProperty ;
+    rdfs:domain po:Competition ;
+    rdfs:range xsd:string .
+
+po:offerer a ns1:FunctionalProperty,
+        ns1:ObjectProperty ;
+    rdfs:domain po:Prize ;
+    rdfs:range "Nf540274ecb7b45afb19bd75700a54c73" .
+
+po:participant a ns1:FunctionalProperty,
+        ns1:ObjectProperty ;
+    rdfs:domain "Nd088d415c90740d6840265afbd21d9ef" ;
+    rdfs:range "Nb52a670f736a42538e0b9dee5c5a2cc1" .
+
+po:partners a ns1:DataProperty,
+        ns1:FunctionalProperty ;
+    rdfs:domain po:Competition ;
+    rdfs:range xsd:string .
+
+po:regulations a ns1:DataProperty,
+        ns1:FunctionalProperty ;
+    rdfs:domain po:Competition ;
+    rdfs:range xsd:string .
+
+po:shortDescription a ns1:DataProperty,
+        ns1:FunctionalProperty ;
+    rdfs:domain po:Competition ;
+    rdfs:range xsd:string .
+
+po:slug a ns1:DataProperty,
+        ns1:FunctionalProperty ;
+    rdfs:domain po:City ;
+    rdfs:range xsd:string .
+
+po:topic a ns1:FunctionalProperty,
+        ns1:ObjectProperty ;
+    rdfs:domain "N5fc8976d93ea456a953bb52404ca384a" ;
+    rdfs:range "N41b71e520a164b8a800096586e1305f3" .
+
+po:topicType a ns1:DataProperty,
+        ns1:FunctionalProperty ;
+    rdfs:domain po:Topic ;
+    rdfs:range xsd:string .
+
+po:description a ns1:DataProperty,
+        ns1:FunctionalProperty ;
+    rdfs:domain "Ne04283070a2740b2837dff25090b9b18" ;
+    rdfs:range xsd:string .
+
+po:title a ns1:DataProperty,
+        ns1:FunctionalProperty ;
+    rdfs:domain "N0f2bc0c034014d5e9a41a1faff10949d" ;
+    rdfs:range xsd:string .
+
+po:name a ns1:DataProperty,
+        ns1:FunctionalProperty ;
+    rdfs:domain "Nb33b69253fd043d1b132a28c8773ea22" ;
+    rdfs:range xsd:string .
+
+po:relevance a ns1:DataProperty,
+        ns1:FunctionalProperty ;
+    rdfs:domain "N53f9ecc1be2b4b34954bf8ae40417147" ;
+    rdfs:range xsd:integer .
+
+po:Observatory rdfs:subClassOf "N8d386f690da1485aa4897b0e54b6f029" .
+
+po:Comment rdfs:subClassOf "N934fa9fc781f4c049356e3801228bf7e" .
+
+po:State rdfs:subClassOf "N1bae3d0d21344f659d4036b18dd3c0bc",
+        "N1fb2ec5bcf5d4fb8afeec4f8559cd540",
+        "N55f344baa747430eb47786cb797455eb",
+        "N676af0f02e5d41b68d25ec876d87a15c",
+        "N98b8ded8771c440fb7dd5a6a280c37d7" .
+
+po:Neighborhood rdfs:subClassOf "N249f7858d62843fe94a037ab6ab3f836",
+        "Na9b639b493ad484194ff625c3d555dc5",
+        "Nccb002fb4edc4e5fa6b5c36ae9305587",
+        "Nfc7343fb55ce48d48297fc934d5e80b0" .
+
+po:Support rdfs:subClassOf "N6219fbcb39c04731a4deea55b9e69cde",
+        "Na542c9ced3d54726a512449f64be8b0c",
+        "Nc343feb9ffb846958709df5295797ce0" .
+
+po:City rdfs:subClassOf "N4c2980b8a33944b0bdaf740db217cb47",
+        "N5048c6ed2c454caa986271a2c8ca47c8",
+        "N9319f8b398f94b77aacd3ea7f84f5e84",
+        "Nbb031d0d743a470ba5eda6bdaf65a154",
+        "Nc0e542bac2094fddb36be73165f074a3" .
+
+po:createdAt a ns1:DataProperty ;
+    rdfs:domain "N53b2b78a47954588b1644382c488f013" ;
+    rdfs:range "N6bd442965de94d9882eded590663637f" .
+
+po:Inspiration rdfs:subClassOf "N4ff176a1203b4feb8be7fbaac6da9e6e",
+        "N60a11cc0e0034724816494495d528337",
+        "Nadf19b0b189e47368f5fb0f212be9222",
+        "Naf02c0aa617d4aab8022131598ef8471",
+        "Nb1b61d871f6c476fb6c8b26ba57f0f52",
+        "Nbc0a5cf1dde6466f9c63e234dee7acf6",
+        "Nbdcf34ea692a4f8b9517a3d2964a23e2" .
+
+po:Competition rdfs:subClassOf "N11819dd007bd485aa6e5f651babb8bbf",
+        "N145015ed7ca04afcab28aea409d0b51b",
+        "N1f644677d9c448eabc1bb843c11a792b",
+        "N38159e17f5fe4445ad24d65e0976edd4",
+        "N43acb00e63174a7dac8e52c42f504cca",
+        "N43bf34b846e744b59352598b652e65b5",
+        "N57d798dc73c9404aba957d63bb7a5363",
+        "N5d05c1c3bba24dbf9687caf9a47753f0",
+        "N60628445a1794f359a67cbe4b7e3ce21",
+        "N6d2c5c602f924542a3ea1d2a94f4ecd8",
+        "N781e940fa0b94e749450a496a9081bc7",
+        "N7f060f15a25d4a94afae777c408bb7a3",
+        "N9b40aebf204f4d9d81f45356fae53af5",
+        "Nae8e661fc40c49b9ab37dd3942dc2b25",
+        "Nc09625d9cd1e446eaf157456f642242a",
+        "Nfb62e5bd758b40abb7ec229850965658" .
+
+po:Prize rdfs:subClassOf "N12d634fe98ce4162981cbebc39a82efc",
+        "N12e74cad0d224592aad43af1f78ef1cb",
+        "N21da0e7e3cee44398618296fcf663c09",
+        "N392185790d4d46489f945612c9c9d039",
+        "N7729e60aaf324b6bba0cbb1e364fa199",
+        "Nbac4b0779ebd4228a699f810fab9d4d3",
+        "Ne8ec4718347b46db994b64d736c85a94" .
+
+po:Place rdfs:subClassOf "N006623e951be45a6810813a3c2af0c1c",
+        "N0f3dc76b8ab548ea9bfe7870265b60dc",
+        "N6bc1a21e3d2340caadc887569a7a5b0c",
+        "Ndbefd02167df4b9db5f683e19e512db9" .
+
+po:Topic rdfs:subClassOf "N1f4102913e8a4ce78c2ea86babf35110",
+        "N324966458179401d85a888642565762f",
+        "N6216bcd77be049569275b91ac05e30ff",
+        "N709f2991fdeb42b9a6dc35998617b8f7",
+        "N8960d97d209c4761856fd2a5c37c13a1",
+        "N9cfe87ad937a4b90a55fc16ec1e0159a",
+        "Nad6c5d91e8eb404fb7ff7c0183d9b9d1",
+        "Naf1d84d38b4d4d6ea69ed91bb0b0359e",
+        "Nb803692db6e2437881de6f312797bfb4",
+        "Nbce4998f3f3a402d99f16ca4f9b1a4ab",
+        "Nbe5e3f1f75f04b3e8388392aa9dbbe3d",
+        "Nf4aa8d30f3ca45c5b7e834316aef56d5" .
+
+po:Participant rdfs:subClassOf "N1767405be6de46b48317730b8c4efa3e",
+        "N2d38def4b0aa4ab99d6c01227b7b5215",
+        "N671ce05fb51b4d939b1270ac3a1957de",
+        "N74fb7bd5297d4175acb7f9b9ecc892ad",
+        "N9c6f0cb0bef84b1d84b34470781c4c3c",
+        "Na17ae4cba00b4fea806035ded38063fb",
+        "Nb452fed1b784469abd982802642dbc88",
+        "Nce2c8f1fcf134a42b227362bec43de00",
+        "Nd41a124b9c9a48e5b63030885564e6f6",
+        "Nde5d689a2fca4c6f968d7294e16131c9",
+        "Ne438c4601a0a44d3b79fdce69b778cd8" .
+

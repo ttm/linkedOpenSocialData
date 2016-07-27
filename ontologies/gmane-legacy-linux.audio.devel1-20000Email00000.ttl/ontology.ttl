@@ -1,0 +1,223 @@
+@prefix ns1: <http://www.w3.org/2002/07/owl#> .
+@prefix po: <http://purl.org/socialparticipation/po/> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix xml: <http://www.w3.org/XML/1998/namespace> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+<N017051976645419d8bf2ded582e82891> a ns1:Restriction ;
+    ns1:onProperty po:emailAddress ;
+    ns1:someValuesFrom "http://www.w3.org/2001/XMLSchema#string" .
+
+<N23748c08a64d4ba8ba4945f2f53b89cf> a ns1:Restriction ;
+    ns1:allValuesFrom "http://www.w3.org/2001/XMLSchema#boolean" ;
+    ns1:onProperty po:referencesLost .
+
+<N2738c0e060324671a0491cdbbf63fd10> ns1:unionOf po:EmailList,
+        po:EmailMessage,
+        po:EmailPeer,
+        po:LostEmailMessage,
+        po:Participant .
+
+<N335e761a888644e09caca8c226380061> a ns1:Restriction ;
+    ns1:allValuesFrom "http://purl.org/socialparticipation/po/EmailPeer" ;
+    ns1:onProperty po:cc .
+
+<N39d521832e1b4ec29e52c7af1e01c0b9> a ns1:Restriction ;
+    ns1:allValuesFrom "http://www.w3.org/2001/XMLSchema#string" ;
+    ns1:onProperty po:unparsedCC .
+
+<N3e92258dcfa94ba781521e654e9b51a2> ns1:unionOf po:EmailMessage .
+
+<N47f23b3985bf47c6ae7cf10252b4fbe4> ns1:unionOf po:EmailMessage .
+
+<N48ee69b9ab6c45b3b4fef8431f6d23ab> ns1:unionOf po:EmailMessage .
+
+<N5088532a6e38436894864b66dbc86542> a ns1:Restriction ;
+    ns1:allValuesFrom "http://www.w3.org/2001/XMLSchema#string" ;
+    ns1:onProperty po:unparsedTo .
+
+<N6b8f6c0219914c758c0f6db3ab9d4968> a ns1:Restriction ;
+    ns1:allValuesFrom "http://www.w3.org/2001/XMLSchema#string" ;
+    ns1:onProperty po:subject .
+
+<N6c2020e06c324f40a92a9dcd846e2485> a ns1:Restriction ;
+    ns1:allValuesFrom "http://purl.org/socialparticipation/po/EmailMessage" ;
+    ns1:onProperty po:hasReference .
+
+<N727877cd29ee403db1c9c41fc33a4c7c> ns1:unionOf po:EmailMessage .
+
+<N77afba0f26b64cbe8a7447982257cf17> a ns1:Restriction ;
+    ns1:allValuesFrom "http://www.w3.org/2001/XMLSchema#string" ;
+    ns1:onProperty po:contentType .
+
+<N78d9d55f72cf432794be7432b779e625> a ns1:Restriction ;
+    ns1:onProperty po:listID ;
+    ns1:someValuesFrom "http://www.w3.org/2001/XMLSchema#string" .
+
+<N7bbfab22a8134b0fb84f564b4ff1c067> ns1:unionOf po:EmailPeer,
+        po:Participant .
+
+<N7cfb3157ac004f6086a9825737a789fa> a ns1:Restriction ;
+    ns1:allValuesFrom "http://www.w3.org/2001/XMLSchema#string" ;
+    ns1:onProperty po:organization .
+
+<N84c10450d9064d1ba92a4684eb6b5854> ns1:unionOf po:EmailMessage .
+
+<N93e7a51451234619907e0fa43ad1c8e7> ns1:unionOf po:EmailMessage .
+
+<Na5b669bcc83340d3af70dffe3033ac98> a ns1:Restriction ;
+    ns1:allValuesFrom "http://purl.org/socialparticipation/po/EmailList" ;
+    ns1:onProperty po:emailList .
+
+<Nbb4757f7ad044a478b119a23bac9e605> a ns1:Restriction ;
+    ns1:allValuesFrom "http://purl.org/socialparticipation/po/EmailPeer" ;
+    ns1:onProperty po:to .
+
+<Nc20374a9e1b34c37b3e42ab76beacdfe> a ns1:Restriction ;
+    ns1:allValuesFrom "http://www.w3.org/2001/XMLSchema#string" ;
+    ns1:onProperty po:listID .
+
+<Nd454f319eb8a4d7386e53e7025d5e09c> ns1:unionOf po:EmailList,
+        po:EmailMessage,
+        po:EmailPeer,
+        po:LostEmailMessage,
+        po:Participant .
+
+<Ndce284b6300f4c01b70790b22e951b05> ns1:unionOf po:EmailMessage,
+        po:LostEmailMessage .
+
+<Nddf7e00fd28e43efbc6216e7c4d30939> ns1:unionOf po:EmailList,
+        po:EmailPeer,
+        po:Participant .
+
+<Ne31d680eaa3b456e87a8b8e817ed43c7> a ns1:Restriction ;
+    ns1:onProperty po:comment ;
+    ns1:someValuesFrom "http://www.w3.org/2001/XMLSchema#string" .
+
+po:author a ns1:FunctionalProperty,
+        ns1:ObjectProperty ;
+    rdfs:domain po:EmailMessage ;
+    rdfs:range "N84c10450d9064d1ba92a4684eb6b5854" .
+
+po:cleanText a ns1:DataProperty,
+        ns1:FunctionalProperty ;
+    rdfs:domain po:EmailMessage ;
+    rdfs:range xsd:string .
+
+po:createdAt a ns1:DataProperty,
+        ns1:FunctionalProperty ;
+    rdfs:domain po:EmailMessage ;
+    rdfs:range xsd:dateTime .
+
+po:gmaneID a ns1:DataProperty ;
+    rdfs:domain po:EmailMessage ;
+    rdfs:range xsd:string .
+
+po:hasUrl a ns1:DataProperty ;
+    rdfs:domain po:EmailMessage ;
+    rdfs:range xsd:string .
+
+po:name a ns1:DataProperty ;
+    rdfs:domain "Nddf7e00fd28e43efbc6216e7c4d30939" ;
+    rdfs:range xsd:string .
+
+po:replyTo a ns1:FunctionalProperty,
+        ns1:ObjectProperty ;
+    rdfs:domain po:EmailMessage ;
+    rdfs:range "N93e7a51451234619907e0fa43ad1c8e7" .
+
+po:snapshot a ns1:FunctionalProperty,
+        ns1:ObjectProperty ;
+    rdfs:domain "Nd454f319eb8a4d7386e53e7025d5e09c" ;
+    rdfs:range "[]" .
+
+po:text a ns1:DataProperty,
+        ns1:FunctionalProperty ;
+    rdfs:domain po:EmailMessage ;
+    rdfs:range xsd:string .
+
+rdf:type a ns1:ObjectProperty ;
+    rdfs:domain "N2738c0e060324671a0491cdbbf63fd10" ;
+    rdfs:range "[]" .
+
+po:cc a ns1:ObjectProperty ;
+    rdfs:domain po:EmailMessage ;
+    rdfs:range "N48ee69b9ab6c45b3b4fef8431f6d23ab" .
+
+po:comment a ns1:DataProperty,
+        ns1:FunctionalProperty ;
+    rdfs:domain "Ndce284b6300f4c01b70790b22e951b05" ;
+    rdfs:range xsd:string .
+
+po:contentType a ns1:DataProperty,
+        ns1:FunctionalProperty ;
+    rdfs:domain po:EmailMessage ;
+    rdfs:range xsd:string .
+
+po:emailAddress a ns1:DataProperty,
+        ns1:FunctionalProperty ;
+    rdfs:domain "N7bbfab22a8134b0fb84f564b4ff1c067" ;
+    rdfs:range xsd:string .
+
+po:emailList a ns1:FunctionalProperty,
+        ns1:ObjectProperty ;
+    rdfs:domain po:EmailMessage ;
+    rdfs:range "N727877cd29ee403db1c9c41fc33a4c7c" .
+
+po:hasReference a ns1:ObjectProperty ;
+    rdfs:domain po:EmailMessage ;
+    rdfs:range "N3e92258dcfa94ba781521e654e9b51a2" .
+
+po:organization a ns1:DataProperty,
+        ns1:FunctionalProperty ;
+    rdfs:domain po:EmailMessage ;
+    rdfs:range xsd:string .
+
+po:referencesLost a ns1:DataProperty,
+        ns1:FunctionalProperty ;
+    rdfs:domain po:EmailMessage ;
+    rdfs:range xsd:boolean .
+
+po:subject a ns1:DataProperty,
+        ns1:FunctionalProperty ;
+    rdfs:domain po:EmailMessage ;
+    rdfs:range xsd:string .
+
+po:to a ns1:ObjectProperty ;
+    rdfs:domain po:EmailMessage ;
+    rdfs:range "N47f23b3985bf47c6ae7cf10252b4fbe4" .
+
+po:unparsedCC a ns1:DataProperty,
+        ns1:FunctionalProperty ;
+    rdfs:domain po:EmailMessage ;
+    rdfs:range xsd:string .
+
+po:unparsedTo a ns1:DataProperty,
+        ns1:FunctionalProperty ;
+    rdfs:domain po:EmailMessage ;
+    rdfs:range xsd:string .
+
+po:listID a ns1:DataProperty,
+        ns1:FunctionalProperty ;
+    rdfs:domain po:EmailList ;
+    rdfs:range xsd:string .
+
+po:LostEmailMessage rdfs:subClassOf "Ne31d680eaa3b456e87a8b8e817ed43c7" .
+
+po:EmailList rdfs:subClassOf "N78d9d55f72cf432794be7432b779e625",
+        "Nc20374a9e1b34c37b3e42ab76beacdfe" .
+
+po:EmailPeer rdfs:subClassOf "N017051976645419d8bf2ded582e82891" .
+
+po:EmailMessage rdfs:subClassOf "N23748c08a64d4ba8ba4945f2f53b89cf",
+        "N335e761a888644e09caca8c226380061",
+        "N39d521832e1b4ec29e52c7af1e01c0b9",
+        "N5088532a6e38436894864b66dbc86542",
+        "N6b8f6c0219914c758c0f6db3ab9d4968",
+        "N6c2020e06c324f40a92a9dcd846e2485",
+        "N77afba0f26b64cbe8a7447982257cf17",
+        "N7cfb3157ac004f6086a9825737a789fa",
+        "Na5b669bcc83340d3af70dffe3033ac98",
+        "Nbb4757f7ad044a478b119a23bac9e605" .
+

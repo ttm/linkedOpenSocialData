@@ -1,0 +1,175 @@
+@prefix ns1: <http://www.w3.org/2002/07/owl#> .
+@prefix po: <http://purl.org/socialparticipation/po/> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix xml: <http://www.w3.org/XML/1998/namespace> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+<N19a6a8f03332439491e08342614c7e78> a ns1:Restriction ;
+    ns1:allValuesFrom "http://www.w3.org/2001/XMLSchema#string" ;
+    ns1:onProperty po:nick .
+
+<N2ccbb4cfc58d4347aa4be2a3e08a8944> a ns1:Restriction ;
+    ns1:onProperty po:text ;
+    ns1:someValuesFrom "http://www.w3.org/2001/XMLSchema#string" .
+
+<N3afec109c52c4bfca5a3d27da30f8252> a ns1:Restriction ;
+    ns1:onProperty po:author ;
+    ns1:someValuesFrom "http://purl.org/socialparticipation/po/Participant" .
+
+<N3dbea96a02614e5fada194c6363a0ffa> a ns1:Restriction ;
+    ns1:allValuesFrom "http://www.w3.org/2001/XMLSchema#string" ;
+    ns1:onProperty po:rawText .
+
+<N4f74ae34bf5b4b9cbdc5dfc21cc9417e> a ns1:Restriction ;
+    ns1:allValuesFrom "http://purl.org/socialparticipation/po/Session" ;
+    ns1:onProperty po:session .
+
+<N5f27c614f4f549f88280fb59ae2879c7> a ns1:Restriction ;
+    ns1:allValuesFrom "http://www.w3.org/2001/XMLSchema#string" ;
+    ns1:onProperty po:screencast .
+
+<N6954587c4caf46428c75e71c34d6c02c> ns1:unionOf po:Session,
+        po:Shout .
+
+<N8593c084f1704c00a47bf0b319d093df> a ns1:Restriction ;
+    ns1:allValuesFrom "http://www.w3.org/2001/XMLSchema#integer" ;
+    ns1:onProperty po:isValid .
+
+<N8b6e31a1f2a04663be81eac79b5351f2> a ns1:Restriction ;
+    ns1:allValuesFrom "http://purl.org/socialparticipation/po/Participant" ;
+    ns1:onProperty po:checkParticipant .
+
+<N941323bde35a4f2c88c006ca240a05a1> a ns1:Restriction ;
+    ns1:allValuesFrom "http://www.w3.org/2001/XMLSchema#integer" ;
+    ns1:onProperty po:checkScore .
+
+<N97478105ae594d268b188d3543d40a7f> ns1:unionOf po:Session,
+        po:Shout .
+
+<N9f7b9c6aa14d401fab77e6d0ca4055ec> ns1:unionOf po:Session .
+
+<Na0add92dc25441808060c82207735712> ns1:unionOf po:Session,
+        po:Shout .
+
+<Nbca77d673937442dbd15e8a2e9717ce4> a ns1:Restriction ;
+    ns1:allValuesFrom "http://www.w3.org/2001/XMLSchema#string" ;
+    ns1:onProperty po:provenance .
+
+<Nc3e0bd8bb2ad45418003c3b0a281ac87> a ns1:Restriction ;
+    ns1:onProperty po:createdAt ;
+    ns1:someValuesFrom "http://www.w3.org/2001/XMLSchema#dateTime" .
+
+<Nd11e937aca6a4a80b94422997de73d15> ns1:unionOf po:Participant,
+        po:Session,
+        po:Shout .
+
+<Nda5dcb7930964b27a07c916438a25665> a ns1:Restriction ;
+    ns1:allValuesFrom "http://www.w3.org/2001/XMLSchema#string" ;
+    ns1:onProperty po:email .
+
+<Ndfda477a108143e389d3aec74d3a0088> ns1:unionOf po:Participant,
+        po:Session,
+        po:Shout .
+
+<Neb9b2824aea04c41a4d02fd37e3dda53> a ns1:Restriction ;
+    ns1:allValuesFrom "http://www.w3.org/2001/XMLSchema#string" ;
+    ns1:onProperty po:checkMessage .
+
+<Nf0a20f95d59647028c95847592a33362> ns1:unionOf po:Shout .
+
+po:hasUrl a ns1:DataProperty ;
+    rdfs:domain po:Shout ;
+    rdfs:range xsd:string .
+
+po:snapshot a ns1:FunctionalProperty,
+        ns1:ObjectProperty ;
+    rdfs:domain "Ndfda477a108143e389d3aec74d3a0088" ;
+    rdfs:range "[]" .
+
+rdf:type a ns1:FunctionalProperty,
+        ns1:ObjectProperty ;
+    rdfs:domain "Nd11e937aca6a4a80b94422997de73d15" ;
+    rdfs:range "[]" .
+
+po:author a ns1:FunctionalProperty,
+        ns1:ObjectProperty ;
+    rdfs:domain "N97478105ae594d268b188d3543d40a7f" ;
+    rdfs:range "Na0add92dc25441808060c82207735712" .
+
+po:checkMessage a ns1:DataProperty,
+        ns1:FunctionalProperty ;
+    rdfs:domain po:Session ;
+    rdfs:range xsd:string .
+
+po:checkParticipant a ns1:FunctionalProperty,
+        ns1:ObjectProperty ;
+    rdfs:domain po:Session ;
+    rdfs:range "N9f7b9c6aa14d401fab77e6d0ca4055ec" .
+
+po:checkScore a ns1:DataProperty,
+        ns1:FunctionalProperty ;
+    rdfs:domain po:Session ;
+    rdfs:range xsd:integer .
+
+po:createdAt a ns1:DataProperty,
+        ns1:FunctionalProperty ;
+    rdfs:domain "N6954587c4caf46428c75e71c34d6c02c" ;
+    rdfs:range xsd:dateTime .
+
+po:email a ns1:DataProperty,
+        ns1:FunctionalProperty ;
+    rdfs:domain po:Participant ;
+    rdfs:range xsd:string .
+
+po:isValid a ns1:DataProperty,
+        ns1:FunctionalProperty ;
+    rdfs:domain po:Shout ;
+    rdfs:range xsd:integer .
+
+po:nick a ns1:DataProperty,
+        ns1:FunctionalProperty ;
+    rdfs:domain po:Participant ;
+    rdfs:range xsd:string .
+
+po:provenance a ns1:DataProperty,
+        ns1:FunctionalProperty ;
+    rdfs:domain po:Shout ;
+    rdfs:range xsd:string .
+
+po:rawText a ns1:DataProperty,
+        ns1:FunctionalProperty ;
+    rdfs:domain po:Shout ;
+    rdfs:range xsd:string .
+
+po:screencast a ns1:DataProperty,
+        ns1:FunctionalProperty ;
+    rdfs:domain po:Session ;
+    rdfs:range xsd:string .
+
+po:session a ns1:FunctionalProperty,
+        ns1:ObjectProperty ;
+    rdfs:domain po:Shout ;
+    rdfs:range "Nf0a20f95d59647028c95847592a33362" .
+
+po:text a ns1:DataProperty,
+        ns1:FunctionalProperty ;
+    rdfs:domain po:Shout ;
+    rdfs:range xsd:string .
+
+po:Participant rdfs:subClassOf "N19a6a8f03332439491e08342614c7e78",
+        "Nda5dcb7930964b27a07c916438a25665" .
+
+po:Session rdfs:subClassOf "N5f27c614f4f549f88280fb59ae2879c7",
+        "N8b6e31a1f2a04663be81eac79b5351f2",
+        "N941323bde35a4f2c88c006ca240a05a1",
+        "Neb9b2824aea04c41a4d02fd37e3dda53" .
+
+po:Shout rdfs:subClassOf "N2ccbb4cfc58d4347aa4be2a3e08a8944",
+        "N3afec109c52c4bfca5a3d27da30f8252",
+        "N3dbea96a02614e5fada194c6363a0ffa",
+        "N4f74ae34bf5b4b9cbdc5dfc21cc9417e",
+        "N8593c084f1704c00a47bf0b319d093df",
+        "Nbca77d673937442dbd15e8a2e9717ce4",
+        "Nc3e0bd8bb2ad45418003c3b0a281ac87" .
+

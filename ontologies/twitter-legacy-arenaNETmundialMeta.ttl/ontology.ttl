@@ -1,0 +1,138 @@
+@prefix ns1: <http://www.w3.org/2002/07/owl#> .
+@prefix po: <http://purl.org/socialparticipation/po/> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix xml: <http://www.w3.org/XML/1998/namespace> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+<N0307dbdedc6943d0b2d58b965e38ebf4> a ns1:Restriction ;
+    ns1:allValuesFrom "http://www.w3.org/2001/XMLSchema#string" ;
+    ns1:onProperty po:snapshotID .
+
+<N03aae86b54ed44a4891f433a9675d55d> a ns1:Restriction ;
+    ns1:onProperty po:socialProtocol ;
+    ns1:someValuesFrom "http://www.w3.org/2001/XMLSchema#string" .
+
+<N1773c9c25f9e482793673999a1a5f252> a ns1:Restriction ;
+    ns1:onProperty po:isInteraction ;
+    ns1:someValuesFrom "http://www.w3.org/2001/XMLSchema#boolean" .
+
+<N271af2491c0b4e9890c34a8c6b698274> a ns1:Restriction ;
+    ns1:allValuesFrom "http://www.w3.org/2001/XMLSchema#boolean" ;
+    ns1:onProperty po:isGroup .
+
+<N32945d2bea37478a871a9ea815a6f0b0> a ns1:Restriction ;
+    ns1:onProperty po:isPost ;
+    ns1:someValuesFrom "http://www.w3.org/2001/XMLSchema#boolean" .
+
+<N661ac87f09b14e62ad01708971391ca9> a ns1:Restriction ;
+    ns1:allValuesFrom "http://www.w3.org/2001/XMLSchema#boolean" ;
+    ns1:onProperty po:isPost .
+
+<N6a8c9b2e6c604feab72dfe0d149108e0> a ns1:Restriction ;
+    ns1:allValuesFrom "http://www.w3.org/2001/XMLSchema#boolean" ;
+    ns1:onProperty po:isInteraction .
+
+<N840ed950a46b4b0b8d32a6621909b74e> a ns1:Restriction ;
+    ns1:onProperty po:snapshotID ;
+    ns1:someValuesFrom "http://www.w3.org/2001/XMLSchema#string" .
+
+<N9d01af18bf4949b990ef8fd64fe45c12> a ns1:Restriction ;
+    ns1:allValuesFrom "http://www.w3.org/2001/XMLSchema#string" ;
+    ns1:onProperty po:socialProtocol .
+
+<Naba6ecb34da4417ab655359402af0484> a ns1:Restriction ;
+    ns1:allValuesFrom "http://www.w3.org/2001/XMLSchema#boolean" ;
+    ns1:onProperty po:isFriendship .
+
+<Nc0cb8cedb0ef42e0a6af4f19c9e87654> a ns1:Restriction ;
+    ns1:onProperty po:isEgo ;
+    ns1:someValuesFrom "http://www.w3.org/2001/XMLSchema#boolean" .
+
+<Ndf487f5f0b074e07a9037ff39dbbe3ef> a ns1:Restriction ;
+    ns1:onProperty po:isGroup ;
+    ns1:someValuesFrom "http://www.w3.org/2001/XMLSchema#boolean" .
+
+<Necd6056f8c4b4b61839e4a22772abf8e> a ns1:Restriction ;
+    ns1:allValuesFrom "http://www.w3.org/2001/XMLSchema#boolean" ;
+    ns1:onProperty po:isEgo .
+
+<Neffb926bdaba41b38376aac42c54a3f5> a ns1:Restriction ;
+    ns1:allValuesFrom "http://www.w3.org/2001/XMLSchema#dateTime" ;
+    ns1:onProperty po:triplifiedIn .
+
+<Nf36a9a560a5d4d578cb1b4da498dd0c2> a ns1:Restriction ;
+    ns1:onProperty po:isFriendship ;
+    ns1:someValuesFrom "http://www.w3.org/2001/XMLSchema#boolean" .
+
+po:comment a ns1:DataProperty,
+        ns1:FunctionalProperty ;
+    rdfs:domain po:Snapshot ;
+    rdfs:range xsd:string .
+
+po:hashtag a ns1:DataProperty,
+        ns1:FunctionalProperty ;
+    rdfs:domain po:Snapshot ;
+    rdfs:range xsd:string .
+
+rdf:type a ns1:FunctionalProperty,
+        ns1:ObjectProperty ;
+    rdfs:domain po:Snapshot ;
+    rdfs:range "[]" .
+
+po:triplifiedIn a ns1:DataProperty,
+        ns1:FunctionalProperty ;
+    rdfs:domain po:Snapshot ;
+    rdfs:range xsd:dateTime .
+
+po:isEgo a ns1:DataProperty,
+        ns1:FunctionalProperty ;
+    rdfs:domain po:Snapshot ;
+    rdfs:range xsd:boolean .
+
+po:isFriendship a ns1:DataProperty,
+        ns1:FunctionalProperty ;
+    rdfs:domain po:Snapshot ;
+    rdfs:range xsd:boolean .
+
+po:isGroup a ns1:DataProperty,
+        ns1:FunctionalProperty ;
+    rdfs:domain po:Snapshot ;
+    rdfs:range xsd:boolean .
+
+po:isInteraction a ns1:DataProperty,
+        ns1:FunctionalProperty ;
+    rdfs:domain po:Snapshot ;
+    rdfs:range xsd:boolean .
+
+po:isPost a ns1:DataProperty,
+        ns1:FunctionalProperty ;
+    rdfs:domain po:Snapshot ;
+    rdfs:range xsd:boolean .
+
+po:snapshotID a ns1:DataProperty,
+        ns1:FunctionalProperty ;
+    rdfs:domain po:Snapshot ;
+    rdfs:range xsd:string .
+
+po:socialProtocol a ns1:DataProperty,
+        ns1:FunctionalProperty ;
+    rdfs:domain po:Snapshot ;
+    rdfs:range xsd:string .
+
+po:Snapshot rdfs:subClassOf "N0307dbdedc6943d0b2d58b965e38ebf4",
+        "N03aae86b54ed44a4891f433a9675d55d",
+        "N1773c9c25f9e482793673999a1a5f252",
+        "N271af2491c0b4e9890c34a8c6b698274",
+        "N32945d2bea37478a871a9ea815a6f0b0",
+        "N661ac87f09b14e62ad01708971391ca9",
+        "N6a8c9b2e6c604feab72dfe0d149108e0",
+        "N840ed950a46b4b0b8d32a6621909b74e",
+        "N9d01af18bf4949b990ef8fd64fe45c12",
+        "Naba6ecb34da4417ab655359402af0484",
+        "Nc0cb8cedb0ef42e0a6af4f19c9e87654",
+        "Ndf487f5f0b074e07a9037ff39dbbe3ef",
+        "Necd6056f8c4b4b61839e4a22772abf8e",
+        "Neffb926bdaba41b38376aac42c54a3f5",
+        "Nf36a9a560a5d4d578cb1b4da498dd0c2" .
+

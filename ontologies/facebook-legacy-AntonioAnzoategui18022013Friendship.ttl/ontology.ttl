@@ -1,0 +1,86 @@
+@prefix ns1: <http://www.w3.org/2002/07/owl#> .
+@prefix po: <http://purl.org/socialparticipation/po/> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix xml: <http://www.w3.org/XML/1998/namespace> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+<N213803b0510f4da88872637576c34048> a ns1:Restriction ;
+    ns1:allValuesFrom "http://www.w3.org/2001/XMLSchema#integer" ;
+    ns1:onProperty po:ageRank .
+
+<N55d02e968b9d4524989946ed619a7f74> a ns1:Restriction ;
+    ns1:allValuesFrom "http://www.w3.org/2001/XMLSchema#string" ;
+    ns1:onProperty po:sex .
+
+<N5e34205e2c5a42d48b796ffe8bb5ce60> a ns1:Restriction ;
+    ns1:allValuesFrom "http://www.w3.org/2001/XMLSchema#integer" ;
+    ns1:onProperty po:wallCount .
+
+<N60319f65bb424390b2de75746a4dea33> ns1:unionOf po:Friendship .
+
+<N7da2032869d74400a4fc76607b287716> a ns1:Restriction ;
+    ns1:allValuesFrom "http://purl.org/socialparticipation/po/Participant" ;
+    ns1:onProperty po:member .
+
+<Nab67304967f041a39af694d896bb1868> a ns1:Restriction ;
+    ns1:onProperty po:member ;
+    ns1:someValuesFrom "http://purl.org/socialparticipation/po/Participant" .
+
+<Nb4e5b28e81d445348824e5268599bd51> a ns1:Restriction ;
+    ns1:allValuesFrom "http://www.w3.org/2001/XMLSchema#string" ;
+    ns1:onProperty po:locale .
+
+<Nf2d70b59428d490abf4d8237b4bb0a83> ns1:unionOf po:Friendship,
+        po:Participant .
+
+<Nfcd3811e7a1042008a151dbca6f0d116> ns1:unionOf po:Friendship,
+        po:Participant .
+
+po:name a ns1:DataProperty,
+        ns1:FunctionalProperty ;
+    rdfs:domain po:Participant ;
+    rdfs:range xsd:string .
+
+po:snapshot a ns1:FunctionalProperty,
+        ns1:ObjectProperty ;
+    rdfs:domain "Nfcd3811e7a1042008a151dbca6f0d116" ;
+    rdfs:range "[]" .
+
+rdf:type a ns1:FunctionalProperty,
+        ns1:ObjectProperty ;
+    rdfs:domain "Nf2d70b59428d490abf4d8237b4bb0a83" ;
+    rdfs:range "[]" .
+
+po:ageRank a ns1:DataProperty,
+        ns1:FunctionalProperty ;
+    rdfs:domain po:Participant ;
+    rdfs:range xsd:integer .
+
+po:locale a ns1:DataProperty,
+        ns1:FunctionalProperty ;
+    rdfs:domain po:Participant ;
+    rdfs:range xsd:string .
+
+po:sex a ns1:DataProperty,
+        ns1:FunctionalProperty ;
+    rdfs:domain po:Participant ;
+    rdfs:range xsd:string .
+
+po:wallCount a ns1:DataProperty,
+        ns1:FunctionalProperty ;
+    rdfs:domain po:Participant ;
+    rdfs:range xsd:integer .
+
+po:member a ns1:ObjectProperty ;
+    rdfs:domain po:Friendship ;
+    rdfs:range "N60319f65bb424390b2de75746a4dea33" .
+
+po:Friendship rdfs:subClassOf "N7da2032869d74400a4fc76607b287716",
+        "Nab67304967f041a39af694d896bb1868" .
+
+po:Participant rdfs:subClassOf "N213803b0510f4da88872637576c34048",
+        "N55d02e968b9d4524989946ed619a7f74",
+        "N5e34205e2c5a42d48b796ffe8bb5ce60",
+        "Nb4e5b28e81d445348824e5268599bd51" .
+
