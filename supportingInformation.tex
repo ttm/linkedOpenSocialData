@@ -158,6 +158,11 @@ article~\cite{losd}.
 
 \section{Twitter data}
 Each Twitter snapshot is yield by a hashtag.
+Retweets (\textttt{po:retweetOf} are usually considered to yield the interactions between users.
+Users are identified through authors \textttt{po:numericID} (global as given by Twitter API)
+or \textttt{}.
+The database present also \textttt{po:replyTo} and \textttt{po:userMention}
+which might also be useful in understanding the networking.
 Further information is found on the following diagrams, the tables on
 the end of this document or in the main document of this
 article~\cite{losd}.
@@ -175,6 +180,14 @@ article~\cite{losd}.
 ][scale=.7]{ontologies/twitter-legacy-arenaNETmundialMeta.ttl/draw.png}
 
 \section{IRC data}
+Each IRC snapshot is yield by an IRC channel.
+IRC messages are either server messages (e.g. join and exit channel)
+marked with \textttt{po:systemMessage true} and having an \textttt{po:impliedUser user\_uri},
+or user messages, which yield interactions through \textttt{po:directedTo} and \textttt{po:mentions} properties.
+Text messages without the user names are delivered through the \textttt{po:cleanText} property.
+Further information is found on the following diagrams, the tables on
+the end of this document or in the main document of this
+article~\cite{losd}.
 \incgraph[
   overlay={\node[red,below right] at (page.north west) {\Huge IRC};}
     paper=graphics
@@ -185,6 +198,11 @@ article~\cite{losd}.
 ][scale=.6]{ontologies/irc-legacy-hackerspace-cpsMeta.ttl/draw.png}
 
 \section{Email data}
+Each IRC snapshot is yield by an Email list.
+Interactions might be considered through \textttt{po:replyTo} relations
+Further information is found on the following diagrams, the tables on
+the end of this document or in the main document of this
+article~\cite{losd}.
 \incgraph[
   overlay={\node[red,below right] at (page.north west) {\Huge Email};}
     paper=graphics
