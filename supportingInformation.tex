@@ -98,6 +98,8 @@ Complex Networks, Text Mining
 \end{keyword}
 
 \end{frontmatter}
+\newcommand{\foo}{\textheight}
+\newcommand{\foobar}{\pdfpageheight}
 % \pdfpageheight 8in
 \tableofcontents
 \clearpage
@@ -152,6 +154,8 @@ article~\cite{losd}.
     paper=graphics
 ][scale=.6]{ontologies/facebook-legacy-Auricultura10042013Friendship.ttl/draw.png}
 
+\textheight = 2in
+\pdfpageheight 5in
 \incgraph[
   overlay={\node[red,below right] at (page.north west) {\Huge Facebook};}
     paper=graphics
@@ -168,7 +172,6 @@ Further information is found on the following diagrams, the tables on
 the end of this document or in the main document of this
 article~\cite{losd}.
 
-\pdfpageheight 4in
 \incgraph[
   overlay={\node[red,below right] at (page.north west) {\Huge
   Twitter };}
@@ -211,7 +214,9 @@ article~\cite{losd}.
 \incgraph[
   overlay={\node[red,below right] at (page.north west) {\Huge Email};}
     paper=graphics
-][scale=.4]{ontologies/gmane-legacy-.linux.audio.devel1-20000Email00000.ttl/draw.png}
+][scale=.4]{ontologies/gmane-legacy-linux.audio.devel1-20000Email00000.ttl/draw.png}
+\textheight = 3in
+\pdfpageheight 6in
 \incgraph[
   overlay={\node[red,below right] at (page.north west) {\Huge Email};}
     paper=graphics
@@ -254,7 +259,8 @@ The Cidade Democrática snapshot is yield by a data dump donated by the system
 administrators of the civil society social participation portal Cidade
 Democrática.
 This snapshot holds a complex structure of both
-Topics/Inspirations/Observatories/Supports/Competitions/Prizes
+Topics/Inspirations/
+Observatories/Supports/Competitions/Prizes
 and of State/City/Neighborhood/Place.
 The language used is mainly Brazilian Portuguese.
 Due to the higher complexity of the diagram, an additional figure is
@@ -267,6 +273,8 @@ article~\cite{losd}.
   Democrática};}
     paper=graphics
 ][scale=.4]{ontologies/cidadedemocratica00000.ttl/draw.png}
+\textheight = 2in
+\pdfpageheight 5in
 \incgraph[
   overlay={\node[red,below right] at (page.north west) {\Huge Cidade
   Democrática};}
@@ -291,6 +299,8 @@ article~\cite{losd}.
   overlay={\node[red,below right] at (page.north west) {\Huge AA};}
     paper=graphics
 ][scale=.6]{ontologies/aairc.ttl/draw.png}
+\textheight = 7in
+\pdfpageheight \foobar
 \incgraph[
   overlay={\node[red,below right] at (page.north west) {\Huge AA};}
     paper=graphics
