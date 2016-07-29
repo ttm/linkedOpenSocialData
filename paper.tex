@@ -78,11 +78,11 @@ University, Brazil}
 \fntext[kio-url]{\textit{URL:} \url{http://www.ifsc.usp.br/}}
 %
 \begin{abstract}
-The field of social network analysis and the topic of complex networks
+The fields of social network analysis and complex networks
 are widely researched.
 Recently, a myriad of results have been reported which are based in
 diverse datasets most often not accessible to researchers other than the publishing authors.
-This work exposes an open dataset with diverse provenance and oriented
+This work exposes an open database with diverse provenance and oriented
 to furnish the scientific community with a friendly and common repertoire.
 Current data was obtained from Facebook, Twitter, IRC, Email and the
 detached instances of ParticipaBR, AA and Cidade Democr\'atica.
@@ -90,11 +90,12 @@ These were represented as linked data to homonenize access,
 conform to current best practices and ease analyzes which integrate third
 party and provided instances.
 This document presents an outline and overall statistics of the given
-dataset which should favor subsequent work.
+database which should favor subsequent work.
 \end{abstract}
 %
 \begin{keyword}
-Big Data, Data Mining, Benchmark Data, Facebook, Twitter, IRC, Email, Complex Networks
+Big Data, Data Mining, Benchmark Data, Facebook, Twitter, IRC, Email,
+Complex Networks, Text Mining
 %Hierarchy of Clusters \sep HoC \sep Benchmark Dataset \sep Benchmark Data Generator \sep Artificial Data \sep Cluster Analysis \sep Tree Structured Stick Breaking Process \sep TSSB \sep ...
 \end{keyword}
 
@@ -116,7 +117,7 @@ On the other hand, the available linked data is not
 stable or rigorous enough to be
 a public reference on statistical physics and social networks research.
  
-This work presents a linked open social data (LOSD) dataset with diverse
+This work presents a linked open social database (LOSD) with diverse
 provenance, including Facebook, Twitter, IRC, Email and detached
 instances.
 Such data is proposed as a common repertoire for scientific
@@ -129,17 +130,19 @@ Data was gathered from:
 \begin{itemize}
     \item public APIs (Twitter, Email);
     \item public logs (IRC and AA);
-    \item Netvizz software~\cite{netvizz} (Facebook);
-    \item donated data by users (Facebook);
-    \item donated data by system administrators (AA, ParticipaBR, Cidade Democr\'atica).
+    \item Netvizz software~\cite{netvizz} and subsequent donation by users (Facebook);
+    \item donation by system administrators (AA, ParticipaBR, Cidade Democr\'atica).
 \end{itemize}
 
 Integration and uniformity of access is obtained through linked data
 representation, as exposed in Section~\ref{queries}.
+This section introduce the underlying data in very concise terms.
+One should access the Supporting Information document for
+a thorough presentation of the database.
 
 \subsection{Snapshots}
-Of central importance to presented dataset is the concept of a snapshot.
-A snapshot is a set of data gathered together, at a contiguous time
+Of central importance to presented database is the concept of a snapshot.
+A snapshot is herein a set of data gathered together, at a contiguous time
 unit.
 Examples: the first 20 thousand email messages of an email list
 comprises a snapshot; the tweets from the MAMA music event is a
@@ -147,7 +150,7 @@ snapshot; the friendship, interaction and posts structures of a facebook
 group, prospected at the same time, is a snapshot.
 
 \subsection{Facebook data}
-Friendship ego networks (networks whose reference is an user)
+Friendship ego networks (networks whose constituents are friends of an user)
 were donated from individual users in 2013 and 2014.
 Friendship and interaction networks from groups were gathered from
 groups where the first author was a participant.
@@ -158,48 +161,47 @@ the number of likes.
 Tweets were gathered through the Twitter streaming public API.
 Each snapshot is unified by a distinct hashtag.
 Edges are canonically yield by retweets but replies and user mentions
-are also kept in the dataset.
+are also kept in the database.
 
 \subsection{IRC data}
 Public IRC logs were used to render IRC snapshots.
-The dataset has records of users to which the message is directed to or
+The database has records of users to which the message is directed to or
 mentions.
 
 \subsection{Email data}
 Email snapshots refer to individual email lists.
-All messages were taken from the Gmane public email database~\cite{gmane}.
+All messages were obtained from the Gmane public email database~\cite{gmane}.
 Each message has the original text and the text without some of the lines
-from previous messages or that are pasted software code.
-Most importantly, each message item holds the ID of the message it is
+from previous messages or that are software code.
+Most importantly, each message instance holds the ID of the message it is
 a reply to, if any.
 
 \subsection{ParticipaBR data}
-The ParticipaBR is a platform for social participation once regarded as
-the Brazilian portal of social participation.
+The ParticipaBR is a Brazilian federal platform for social participation.
 Texts are derived from blog posts and networks are derived from
 friendship and interaction criteria.
 
-\subsection{AA data}
-The Algorithmic Autoregulation~\cite{aa} is a methodology for testifying
-and sharing ongoing work.
-The data was gathered from different versions of the system and from IRC
-logs and is presented as part of the LOSD as one of the detached
-platforms.
 
 \subsection{Cidade Democr\'atica data}
-Cidade Democr\'atica is a civil society social participation portal.
+Cidade Democr\'atica is a Brazilian civil society social participation portal.
+Data gathered is complex in the number of types of instances.
+
+\subsection{AA data}
+The Algorithmic Autoregulation~\cite{aa} is a software development
+methodology based on testifying and sharing ongoing work.
+The data was gathered from different versions of the system and from an IRC
+log.
 
 \section{Methods}
-Data in the presented LOSD is represented as linked open data through
+Data is represented as linked open data through
 RDF and ontologicaly described through a data-driven ontology synthesis
 method.
-These steps are described in the following sections.
 
 \subsection{Linked open data}
 Linked data refers to data published in the web in such a way that it is
 machine readable and conforms to a set of best practices.
 The web of data is constructed with documents on the web 
-such as the web of hypertext.
+such as the web of HTML documents.
 In practice, the idea of linked data can me summarized
 by 1) the use of RDF to publish data on the web and 2) the use of RDF
 links to interlink data from different sources.
@@ -226,26 +228,27 @@ It is based on the idea of making statements about resources in the form
 of triples, i.e. expressions in the form ``subject - predicate -
 object''.
 RDF can be serialized in several file formats, including RDF/XML,
-Turtle and Manchester all which, in essence, represent a labeled and
+Turtle and Manchester, all which, in essence, represent a labeled and
 directed multi-graph.
 RDF may be stored in a type of database called a triplestore~\cite{rdf}.
 
 As an example of an RDF statement, the following triple in the Turtle
 format asserts that ``the paper has color white'':\\
-\texttt{http://example.org/paper http://example.org/hasColor\\
-http://example.org/White .}
+\texttt{http://example.org/Things\#Paper http://example.org/hasColor\\
+http://example.org/Colors\#White .}
 
 \subsection{Data-driven ontology synthesis}
 OWL Ontologies are critical tools to describe taxonomies and the
 structure of knowledge.
 Most ontologies are created by domain experts even though the data they
-arrange is often given by a software system.  
+arrange is often given by a software system and has a predefined
+structure.  
 
 We developed a simple ontology synthesis method that probes
 the ontological structure in data with
 SPARQL queries and post-processing.
-The results are OWL code and figures which are available in the
-Supporting Information file.
+The results are OWL code and diagrams which are available in the
+Supporting Information document.
 The method can be extended to comprise further OWL axioms and restrictions,
 but is currently performed to fit present needs with maximum simplicity.
 Present needs are limited to informative figures and
@@ -269,7 +272,7 @@ Such properties are used to assert existential and universal restrictions for th
 \item Compare the total number of individuals (\textttt{?cs1}) of the class (\textttt{class\_uri}) with
 	the number of such individuals (\textttt{?cs2}) that are subjects of at least one triple where 
 	the predicate is the property (\textttt{property\_uri}).
-	If the numbers match, there is an existential restriction of the class. The queries are:\\
+	If the numbers match, there is an existential restriction for the class. The queries are:\\
 	\textttt{SELECT (COUNT(DISTINCT ?s) as ?cs1) WHERE \{ ?s a <class\_uri> \}}\\
 	\textttt{SELECT (COUNT(DISTINCT ?s) as ?cs) WHERE \{\\
 	\h ?s a <class\_uri>. ?s <property\_uri> ?o .\\ \}}
@@ -284,7 +287,9 @@ Such properties are used to assert existential and universal restrictions for th
     \item Obtain all distinct properties:\\
         \textttt{SELECT DISTINCT ?p WHERE \{ ?s ?p ?o \}}
     \item Check if each property is functional, i.e. if it
-        occurs only once with each subject:\\
+        occurs at most once with each subject.
+        This is performed by counting the objects and further verifying
+        that they are at most one. The query is:\\
         \textttt{SELECT DISTINCT (COUNT(?o) as ?co) WHERE \{ ?s
             <property\_uri> ?o \} GROUP BY ?s}
     \item For each property, find the incident range and domain with the
@@ -304,8 +309,7 @@ Such properties are used to assert existential and universal restrictions for th
 %         (universal restriction):\\
 %         \textttt{SELECT DISTINCT ?s WHERE \{ ?s <property\_uri> ?o . \}}
 %     \item Draw each class, each property and the overall figure.
-\item Draw the overall figure. This results in diagrams such as given in Figure~\ref{fig:facebook}.
-	Other diagrams are given in the Supporting Information file.
+\item Render diagrams as exposed in the next section and in the Supporting Information file.
 %      \item Make \textttt{rdfs:subClassOf} and \texttt{rdfs:subPropertyOf}
 %          statements to better organize knowledge and link to third party
 %          ontologies and data. This step is left aside in current LOSD as 
@@ -316,25 +320,39 @@ Such properties are used to assert existential and universal restrictions for th
 Current overall results concern data selection and preparation for knowledge discovery.
 The main result is the data made available, which enables benchmarking of scientific results
 and easy experimentations.
-Secondary results include software support and SparQL queries made beforehand.
+Secondary results include data outline through figures and tables,
+software support and example SparQL queries.
 
 \subsection{Standardization}
-The LOSD is a collection of data translated into RDF and embedded into standard URIs and triples.
-Such standards constitute the LOSD itself, but some of the conventions are outlined in this section.
-
-URIs are built in the namespace \url{http://purl.org/socialparticipation/participationontology/} which are identified with
-the radical \textttt{po:}.
-Classes and properties are build by adding a suffix to the root, as in \textttt{po:Participant} or \textttt{po:text}.
+The data is embedded into standard URIs and triples, i.e. translated to RDF.
+URIs are built in the namespace \url{http://purl.org/socialparticipation/participationontology/}
+which are identified herein with the prefix \textttt{po:}.
+Classes and properties are built by adding a suffix to the root, as in \textttt{po:Participant} or \textttt{po:text}.
 Classes have ``UpperCamelCase'' suffixes while properties have ``lowerCamelCase'' suffixes.
-All participants and transactions (messages, friendships, interactions) are linked to
-snapshots through the triple \textttt{<resource> po:snapshot <snapshot\_uri>}.
-Message texts, including comments, are objectives in the triple: \textttt{<message\_id> po:text <message\_text>}.
-Individuals (also called instances) are built on top of the class they derive from plus a hashtag character,
-the snapshot id of the snapshot they refer to, and an identifier;
-i.e. \textttt{po:Participant\#<snapshot\_id>-<local\_id>}.
+All class instances, such as participants, messages, friendships and
+interactions, are linked to
+snapshots through the triple \textttt{<instance> po:snapshot <snapshot\_uri>}.
+Message texts, including comments, are objects in the triple: \textttt{<message\_id> po:text <message\_text>}.
+Preprocessed texts are objects of triples: \textttt{<message\_id> po:cleanText <message\_text>}.
+More specialized predicates are used for delivering text when necessary,
+such as \textttt{po:htmlBodyText} and \textttt{po:cleanBodyText} used
+for ParticipaBR articles.
+A participant URI is unique throughout the provenance (e.g. the same for
+the same participant in all Twitter snapshots).
+To enable annotations which differ when the snapshot changes,
+\texttt{po:Observation} class instances are used in the triple
+\textttt{<participant\_uri> po:observation <observation\_uri>}.
+The observation instances are then linked to the snapshot and the
+data.
+
+Instances are built on top of the class they derive from plus a hashtag character,
+a provenance string (e.g. \textttt{facebook-legacy} or
+\textttt{participabr-legacy}) of the snapshot they refer to, and an identifier;
+i.e. \textttt{po:Participant\#<provenance-legacy>-<id>}.
 All snapshot URIs follow the formation rule: \textttt{po:<SnapshotProvenance>\#<snapshot\_id>}.
 All snapshot ids follow the formation rule: \textttt{<platform>-legacy-<further\_identifier>}; e.g.
-\textttt{irc-legacy-labmacambira} or \textttt{email-legacy-c++...}.
+\textttt{irc-legacy-labmacambira} or
+\textttt{email-legacy-linux.audio.devel1-20000}.
 
 \subsection{Data outline}
 \input{misc/overallText}
@@ -348,7 +366,7 @@ All snapshot ids follow the formation rule: \textttt{<platform>-legacy-<further\
 %% number of users
 % diagrams in the supporting information file
 \subsection{Software tools}
-The LOSD is released with a software for rendering itself, analyses and
+The database is released with software for rendering itself, analyses and
 multimedia artifacts.
 \subsubsection{Triplification routines}
 For each social platform there is a \emph{triplification} routine,
@@ -358,28 +376,29 @@ Table~\ref{tab:provenance}.
 \begin{table*}[h!]\scriptsize
 \begin{center}
 \caption{Social platforms, original formats and further observations for
-the LOSD dataset.}\label{tab:provenance}
+the database.}\label{tab:provenance}
 \begin{tabular}{| l || p{3cm} | p{3cm} | c |}\hline
     \textbf{social platform} & \textbf{original format} & \textbf{further observations} & \textbf{toolbox} \\\hline\hline
-    AA & MySQL and MongoDB databases; IRC text logs & donated by AA users & Participation \\\hline
+    AA & MySQL and MongoDB databases; IRC text logs & donated by AA users & Participation~\cite{participation} \\\hline
     Cidade Democrática & MySQL database & donated by admins & Participation \\\hline
-    Email & mbox & obtained through Gmane public database & Gmane \\\hline
-    Facebook & GDF, GML and TAB & obtained through Netvizz~\cite{netvizz} & Social \\\hline
+    Email & mbox & obtained through Gmane public database & Gmane~\cite{gmane} \\\hline
+    Facebook & GDF, GML and TAB & obtained through Netvizz~\cite{netvizz} & Social~\cite{social} \\\hline
     IRC & plain text log & obtained through Supybot logging & Social \\\hline
     ParticipaBR & PostgreSQL database & donated by admins & Participation \\\hline
     Twitter & JSON & obtained through Twitter streaming API & Social \\\hline
 \end{tabular}\end{center}
 \end{table*}                    
-\subsubsection{Topological and textual Analysis}\label{ana}
+\subsubsection{Topological and textual analysis}\label{ana}
 Routines are available for taking topological and textual measures from
-the dataset.
-Principal Component Analysis (PCA) is performed with available measures
-to ease pattern recognition both in a timeline and in a multiscale
-fashion.
+the database.
+Auxiliary routines, such as performing principal component analysis
+and taking Kolmogorov-Smirnov measures, are available
+to ease pattern recognition.
+Single, timeline and multi-scale analyzes are automated.
 
 \subsubsection{Multimedia rendering}\label{media}
-It is a core purpose of LOSD framework to provide routines for rendering
-audiovisualizations of the LOSD data.
+It is a core purpose of framework to provide routines for rendering
+audiovisualizations of the data.
 Social structures are rendered into music, images and video animations
 through the Percolation toolbox~\cite{percolation} in association with
 the Music and Visuals toolboxes~\cite{music,visuals}.
@@ -389,10 +408,26 @@ Routines mentioned in Sections~\ref{ana} and~\ref{media} are being migrated from
 toolboxes~\cite{gmaneLegacy,percolationLegacy} into newly designed
 toolboxes~\cite{percolation,visuals}.
 
+\subsection{Diagrams of the data and auxiliary tables}
+The database exploration can be assisted through diagrams which expose
+the structure from each provenance.
+Such diagrams are in the Supporting Information document
+with some tables to ease understanding of the provided data.
+A simplified example is given in Figure~\ref{dia} where the friendship
+structure of the Facebook snapshots are exposed.
+
+\begin{figure}[!ht]
+    \centering
+    \includegraphics[width=0.5\textwidth]{ontologies/facebook-legacy-AntonioAnzoategui18022013Friendship.ttl/draw}
+    \caption{A diagram of the structure involved in the friendship networks
+    of the Facebook snapshot. A green edge denotes an OWL existential class restriction; an inverted nip denotes an OWL universal class restriction; a full (non-dashed) edge denotes an OWL functional property axiom. Further information and complete diagrams for each provenance are in the Supporting Information document.}\label{dia}
+\end{figure}
+
+
 \subsection{SPARQL queries}\label{queries}
-There are numerous useful and general purpose SPARQL queries to be performed agaist the LOSD database.
+There are numerous useful and general purpose SPARQL queries to be performed against the database.
 Here we write some of the most basic of such queries selected by their potential to be varied.
-All queries assume the use the preable \textttt{PREFIX po: <http://purl.org/socialparticipation/po/>}.
+All queries assume the use the preamble \textttt{PREFIX po: <http://purl.org/socialparticipation/po/>}.
 \begin{enumerate}[leftmargin=0cm]
 	\item Retrieve the number of participants:\\
             \textttt{SELECT (COUNT(DISTINCT ?author) as ?c) WHERE \{
@@ -426,9 +461,8 @@ All queries assume the use the preable \textttt{PREFIX po: <http://purl.org/soci
 \section{License issues}
 % Facebook, Twitter, IRC, Gmane, Participa, CD, AA.
 The database presented in this article is released under public domain.
-Computer scripts are in public git repositories and PyPI Python packages.
-Although most data is already in open licenses (Twitter, Email, Participabr,
-Cidade Democrática, and AA data), IRC and Facebook data was collected
+Computer scripts are in git repositories and PyPI Python packages, also under public domain.
+Although most data is already in open licenses (Twitter, Email, Participabr, Cidade Democrática, and AA data), IRC and Facebook data was collected
 and donated by the individuals which yield the data.
 This rises the the understanding of the right to study such data as the right to access the self,
 in parity with anthropological endaviors~\cite{antphy,antphy2}.
@@ -436,16 +470,22 @@ in parity with anthropological endaviors~\cite{antphy,antphy2}.
 % anthropological physics~\cite{antphy}
 \section{Conclusions}
 \label{conclusions}
-The Linked Open Social Data (LOSD) presented in this article
-should be available online in the \url{http://linkedopensocialdata.org}
+The database presented in this article
+constitutes a large database with diverse provenance.
+Even so, database should be expanded in upon need or requests from feedback.
+All data should be available online in the \url{http://linkedopensocialdata.org}
 address in near future to fulfill the purpose of being a common
 repertoire in current research.
-One should access \url{http://wiki.nosdigitais.teia.org.br/LOSD}
-for reaching the address where LOSD is currently reachable.
+One should reach the diagrams and tables of the 
+Supporting Information document of this article
+for further directions
+on the available structures and for an overview complement.
 
+% Supporting Information
+% diverse provenance, large database, should be expanded, waits feedback
 \section*{References}
 %
-\bibliographystyle{plainurl}
+% \bibliographystyle{plainurl}
 \bibliography{paper}
 %\bibliography{myLastBibfile.bib}
 %
