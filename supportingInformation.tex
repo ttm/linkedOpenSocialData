@@ -87,8 +87,8 @@ University, Brazil}
 %
 \begin{abstract}
 This is a Supporting Information document which exposes ontological
-diagrams and auxiliary tables for the Linked Open Social Data (LOSD)
-database. The main document of the article is in~\cite{losd}.
+diagrams and auxiliary tables for the Linked Open Social Database.
+The main document of the article is in~\cite{losd}.
 \end{abstract}
 %
 \begin{keyword}
@@ -106,18 +106,19 @@ Complex Networks, Text Mining
 \section{General guidance}
 % \paperheight = 200pt
 In this document we provide diagrams
-for the provenances in the LOSD:
+for the social protocols in the Linked Open Social Database:
 Facebook, Twitter, IRC, Email, ParticipaBR, Cidade Democrática and AA.
-Each provenance diagram was broken in two, one presents the relations
-among main classes (blue nodes) and data types (orange nodes), the other presents metadata on the
-snapshot.
+Each social protocol diagram was broken in two, one presents the relations
+among main classes (blue nodes) and data types (orange nodes),
+the other presents metadata for the
+snapshots.
 Every class instance is related to the snapshot instance
 by the triple \textttt{class\_uri po:snapshot snapshot\_uri}.
 Such triples are omitted for simplicity.
 Due to the large number of relations, the rendering of diagrams are
 automatized and displays some overlaps.
-Even so, the images are useful for grasping what is in current LOSD
-and for conducting explorations.
+Even so, the images are useful for grasping what is in the current
+database and for conducting explorations.
 Edges in the diagrams have:
 \begin{itemize}
     \item green color if representing an OWL existential
@@ -133,10 +134,12 @@ the property as predicate);
 
 % \textheight = 100pt
 % \pdfpageheight 300pt
-Furthermore, this document ends with two sets of tables, one with counts of
-triples, participants, edges/interactions/relations and characters,
-the other with references for snapshot groups, such as wikipedia or
-contact links.
+Furthermore, this document ends with two sets of tables, one with
+references for snapshot groups, such as wikipedia or
+contact links, 
+the other with 
+counts of
+triples, participants, edges/interactions/relations and characters.
 
 
 \section{Facebook data}
@@ -163,11 +166,9 @@ article~\cite{losd}.
 
 \section{Twitter data}
 Each Twitter snapshot is yield by a hashtag.
-Retweets (\textttt{po:retweetOf} are usually considered to yield the interactions between users.
-Users are identified through authors \textttt{po:numericID} (global as given by Twitter API)
-or \textttt{}.
+Retweets (\textttt{po:retweetOf} are usually considered the interactions between users.
 The database present also \textttt{po:replyTo} and \textttt{po:userMention}
-which might also be useful in understanding the networking.
+which might be useful in understanding the networking.
 Further information is found on the following diagrams, the tables on
 the end of this document or in the main document of this
 article~\cite{losd}.
@@ -185,7 +186,7 @@ article~\cite{losd}.
 
 \section{IRC data}
 Each IRC snapshot is yield by an IRC channel.
-IRC messages are either server messages (e.g. join and exit channel)
+IRC messages are either server messages (e.g. join and exit)
 marked with \textttt{po:systemMessage true} and having an \textttt{po:impliedUser user\_uri},
 or user messages, which yield interactions through \textttt{po:directedTo} and \textttt{po:mentions} properties.
 Text messages without the user names are delivered through the \textttt{po:cleanText} property.
@@ -202,11 +203,11 @@ article~\cite{losd}.
 ][scale=.6]{ontologies/irc-legacy-hackerspace-cpsMeta.ttl/draw.png}
 
 \section{Email data}
-Each IRC snapshot is yield by an Email list.
-Interactions is yield through \textttt{po:replyTo} relations
-although \textttt{po:to} and \textttt{po:cc} can also be considered.
-the email body is given by \textttt{po:text} relations while
-\textttt{po:cleanText} has the text with lines removed where they are
+Each email snapshot is yield by an Email list.
+Interactions are yield through \textttt{po:replyTo} relations
+although \textttt{po:to} and \textttt{po:cc} might also be considered.
+The email body is given by \textttt{po:text} relations while
+\textttt{po:cleanText} links to text with lines removed where they are
 trivially from previous messages or computer code.
 Further information is found on the following diagrams, the tables on
 the end of this document or in the main document of this
@@ -234,7 +235,7 @@ This snapshot holds also friendship structures.
 The language used is mainly Brazilian Portuguese, but English and
 Spanish are also incident.
 Due to the higher complexity of the diagram, an additional figure is
-given rendered with another layout algorithm
+given rendered with another layout algorithm.
 Further information is found on the following diagrams, the tables on
 the end of this document or in the main document of this
 article~\cite{losd}.
@@ -259,12 +260,11 @@ The Cidade Democrática snapshot is yield by a data dump donated by the system
 administrators of the civil society social participation portal Cidade
 Democrática.
 This snapshot holds a complex structure of both
-Topics/Inspirations/
-Observatories/Supports/Competitions/Prizes
-and of State/City/Neighborhood/Place.
+Topics/Inspirati-ons/Observatories/Supports/Competitions/Prizes
+and of State/City/Neighbor-hood/Place.
 The language used is mainly Brazilian Portuguese.
 Due to the higher complexity of the diagram, an additional figure is
-given rendered with another layout algorithm
+given rendered with another layout algorithm.
 Further information is found on the following diagrams, the tables on
 the end of this document or in the main document of this
 article~\cite{losd}.
@@ -359,10 +359,10 @@ reference to the subject.}\label{tab:provenance}
 \caption{Different Email snapshots are yield by different email lists. In this
 table we present each snapshot with the respective list and a
 reference to the subject.}\label{tab:provenance}
-\begin{tabular}{| l || p{4cm} | p{4cm} | }\hline
+\begin{tabular}{| p{4cm} || p{4cm} | p{4cm} | }\hline
     \textbf{Gmane ID} & \textbf{observation} & \textbf{reference} \\\hline\hline
     gmane.linux.audio.users & the Linux Audio Users & \url{http://linuxaudio.org} \\\hline
-    gmane.politics.organizations.metareciclagem & a network about technology and social transformation  & \url{https://metareciclagem.github.io} \\\hline
+    gmane.politics.organizations.me-tareciclagem & a network about technology and social transformation  & \url{https://metareciclagem.github.io} \\\hline
     gmane.linux.audio.devel & the Linux Audio Developers & \url{http://lists.linuxaudio.org/listinfo/linux-audio-dev} \\\hline
     gmane.comp.gcc.libstdc++.devel & the C++ standard library & \url{https://gcc.gnu.org/libstdc++/} \\\hline
 \end{tabular}\end{center}
