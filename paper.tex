@@ -448,13 +448,29 @@ All queries assume the use the preamble \textttt{PREFIX po: <http://purl.org/soc
     \}}
         \item List 1000 users (URIs and names) with the most friendships and the number of
             friendships in descending order by the number of friendships:\\
-            \textttt{SELECT DISTINCT ?participant (COUNT(?interaction)
+            \textttt{SELECT DISTINCT ?participant (COUNT(?friendship)
             as ?c) WHERE \{\\
-                \h ?interaction a po:Friendship . ?interaction po:member ?participant . \\
+                \h ?friendship a po:Friendship . ?friendship po:member ?participant . \\
             \} ORDER BY DESC(?c) LIMIT 1000}
-	\item Search string ``pineapple'' in LOSD messages:\\
+        \item Retrieve text messages with the word ``pineapple'' (case insensitive):\\
             \textttt{SELECT ?text WHERE \{ \\
                     \h ?activity po:text ?text . FILTER regex(?text, 'pineapple', 'i')\\
+    \}}
+\item List participants and respective full names whose name has the substring ``Amanda'':\\
+    \textttt{SELECT DISTINCT ?participant ?name WHERE \{\\
+    \h ?participant po:observation ?obs . ?obs po:name ?name .\\
+    \h FILTER regex(?name, 'Amanda', 'i') \\
+    \}}
+\item Return all pairs of friends of a participant which are friends themselves:\\
+    \textttt{SELECT DISTINCT ?friend1 ?friend2 WHERE \{\\
+     \h       ?friendship1 po:member <participant\_uri> .  ?friendship1 po:member ?friend1 .\\
+     \h       ?friendship2 po:member <participant\_uri> .  ?friendship2 po:member ?friend2 .\\
+     \h       ?friendship3 po:member ?friend1 .  ?friendship3 po:member ?friend2 .\\
+    \}}
+\item Return all interactions from replies in a snapshot:\\
+    \textttt{SELECT ?from ?to WHERE \{\\
+          \h  ?message1 po:snapshot <snapshot\_uri> .  ?message2 po:replyTo ?message1 .\\
+          \h  ?message1 po:author ?from .  ?message2 po:author ?to .\\
     \}}
 \end{enumerate}
 

@@ -5,105 +5,109 @@
 @prefix xml: <http://www.w3.org/XML/1998/namespace> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 
-<N029633b889e942b8981ecf8bff466c72> a ns1:Restriction ;
-    ns1:onProperty po:url ;
-    ns1:someValuesFrom "http://www.w3.org/2001/XMLSchema#string" .
-
-<N0b83f269a8524288bba30c66e8875281> ns1:unionOf po:Participant,
-        po:Tweet .
-
-<N387e62f7b723450ab2adab4c941dd411> a ns1:Restriction ;
-    ns1:allValuesFrom "http://www.w3.org/2001/XMLSchema#boolean" ;
-    ns1:onProperty po:anonymous .
-
-<N3d384828b03a40e78817ead151872ced> ns1:unionOf po:Tweet .
-
-<N40575a7b78454dfe9aa7b4ef522855c1> ns1:unionOf po:Participant .
-
-<N61f663e88e4c4e1fbce9c9e8baff63f8> ns1:unionOf po:Participant,
-        po:Tweet .
-
-<N6d0a6b345c2a4d89b5a90df9f689cba7> a ns1:Restriction ;
-    ns1:onProperty po:author ;
-    ns1:someValuesFrom "http://purl.org/socialparticipation/po/Participant" .
-
-<N71a49855c9f147bfb720b4e3189b4d5a> a ns1:Restriction ;
-    ns1:allValuesFrom "http://www.w3.org/2001/XMLSchema#integer" ;
-    ns1:onProperty po:friendsCount .
-
-<N74c782e939a94c7097e57cc727bc7e94> a ns1:Restriction ;
-    ns1:allValuesFrom "http://www.w3.org/2001/XMLSchema#string" ;
-    ns1:onProperty po:utcOffset .
-
-<N885de18d122a47dd9d51154be3fc7407> a ns1:Restriction ;
-    ns1:allValuesFrom "http://purl.org/socialparticipation/po/Participant" ;
-    ns1:onProperty po:userMention .
-
-<N88d43572916047aab4df189ef7c76702> a ns1:Restriction ;
-    ns1:allValuesFrom "http://www.w3.org/2001/XMLSchema#string" ;
-    ns1:onProperty po:screenName .
-
-<N96cfdcc75de44d0280cf356b9336b704> ns1:unionOf po:Media,
-        po:Participant,
-        po:Tweet .
-
-<Na56f5da4d58640628760e0093841d55e> ns1:unionOf po:Participant,
-        po:Tweet .
-
-<Na7206ee1bdd340e8bf59f722422dd1c3> ns1:unionOf po:Tweet .
-
-<Nadfc40388dc84eff9eb1b842698646be> a ns1:Restriction ;
-    ns1:allValuesFrom "http://www.w3.org/2001/XMLSchema#integer" ;
-    ns1:onProperty po:listedCount .
-
-<Nb50ad49e164648f28ae89ac4ab5bb3e5> a ns1:Restriction ;
-    ns1:allValuesFrom "http://www.w3.org/2001/XMLSchema#boolean" ;
-    ns1:onProperty po:noid .
-
-<Nbd23a2b721c145388ea1bb16d351c58c> ns1:unionOf po:Tweet .
-
-<Nc368d0848996467d849c031ea0611747> ns1:unionOf po:Media,
-        po:Tweet .
-
-<Nc67692af5fb242f2abe172d567942ec9> a ns1:Restriction ;
-    ns1:allValuesFrom "http://www.w3.org/2001/XMLSchema#integer" ;
-    ns1:onProperty po:favouritesCount .
-
-<Nc76cad9ca27042fea938ec46867a1d88> a ns1:Restriction ;
-    ns1:allValuesFrom "http://purl.org/socialparticipation/po/Tweet" ;
-    ns1:onProperty po:retweetOf .
-
-<Nc9f3781ec7e54d94a9fc84fc41c75d83> a ns1:Restriction ;
-    ns1:allValuesFrom "http://www.w3.org/2001/XMLSchema#integer" ;
-    ns1:onProperty po:retweetCount .
-
-<Nd7465f6d263d415f964fe63a77bcc3aa> ns1:unionOf po:Media,
-        po:Participant,
-        po:Tweet .
-
-<Ndaea482cdea140b2a8d1945b94a81fe2> a ns1:Restriction ;
-    ns1:allValuesFrom "http://purl.org/socialparticipation/po/Media" ;
-    ns1:onProperty po:media .
-
-<Nde0e74659abc4432928cba33b1f588aa> a ns1:Restriction ;
+<N058cd946a8ad4d20b6b82288f7c5f7f1> a ns1:Restriction ;
     ns1:onProperty po:type ;
     ns1:someValuesFrom "http://www.w3.org/2001/XMLSchema#string" .
 
-<Nee04c35e41dc468198bff595862aeaf5> ns1:unionOf po:Tweet .
+<N09ac587cf4144999815e023ded47ce51> a ns1:Restriction ;
+    ns1:allValuesFrom "http://www.w3.org/2001/XMLSchema#boolean" ;
+    ns1:onProperty po:anonymous .
 
-<Nee04c5144df84ba2a17bd765ced3bbd0> a ns1:Restriction ;
+<N181e608f91704825add88f234c5d57d6> ns1:unionOf po:Media,
+        po:Observation,
+        po:Participant,
+        po:Tweet .
+
+<N22f8fda26f9b452baf210326bea64c88> ns1:unionOf po:Observation,
+        po:Tweet .
+
+<N3009341c288c476ab8c7f776dd136b38> a ns1:Restriction ;
+    ns1:allValuesFrom "http://www.w3.org/2001/XMLSchema#boolean" ;
+    ns1:onProperty po:noid .
+
+<N42ac4f9314ef43bea40f71de4ca62972> ns1:unionOf po:Tweet .
+
+<N45443150fadd489ab604d3c9b78607ba> a ns1:Restriction ;
+    ns1:allValuesFrom "http://www.w3.org/2001/XMLSchema#integer" ;
+    ns1:onProperty po:friendsCount .
+
+<N676d3ea3e59d49268f72755091d23b1a> a ns1:Restriction ;
+    ns1:allValuesFrom "http://purl.org/socialparticipation/po/Tweet" ;
+    ns1:onProperty po:retweetOf .
+
+<N696d350602b24b23b853e41050ba5a5f> ns1:unionOf po:Observation,
+        po:Tweet .
+
+<N73c0903216cc460f8ebb762a07d5b4b4> a ns1:Restriction ;
+    ns1:allValuesFrom "http://purl.org/socialparticipation/po/Participant" ;
+    ns1:onProperty po:userMention .
+
+<N7b68f49c9aa145718e945324ca2d7cf5> ns1:unionOf po:Media,
+        po:Tweet .
+
+<N7cfe84cfa26f446994d5ebd684ff9a18> ns1:unionOf po:Observation,
+        po:Tweet .
+
+<N8dc9caec1d104206993b8cfa495ced41> a ns1:Restriction ;
+    ns1:allValuesFrom "http://www.w3.org/2001/XMLSchema#integer" ;
+    ns1:onProperty po:listedCount .
+
+<N9f7ef34c1dbb4d9ab86a7fdc58e3d8bf> ns1:unionOf po:Tweet .
+
+<Na10dc806f568400182c225f5c1c6daa1> ns1:unionOf po:Participant .
+
+<Na32add153b8f4ae081631c0399f30442> ns1:unionOf po:Tweet .
+
+<Na849df4bf20b4c92bd7044b300f1d6a5> a ns1:Restriction ;
+    ns1:allValuesFrom "http://www.w3.org/2001/XMLSchema#integer" ;
+    ns1:onProperty po:retweetCount .
+
+<Nb494b465919e41c6b0b3c52f781ad2d5> ns1:unionOf po:Tweet .
+
+<Nc01b908f03744d09951076a1104945b7> a ns1:Restriction ;
     ns1:allValuesFrom "http://www.w3.org/2001/XMLSchema#integer" ;
     ns1:onProperty po:statusesCount .
 
-<Nfcd9a35d4dbb4313ba8d0b0fcf3b9471> ns1:unionOf po:Tweet .
+<Nc1f573e26c864a018bc2dbcf45ca6470> a ns1:Restriction ;
+    ns1:allValuesFrom "http://www.w3.org/2001/XMLSchema#string" ;
+    ns1:onProperty po:screenName .
+
+<Nc459bb1aede5426cabb900993c17835a> a ns1:Restriction ;
+    ns1:allValuesFrom "http://www.w3.org/2001/XMLSchema#integer" ;
+    ns1:onProperty po:favouritesCount .
+
+<Nc70521765e8f4adab65fd567797e89c4> a ns1:Restriction ;
+    ns1:allValuesFrom "http://www.w3.org/2001/XMLSchema#integer" ;
+    ns1:onProperty po:utcOffset .
+
+<Ncc7e3ba31e3a4e0baf9e1a46c7e12460> a ns1:Restriction ;
+    ns1:onProperty po:url ;
+    ns1:someValuesFrom "http://www.w3.org/2001/XMLSchema#string" .
+
+<Ne5e07579eb8e44aaaf10b36ceb2c0ee3> ns1:unionOf po:Observation .
+
+<Neb87b9d7a0ea4007943006f5eea3c7dd> ns1:unionOf po:Media,
+        po:Observation,
+        po:Participant,
+        po:Tweet .
+
+<Nf2690c8aadf1407d96598d22067ba5e6> a ns1:Restriction ;
+    ns1:allValuesFrom "http://purl.org/socialparticipation/po/Media" ;
+    ns1:onProperty po:media .
+
+<Nf704be5728f6428884566f7af723fe50> ns1:unionOf po:Tweet .
+
+<Nf8c9887e471f4694ab1629f0cbed755d> a ns1:Restriction ;
+    ns1:onProperty po:author ;
+    ns1:someValuesFrom "http://purl.org/socialparticipation/po/Participant" .
 
 po:createdAt a ns1:DataProperty,
         ns1:FunctionalProperty ;
-    rdfs:domain "N0b83f269a8524288bba30c66e8875281" ;
+    rdfs:domain "N22f8fda26f9b452baf210326bea64c88" ;
     rdfs:range xsd:dateTime .
 
 po:followersCount a ns1:DataProperty ;
-    rdfs:domain po:Participant ;
+    rdfs:domain po:Observation ;
     rdfs:range xsd:integer .
 
 po:hashtag a ns1:DataProperty ;
@@ -112,25 +116,30 @@ po:hashtag a ns1:DataProperty ;
 
 po:language a ns1:DataProperty,
         ns1:FunctionalProperty ;
-    rdfs:domain "N61f663e88e4c4e1fbce9c9e8baff63f8" ;
+    rdfs:domain "N696d350602b24b23b853e41050ba5a5f" ;
     rdfs:range xsd:string .
 
 po:name a ns1:DataProperty ;
-    rdfs:domain po:Participant ;
+    rdfs:domain po:Observation ;
     rdfs:range xsd:string .
 
 po:numericID a ns1:DataProperty,
         ns1:FunctionalProperty ;
-    rdfs:domain "Na56f5da4d58640628760e0093841d55e" ;
+    rdfs:domain "N7cfe84cfa26f446994d5ebd684ff9a18" ;
     rdfs:range xsd:string .
+
+po:observation a ns1:FunctionalProperty,
+        ns1:ObjectProperty ;
+    rdfs:domain po:Participant ;
+    rdfs:range "Na10dc806f568400182c225f5c1c6daa1" .
 
 po:replyTo a ns1:ObjectProperty ;
     rdfs:domain po:Tweet ;
-    rdfs:range "Nbd23a2b721c145388ea1bb16d351c58c" .
+    rdfs:range "N9f7ef34c1dbb4d9ab86a7fdc58e3d8bf" .
 
 po:snapshot a ns1:FunctionalProperty,
         ns1:ObjectProperty ;
-    rdfs:domain "Nd7465f6d263d415f964fe63a77bcc3aa" ;
+    rdfs:domain "Neb87b9d7a0ea4007943006f5eea3c7dd" ;
     rdfs:range "[]" .
 
 po:text a ns1:DataProperty,
@@ -140,7 +149,7 @@ po:text a ns1:DataProperty,
 
 rdf:type a ns1:FunctionalProperty,
         ns1:ObjectProperty ;
-    rdfs:domain "N96cfdcc75de44d0280cf356b9336b704" ;
+    rdfs:domain "N181e608f91704825add88f234c5d57d6" ;
     rdfs:range "[]" .
 
 po:anonymous a ns1:DataProperty,
@@ -151,23 +160,23 @@ po:anonymous a ns1:DataProperty,
 po:author a ns1:FunctionalProperty,
         ns1:ObjectProperty ;
     rdfs:domain po:Tweet ;
-    rdfs:range "N3d384828b03a40e78817ead151872ced" .
+    rdfs:range "Nb494b465919e41c6b0b3c52f781ad2d5" .
 
 po:favouritesCount a ns1:DataProperty ;
-    rdfs:domain po:Participant ;
+    rdfs:domain po:Observation ;
     rdfs:range xsd:integer .
 
 po:friendsCount a ns1:DataProperty ;
-    rdfs:domain po:Participant ;
+    rdfs:domain po:Observation ;
     rdfs:range xsd:integer .
 
 po:listedCount a ns1:DataProperty ;
-    rdfs:domain po:Participant ;
+    rdfs:domain po:Observation ;
     rdfs:range xsd:integer .
 
 po:media a ns1:ObjectProperty ;
     rdfs:domain po:Tweet ;
-    rdfs:range "Nee04c35e41dc468198bff595862aeaf5" .
+    rdfs:range "Nf704be5728f6428884566f7af723fe50" .
 
 po:noid a ns1:DataProperty,
         ns1:FunctionalProperty ;
@@ -181,14 +190,14 @@ po:retweetCount a ns1:DataProperty ;
 po:retweetOf a ns1:FunctionalProperty,
         ns1:ObjectProperty ;
     rdfs:domain po:Tweet ;
-    rdfs:range "Na7206ee1bdd340e8bf59f722422dd1c3" .
+    rdfs:range "Na32add153b8f4ae081631c0399f30442" .
 
 po:screenName a ns1:DataProperty ;
-    rdfs:domain po:Participant ;
+    rdfs:domain po:Observation ;
     rdfs:range xsd:string .
 
 po:statusesCount a ns1:DataProperty ;
-    rdfs:domain po:Participant ;
+    rdfs:domain po:Observation ;
     rdfs:range xsd:integer .
 
 po:type a ns1:DataProperty,
@@ -197,32 +206,33 @@ po:type a ns1:DataProperty,
     rdfs:range xsd:string .
 
 po:url a ns1:DataProperty ;
-    rdfs:domain "Nc368d0848996467d849c031ea0611747" ;
+    rdfs:domain "N7b68f49c9aa145718e945324ca2d7cf5" ;
     rdfs:range xsd:string .
 
 po:userMention a ns1:ObjectProperty ;
     rdfs:domain po:Tweet ;
-    rdfs:range "Nfcd9a35d4dbb4313ba8d0b0fcf3b9471" .
+    rdfs:range "N42ac4f9314ef43bea40f71de4ca62972" .
 
 po:utcOffset a ns1:DataProperty ;
-    rdfs:domain po:Participant ;
-    rdfs:range "N40575a7b78454dfe9aa7b4ef522855c1" .
+    rdfs:domain po:Observation ;
+    rdfs:range "Ne5e07579eb8e44aaaf10b36ceb2c0ee3" .
 
-po:Media rdfs:subClassOf "N029633b889e942b8981ecf8bff466c72",
-        "Nde0e74659abc4432928cba33b1f588aa" .
+po:Media rdfs:subClassOf "N058cd946a8ad4d20b6b82288f7c5f7f1",
+        "Ncc7e3ba31e3a4e0baf9e1a46c7e12460" .
 
-po:Participant rdfs:subClassOf "N387e62f7b723450ab2adab4c941dd411",
-        "N71a49855c9f147bfb720b4e3189b4d5a",
-        "N74c782e939a94c7097e57cc727bc7e94",
-        "N88d43572916047aab4df189ef7c76702",
-        "Nadfc40388dc84eff9eb1b842698646be",
-        "Nc67692af5fb242f2abe172d567942ec9",
-        "Nee04c5144df84ba2a17bd765ced3bbd0" .
+po:Participant rdfs:subClassOf "N09ac587cf4144999815e023ded47ce51" .
 
-po:Tweet rdfs:subClassOf "N6d0a6b345c2a4d89b5a90df9f689cba7",
-        "N885de18d122a47dd9d51154be3fc7407",
-        "Nb50ad49e164648f28ae89ac4ab5bb3e5",
-        "Nc76cad9ca27042fea938ec46867a1d88",
-        "Nc9f3781ec7e54d94a9fc84fc41c75d83",
-        "Ndaea482cdea140b2a8d1945b94a81fe2" .
+po:Observation rdfs:subClassOf "N45443150fadd489ab604d3c9b78607ba",
+        "N8dc9caec1d104206993b8cfa495ced41",
+        "Nc01b908f03744d09951076a1104945b7",
+        "Nc1f573e26c864a018bc2dbcf45ca6470",
+        "Nc459bb1aede5426cabb900993c17835a",
+        "Nc70521765e8f4adab65fd567797e89c4" .
+
+po:Tweet rdfs:subClassOf "N3009341c288c476ab8c7f776dd136b38",
+        "N676d3ea3e59d49268f72755091d23b1a",
+        "N73c0903216cc460f8ebb762a07d5b4b4",
+        "Na849df4bf20b4c92bd7044b300f1d6a5",
+        "Nf2690c8aadf1407d96598d22067ba5e6",
+        "Nf8c9887e471f4694ab1629f0cbed755d" .
 

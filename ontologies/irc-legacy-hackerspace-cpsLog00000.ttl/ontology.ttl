@@ -5,73 +5,73 @@
 @prefix xml: <http://www.w3.org/XML/1998/namespace> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 
-<N0b13679e863c43dab61cab4ba8923f4f> ns1:unionOf po:IRCMessage .
-
-<N107756ec006a4438b5481e99da605b68> ns1:unionOf po:IRCMessage,
-        po:Participant .
-
-<N1e2ded4eaa634edeb88391216d6039a4> ns1:unionOf po:IRCMessage .
-
-<N441bb3eb34654e1b99249156afb2c04c> a ns1:Restriction ;
-    ns1:allValuesFrom "http://www.w3.org/2001/XMLSchema#boolean" ;
-    ns1:onProperty po:systemMessage .
-
-<N6698bbdd667c4d75ad55f937029d0260> ns1:unionOf po:IRCMessage .
-
-<N763b59d6aaf446ffb783f886caf1ceb0> a ns1:Restriction ;
-    ns1:onProperty po:systemMessage ;
-    ns1:someValuesFrom "http://www.w3.org/2001/XMLSchema#boolean" .
-
-<N775c6e8dd5904702bfc9c72970a8c73e> a ns1:Restriction ;
-    ns1:allValuesFrom "http://purl.org/socialparticipation/po/Participant" ;
-    ns1:onProperty po:impliedUser .
-
-<N7b02001b0e5b40c792c2cb32628d0e16> a ns1:Restriction ;
-    ns1:onProperty po:createdAt ;
-    ns1:someValuesFrom "http://www.w3.org/2001/XMLSchema#dateTime" .
-
-<N8b526bec38534cfb8836f58a06ea6976> a ns1:Restriction ;
-    ns1:allValuesFrom "http://purl.org/socialparticipation/po/Participant" ;
-    ns1:onProperty po:mentions .
-
-<N8e38ef37f05f4fd1a136c9a5c73ebbeb> a ns1:Restriction ;
-    ns1:allValuesFrom "http://www.w3.org/2001/XMLSchema#boolean" ;
-    ns1:onProperty po:aaMessage .
-
-<N910c0fd84f234a61b93d455d1df0fde2> ns1:unionOf po:IRCMessage,
-        po:Participant .
-
-<N99f8342ecac140bb8f3afb5b2b888c3b> a ns1:Restriction ;
+<N0616612ec9ca45b48385d06ebff3b1da> a ns1:Restriction ;
     ns1:allValuesFrom "http://www.w3.org/2001/XMLSchema#boolean" ;
     ns1:onProperty po:emptyMessage .
 
-<Na89c20ccea364754bf2a800b521ae663> a ns1:Restriction ;
-    ns1:allValuesFrom "http://purl.org/socialparticipation/po/Participant" ;
-    ns1:onProperty po:directedTo .
+<N09be5aa4aeb340d3a160f10af7de4a5e> a ns1:Restriction ;
+    ns1:allValuesFrom "http://www.w3.org/2001/XMLSchema#boolean" ;
+    ns1:onProperty po:aaMessage .
 
-<Nccc112e95e9149549e401374d0f4b74f> a ns1:Restriction ;
+<N14e77c2810da4d2ea1bc305a94b940e8> ns1:unionOf po:IRCMessage .
+
+<N2c2ffae30c8f465b9513c9fb7eeb3d22> ns1:unionOf po:IRCMessage,
+        po:Observation,
+        po:Participant .
+
+<N604d2b0b811c4ba0b21573ab52813230> ns1:unionOf po:Participant .
+
+<Nacdb2281c64f476f9f5c00471bed7a97> ns1:unionOf po:IRCMessage,
+        po:Observation,
+        po:Participant .
+
+<Naea84979df484e259a6e61ccd2bddc9d> a ns1:Restriction ;
     ns1:allValuesFrom "http://www.w3.org/2001/XMLSchema#string" ;
     ns1:onProperty po:nick .
 
-<Ne54d1dbd41ad4f45acdbd6b2295bcc37> ns1:unionOf po:IRCMessage .
+<Nb56ec3964a9045988b0923c6680edf6b> a ns1:Restriction ;
+    ns1:allValuesFrom "http://purl.org/socialparticipation/po/Participant" ;
+    ns1:onProperty po:impliedUser .
+
+<Nf0497aff765d449091c7f9bab20d3f1a> a ns1:Restriction ;
+    ns1:allValuesFrom "http://www.w3.org/2001/XMLSchema#boolean" ;
+    ns1:onProperty po:systemMessage .
 
 po:author a ns1:FunctionalProperty,
         ns1:ObjectProperty ;
     rdfs:domain po:IRCMessage ;
-    rdfs:range "Ne54d1dbd41ad4f45acdbd6b2295bcc37" .
+    rdfs:range "[]" .
 
 po:cleanText a ns1:DataProperty,
         ns1:FunctionalProperty ;
     rdfs:domain po:IRCMessage ;
     rdfs:range xsd:string .
 
+po:createdAt a ns1:DataProperty,
+        ns1:FunctionalProperty ;
+    rdfs:domain po:IRCMessage ;
+    rdfs:range xsd:dateTime .
+
+po:directedTo a ns1:ObjectProperty ;
+    rdfs:domain po:IRCMessage ;
+    rdfs:range "[]" .
+
 po:hasUrl a ns1:DataProperty ;
     rdfs:domain po:IRCMessage ;
     rdfs:range xsd:string .
 
+po:mentions a ns1:ObjectProperty ;
+    rdfs:domain po:IRCMessage ;
+    rdfs:range "[]" .
+
+po:observation a ns1:FunctionalProperty,
+        ns1:ObjectProperty ;
+    rdfs:domain po:Participant ;
+    rdfs:range "N604d2b0b811c4ba0b21573ab52813230" .
+
 po:snapshot a ns1:FunctionalProperty,
         ns1:ObjectProperty ;
-    rdfs:domain "N107756ec006a4438b5481e99da605b68" ;
+    rdfs:domain "N2c2ffae30c8f465b9513c9fb7eeb3d22" ;
     rdfs:range "[]" .
 
 po:text a ns1:DataProperty,
@@ -81,22 +81,13 @@ po:text a ns1:DataProperty,
 
 rdf:type a ns1:FunctionalProperty,
         ns1:ObjectProperty ;
-    rdfs:domain "N910c0fd84f234a61b93d455d1df0fde2" ;
+    rdfs:domain "Nacdb2281c64f476f9f5c00471bed7a97" ;
     rdfs:range "[]" .
 
 po:aaMessage a ns1:DataProperty,
         ns1:FunctionalProperty ;
     rdfs:domain po:IRCMessage ;
     rdfs:range xsd:boolean .
-
-po:createdAt a ns1:DataProperty,
-        ns1:FunctionalProperty ;
-    rdfs:domain po:IRCMessage ;
-    rdfs:range xsd:dateTime .
-
-po:directedTo a ns1:ObjectProperty ;
-    rdfs:domain po:IRCMessage ;
-    rdfs:range "N6698bbdd667c4d75ad55f937029d0260" .
 
 po:emptyMessage a ns1:DataProperty,
         ns1:FunctionalProperty ;
@@ -106,15 +97,11 @@ po:emptyMessage a ns1:DataProperty,
 po:impliedUser a ns1:FunctionalProperty,
         ns1:ObjectProperty ;
     rdfs:domain po:IRCMessage ;
-    rdfs:range "N1e2ded4eaa634edeb88391216d6039a4" .
-
-po:mentions a ns1:ObjectProperty ;
-    rdfs:domain po:IRCMessage ;
-    rdfs:range "N0b13679e863c43dab61cab4ba8923f4f" .
+    rdfs:range "N14e77c2810da4d2ea1bc305a94b940e8" .
 
 po:nick a ns1:DataProperty,
         ns1:FunctionalProperty ;
-    rdfs:domain po:Participant ;
+    rdfs:domain po:Observation ;
     rdfs:range xsd:string .
 
 po:systemMessage a ns1:DataProperty,
@@ -122,14 +109,10 @@ po:systemMessage a ns1:DataProperty,
     rdfs:domain po:IRCMessage ;
     rdfs:range xsd:boolean .
 
-po:Participant rdfs:subClassOf "Nccc112e95e9149549e401374d0f4b74f" .
+po:Observation rdfs:subClassOf "Naea84979df484e259a6e61ccd2bddc9d" .
 
-po:IRCMessage rdfs:subClassOf "N441bb3eb34654e1b99249156afb2c04c",
-        "N763b59d6aaf446ffb783f886caf1ceb0",
-        "N775c6e8dd5904702bfc9c72970a8c73e",
-        "N7b02001b0e5b40c792c2cb32628d0e16",
-        "N8b526bec38534cfb8836f58a06ea6976",
-        "N8e38ef37f05f4fd1a136c9a5c73ebbeb",
-        "N99f8342ecac140bb8f3afb5b2b888c3b",
-        "Na89c20ccea364754bf2a800b521ae663" .
+po:IRCMessage rdfs:subClassOf "N0616612ec9ca45b48385d06ebff3b1da",
+        "N09be5aa4aeb340d3a160f10af7de4a5e",
+        "Nb56ec3964a9045988b0923c6680edf6b",
+        "Nf0497aff765d449091c7f9bab20d3f1a" .
 

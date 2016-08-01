@@ -5,124 +5,132 @@
 @prefix xml: <http://www.w3.org/XML/1998/namespace> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 
-<N00cd865745324359a56a71bd45ba520d> a ns1:Restriction ;
-    ns1:allValuesFrom "http://www.w3.org/2001/XMLSchema#string" ;
-    ns1:onProperty po:postID .
-
-<N2d667dd30aac464cb4da71285746e9a9> a ns1:Restriction ;
-    ns1:allValuesFrom "http://purl.org/socialparticipation/po/Participant" ;
-    ns1:onProperty po:interactionTo .
-
-<N2f01b41fda2348659f6f51cf5572d715> a ns1:Restriction ;
-    ns1:onProperty po:postType ;
-    ns1:someValuesFrom "http://www.w3.org/2001/XMLSchema#string" .
-
-<N3339e7d312ae4eec9cc7b792e6bd79e5> a ns1:Restriction ;
-    ns1:onProperty po:createdAt ;
-    ns1:someValuesFrom "http://www.w3.org/2001/XMLSchema#dateTime" .
-
-<N49f8c59215534ea0a958fae80344af2e> a ns1:Restriction ;
-    ns1:allValuesFrom "http://www.w3.org/2001/XMLSchema#string" ;
-    ns1:onProperty po:locale .
-
-<N4d79d5ae77bd40d0a37b2509b8c64581> a ns1:Restriction ;
-    ns1:onProperty po:numberOfLikes ;
-    ns1:someValuesFrom "http://www.w3.org/2001/XMLSchema#integer" .
-
-<N5ff84115b44a4cc08afbd7b265bb1d66> a ns1:Restriction ;
-    ns1:onProperty po:text ;
-    ns1:someValuesFrom "http://www.w3.org/2001/XMLSchema#string" .
-
-<N68796e32802f4296890520e43ced0f6a> ns1:unionOf po:Interaction .
-
-<N6f69064cc00e457c8afdadd8dd62dbf6> a ns1:Restriction ;
-    ns1:allValuesFrom "http://www.w3.org/2001/XMLSchema#integer" ;
-    ns1:onProperty po:numberOfLikes .
-
-<N7560d9bb78d64408b35510fb746839e5> a ns1:Restriction ;
-    ns1:allValuesFrom "http://www.w3.org/2001/XMLSchema#integer" ;
-    ns1:onProperty po:numberOfPosts .
-
-<N78d89e9cc3fb4116968c61f409fc4c55> ns1:unionOf po:Friendship,
-        po:Interaction,
-        po:Participant,
-        po:Post .
-
-<N7ed4d1adfc534ae09642a6de9127d2a7> a ns1:Restriction ;
-    ns1:onProperty po:postID ;
-    ns1:someValuesFrom "http://www.w3.org/2001/XMLSchema#string" .
-
-<N8b4e8b7b2e4a41868df93352142f51cc> a ns1:Restriction ;
-    ns1:allValuesFrom "http://www.w3.org/2001/XMLSchema#integer" ;
-    ns1:onProperty po:weight .
-
-<N9ba4fcaee1d2474dbbdb77da88ae919f> a ns1:Restriction ;
-    ns1:onProperty po:interactionFrom ;
-    ns1:someValuesFrom "http://purl.org/socialparticipation/po/Participant" .
-
-<N9fb123ee95de4eae816e2e74549fc906> ns1:unionOf po:Friendship .
-
-<Nb18be47ccc624e61980474a8d0becbe7> a ns1:Restriction ;
-    ns1:allValuesFrom "http://www.w3.org/2001/XMLSchema#integer" ;
-    ns1:onProperty po:numberOfComments .
-
-<Nb26246c2652846ae9cf91531aa785b40> a ns1:Restriction ;
+<N0693a3239cfe491a801ed19e29c7d4d9> a ns1:Restriction ;
     ns1:allValuesFrom "http://purl.org/socialparticipation/po/Participant" ;
     ns1:onProperty po:member .
 
-<Nbd1d52cfe12c432b9803fe3e58590888> a ns1:Restriction ;
-    ns1:onProperty po:numberOfComments ;
-    ns1:someValuesFrom "http://www.w3.org/2001/XMLSchema#integer" .
+<N07a730e0da9644ae926214784e9edaa6> a ns1:Restriction ;
+    ns1:onProperty po:createdAt ;
+    ns1:someValuesFrom "http://www.w3.org/2001/XMLSchema#dateTime" .
 
-<Nc928d65cceba425289e3517a7ff5c272> a ns1:Restriction ;
-    ns1:onProperty po:weight ;
-    ns1:someValuesFrom "http://www.w3.org/2001/XMLSchema#integer" .
+<N08fd84b8a23649ebbb82b4fd9a5e6894> a ns1:Restriction ;
+    ns1:allValuesFrom "http://www.w3.org/2001/XMLSchema#integer" ;
+    ns1:onProperty po:numberOfPosts .
 
-<Ncad8b09bc2d547e19e8131e90a829242> a ns1:Restriction ;
-    ns1:allValuesFrom "http://purl.org/socialparticipation/po/Participant" ;
-    ns1:onProperty po:interactionFrom .
+<N1c764869887f4de89cbf8d7c9fae4388> a ns1:Restriction ;
+    ns1:allValuesFrom "http://www.w3.org/2001/XMLSchema#integer" ;
+    ns1:onProperty po:numberOfLikes .
 
-<Ncaf3cd8d8d8543bc8ca394ca2eee04b9> ns1:unionOf po:Friendship,
+<N2512d4e4253a45439081e44a92709949> ns1:unionOf po:Friendship,
         po:Interaction,
+        po:Observation,
         po:Participant,
         po:Post .
 
-<Nde5a0646a51343d38c11b5ee63f726b3> a ns1:Restriction ;
-    ns1:onProperty po:interactionTo ;
+<N2b16c202a6a44f5fa7bd6134d91819e7> a ns1:Restriction ;
+    ns1:onProperty po:text ;
+    ns1:someValuesFrom "http://www.w3.org/2001/XMLSchema#string" .
+
+<N2b4d0728c52248908ea26d7f98da8d8a> a ns1:Restriction ;
+    ns1:allValuesFrom "http://purl.org/socialparticipation/po/Participant" ;
+    ns1:onProperty po:interactionTo .
+
+<N2cad00af34874dcdbba0f2eef096b062> ns1:unionOf po:Interaction .
+
+<N3a6fe144b94141f4a17e8c5299134a61> a ns1:Restriction ;
+    ns1:onProperty po:interactionFrom ;
     ns1:someValuesFrom "http://purl.org/socialparticipation/po/Participant" .
 
-<Nea561581d2f5446a9b9d02c680f21840> ns1:unionOf po:Interaction .
+<N439574dc84964564ba879538b0b90d67> a ns1:Restriction ;
+    ns1:onProperty po:numberOfComments ;
+    ns1:someValuesFrom "http://www.w3.org/2001/XMLSchema#integer" .
 
-<Nedab880af7d9471d86c5f0c54cab8f08> a ns1:Restriction ;
-    ns1:allValuesFrom "http://www.w3.org/2001/XMLSchema#string" ;
-    ns1:onProperty po:postType .
-
-<Nf11dd2817b064d5899c5338e2f201445> a ns1:Restriction ;
+<N6c2ec19f72554bcd93787607bc9ef7d8> a ns1:Restriction ;
     ns1:allValuesFrom "http://www.w3.org/2001/XMLSchema#string" ;
     ns1:onProperty po:sex .
 
-<Nf4a5e2b9bc924d039d88340d6b6c7581> a ns1:Restriction ;
+<N8499ae185aa6484bba82e25750bafad3> ns1:unionOf po:Friendship,
+        po:Interaction,
+        po:Observation,
+        po:Participant,
+        po:Post .
+
+<N9196fd086a9c495ea96a1565912ec13e> a ns1:Restriction ;
+    ns1:allValuesFrom "http://www.w3.org/2001/XMLSchema#integer" ;
+    ns1:onProperty po:weight .
+
+<N98634d2f47c5428f88aa38200173132e> a ns1:Restriction ;
+    ns1:allValuesFrom "http://purl.org/socialparticipation/po/Participant" ;
+    ns1:onProperty po:interactionFrom .
+
+<N9d8beadd473b4ab0bb4aa21efeebda6a> a ns1:Restriction ;
+    ns1:onProperty po:numberOfLikes ;
+    ns1:someValuesFrom "http://www.w3.org/2001/XMLSchema#integer" .
+
+<Na0c423a2d4f94eaf8a7fc8de5f7977f4> a ns1:Restriction ;
+    ns1:onProperty po:postID ;
+    ns1:someValuesFrom "http://www.w3.org/2001/XMLSchema#string" .
+
+<Nad18ff19b9fa4da4ba016a5ee7557903> a ns1:Restriction ;
+    ns1:onProperty po:postType ;
+    ns1:someValuesFrom "http://www.w3.org/2001/XMLSchema#string" .
+
+<Nae89c045b4354bf0be2db2c2b241516c> ns1:unionOf po:Friendship .
+
+<Nb1119e3a6d544b5590326cce532bf712> a ns1:Restriction ;
+    ns1:allValuesFrom "http://www.w3.org/2001/XMLSchema#string" ;
+    ns1:onProperty po:postID .
+
+<Nbe29bffc6eef4964abc32710fc4910a0> a ns1:Restriction ;
     ns1:onProperty po:member ;
     ns1:someValuesFrom "http://purl.org/socialparticipation/po/Participant" .
 
+<Nc054dc9417824980b3500c7bb75b9a36> a ns1:Restriction ;
+    ns1:allValuesFrom "http://www.w3.org/2001/XMLSchema#string" ;
+    ns1:onProperty po:postType .
+
+<Nc222f191e51d403aaf67876efc10d10e> a ns1:Restriction ;
+    ns1:allValuesFrom "http://www.w3.org/2001/XMLSchema#integer" ;
+    ns1:onProperty po:numberOfComments .
+
+<Ndfa5931ad97240129e6647a1faa0504f> a ns1:Restriction ;
+    ns1:onProperty po:interactionTo ;
+    ns1:someValuesFrom "http://purl.org/socialparticipation/po/Participant" .
+
+<Ne5a383443e9e4f4f93552f8948521dc8> a ns1:Restriction ;
+    ns1:allValuesFrom "http://www.w3.org/2001/XMLSchema#string" ;
+    ns1:onProperty po:locale .
+
+<Nea2ab0cb105b4ee0acaad4c5af73489a> ns1:unionOf po:Interaction .
+
+<Nf07ea3e413854adf92623e7d6d4f0de4> ns1:unionOf po:Interaction,
+        po:Participant .
+
+<Nf37f142b96d344ac8efd5b956488922e> a ns1:Restriction ;
+    ns1:onProperty po:observation ;
+    ns1:someValuesFrom "http://purl.org/socialparticipation/po/Observation" .
+
+<Nf42cbeb3b7f847ee8c6b8823e3ddcf4e> ns1:unionOf po:Interaction,
+        po:Participant .
+
 po:name a ns1:DataProperty,
         ns1:FunctionalProperty ;
-    rdfs:domain po:Participant ;
+    rdfs:domain po:Observation ;
     rdfs:range xsd:string .
 
 po:numericID a ns1:DataProperty,
         ns1:FunctionalProperty ;
-    rdfs:domain po:Participant ;
+    rdfs:domain po:Observation ;
     rdfs:range xsd:string .
 
 po:snapshot a ns1:FunctionalProperty,
         ns1:ObjectProperty ;
-    rdfs:domain "N78d89e9cc3fb4116968c61f409fc4c55" ;
+    rdfs:domain "N2512d4e4253a45439081e44a92709949" ;
     rdfs:range "[]" .
 
 rdf:type a ns1:FunctionalProperty,
         ns1:ObjectProperty ;
-    rdfs:domain "Ncaf3cd8d8d8543bc8ca394ca2eee04b9" ;
+    rdfs:domain "N8499ae185aa6484bba82e25750bafad3" ;
     rdfs:range "[]" .
 
 po:createdAt a ns1:DataProperty,
@@ -132,17 +140,22 @@ po:createdAt a ns1:DataProperty,
 
 po:locale a ns1:DataProperty,
         ns1:FunctionalProperty ;
-    rdfs:domain po:Participant ;
+    rdfs:domain po:Observation ;
     rdfs:range xsd:string .
 
 po:numberOfPosts a ns1:DataProperty,
         ns1:FunctionalProperty ;
-    rdfs:domain po:Participant ;
+    rdfs:domain po:Observation ;
     rdfs:range xsd:integer .
+
+po:observation a ns1:FunctionalProperty,
+        ns1:ObjectProperty ;
+    rdfs:domain "Nf07ea3e413854adf92623e7d6d4f0de4" ;
+    rdfs:range "Nf42cbeb3b7f847ee8c6b8823e3ddcf4e" .
 
 po:sex a ns1:DataProperty,
         ns1:FunctionalProperty ;
-    rdfs:domain po:Participant ;
+    rdfs:domain po:Observation ;
     rdfs:range xsd:string .
 
 po:text a ns1:DataProperty,
@@ -150,19 +163,24 @@ po:text a ns1:DataProperty,
     rdfs:domain po:Post ;
     rdfs:range xsd:string .
 
+po:weight a ns1:DataProperty,
+        ns1:FunctionalProperty ;
+    rdfs:domain po:Observation ;
+    rdfs:range xsd:integer .
+
 po:interactionFrom a ns1:FunctionalProperty,
         ns1:ObjectProperty ;
     rdfs:domain po:Interaction ;
-    rdfs:range "Nea561581d2f5446a9b9d02c680f21840" .
+    rdfs:range "N2cad00af34874dcdbba0f2eef096b062" .
 
 po:interactionTo a ns1:FunctionalProperty,
         ns1:ObjectProperty ;
     rdfs:domain po:Interaction ;
-    rdfs:range "N68796e32802f4296890520e43ced0f6a" .
+    rdfs:range "Nea2ab0cb105b4ee0acaad4c5af73489a" .
 
 po:member a ns1:ObjectProperty ;
     rdfs:domain po:Friendship ;
-    rdfs:range "N9fb123ee95de4eae816e2e74549fc906" .
+    rdfs:range "Nae89c045b4354bf0be2db2c2b241516c" .
 
 po:numberOfComments a ns1:DataProperty,
         ns1:FunctionalProperty ;
@@ -184,33 +202,28 @@ po:postType a ns1:DataProperty,
     rdfs:domain po:Post ;
     rdfs:range xsd:string .
 
-po:weight a ns1:DataProperty,
-        ns1:FunctionalProperty ;
-    rdfs:domain po:Interaction ;
-    rdfs:range xsd:integer .
+po:Friendship rdfs:subClassOf "N0693a3239cfe491a801ed19e29c7d4d9",
+        "Nbe29bffc6eef4964abc32710fc4910a0" .
 
-po:Friendship rdfs:subClassOf "Nb26246c2652846ae9cf91531aa785b40",
-        "Nf4a5e2b9bc924d039d88340d6b6c7581" .
+po:Interaction rdfs:subClassOf "N2b4d0728c52248908ea26d7f98da8d8a",
+        "N3a6fe144b94141f4a17e8c5299134a61",
+        "N98634d2f47c5428f88aa38200173132e",
+        "Ndfa5931ad97240129e6647a1faa0504f",
+        "Nf37f142b96d344ac8efd5b956488922e" .
 
-po:Interaction rdfs:subClassOf "N2d667dd30aac464cb4da71285746e9a9",
-        "N8b4e8b7b2e4a41868df93352142f51cc",
-        "N9ba4fcaee1d2474dbbdb77da88ae919f",
-        "Nc928d65cceba425289e3517a7ff5c272",
-        "Ncad8b09bc2d547e19e8131e90a829242",
-        "Nde5a0646a51343d38c11b5ee63f726b3" .
+po:Observation rdfs:subClassOf "N08fd84b8a23649ebbb82b4fd9a5e6894",
+        "N6c2ec19f72554bcd93787607bc9ef7d8",
+        "N9196fd086a9c495ea96a1565912ec13e",
+        "Ne5a383443e9e4f4f93552f8948521dc8" .
 
-po:Participant rdfs:subClassOf "N49f8c59215534ea0a958fae80344af2e",
-        "N7560d9bb78d64408b35510fb746839e5",
-        "Nf11dd2817b064d5899c5338e2f201445" .
-
-po:Post rdfs:subClassOf "N00cd865745324359a56a71bd45ba520d",
-        "N2f01b41fda2348659f6f51cf5572d715",
-        "N3339e7d312ae4eec9cc7b792e6bd79e5",
-        "N4d79d5ae77bd40d0a37b2509b8c64581",
-        "N5ff84115b44a4cc08afbd7b265bb1d66",
-        "N6f69064cc00e457c8afdadd8dd62dbf6",
-        "N7ed4d1adfc534ae09642a6de9127d2a7",
-        "Nb18be47ccc624e61980474a8d0becbe7",
-        "Nbd1d52cfe12c432b9803fe3e58590888",
-        "Nedab880af7d9471d86c5f0c54cab8f08" .
+po:Post rdfs:subClassOf "N07a730e0da9644ae926214784e9edaa6",
+        "N1c764869887f4de89cbf8d7c9fae4388",
+        "N2b16c202a6a44f5fa7bd6134d91819e7",
+        "N439574dc84964564ba879538b0b90d67",
+        "N9d8beadd473b4ab0bb4aa21efeebda6a",
+        "Na0c423a2d4f94eaf8a7fc8de5f7977f4",
+        "Nad18ff19b9fa4da4ba016a5ee7557903",
+        "Nb1119e3a6d544b5590326cce532bf712",
+        "Nc054dc9417824980b3500c7bb75b9a36",
+        "Nc222f191e51d403aaf67876efc10d10e" .
 
