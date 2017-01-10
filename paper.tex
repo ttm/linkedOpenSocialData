@@ -262,17 +262,7 @@ Present needs are limited to informative figures and
 the steps implemented are as follows:
 \begin{enumerate}[leftmargin=0cm]
     \item Obtain all distinct classes with the query:\\
-        % \textttt{SELECT DISTINCT ?class WHERE { ?s a ?class }}
         \textttt{SELECT DISTINCT ?class\_uri WHERE \{ ?s a ?class\_uri \}}
-%    \item For each class, get distinct subject classes and predicates where the
-%        the object is an instance of the class:\\
-%        \textttt{SELECT DISTINCT ?p ?cs WHERE \{ ?i a <class\_uri> . ?s ?p ?i . ?s
-%        a ?cs . \}}
-% \item For each class, obtain distinct predicates (\textttt{?p}) and object classes or
-% 	datatypes (\textttt{?co}, \textttt{?do}) where the subject is an instance (\textttt{?i}) of such class:\\
-% 	\textttt{SELECT DISTINCT ?p ?co (datatype(?o) as ?do) WHERE \{ \\
-% 		\h ?i a <class\_uri> . ?i ?p ?o . OPTIONAL \{ ?o a ?co . \} \\
-% \}}
 \item For each class, obtain the properties that occur as predicates in triples where the subject is an instance of the class:\\
 	\textttt{SELECT DISTINCT ?property\_uri WHERE \{ ?s a <class\_uri> . ?s ?property\_uri ?o . \}}\\
 Such properties are used to assert existential and universal restrictions for the class.
