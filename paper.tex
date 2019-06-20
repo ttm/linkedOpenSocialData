@@ -2,7 +2,7 @@
 
 \usepackage{enumitem}
 \usepackage{hyperref}
-\usepackage{xcolor}
+\usepackage[dvipsnames]{xcolor}
 \hypersetup{
     colorlinks,
     linkcolor={red!50!black},
@@ -17,18 +17,39 @@
 \usepackage{cleveref}
 \usepackage[english]{babel}
 \usepackage[utf8]{inputenc}
-\usepackage[T1]{fontenc}
+% \usepackage[T1]{fontenc}
 % \usepackage{changepage}
 \usepackage{longtable}
 \usepackage{tabularx}
+\usepackage{listings}
+\lstdefinelanguage[]{spq}
+{
+    morecomment=[s][\color{ForestGreen}\bf]{<}{>},
+    basicstyle = \ttfamily\footnotesize,
+    commentstyle=\color{green},
+    keywordstyle=\color{Plum},
+    morecomment=[s][\color{Blue}\bf]{?}{\ },
+    morekeywords={BASE,PREFIX,SELECT,DISTINCT,CONSTRUCT,DESCRIBE,ASK,%
+    FROM,NAMED,WHERE,ORDER,BY,ASC,DESC,LIMIT,OFFSET,OPTIONAL,%
+    GRAPH,UNION,FILTER,a,STR,LANG,LANGMATCHES,DATATYPE,BOUND,%
+    isIRI,isURI,isBLANK,isLITERAL,REGEX,true,false},%
+    sensitive=false,%
+    % morecomment=[l]\#,%
+    morestring=[d][\color{red}]',%
+    morestring=[d]"%
+}
 % \usepackage[showframe=true]{geometry}
 %
+
+
 \newcommand{\textttt}[1] {\texttt{\footnotesize#1}}
+\newcommand{\te}[1] {\texttt{\footnotesize#1}}
 \newcommand{\h} {\hphantom ~ }
 % \newcommand{\textttt}[1] {\mbox{\texttt{\footnotesize#1}}}
 % \newcommand{\textttt}[1] {
 % \begin{verbatim} #1 \end{verbatim}
 % }
+\linespread{1}
 \pgfplotsset{compat=1.5}
 \pgfplotsset
 {
@@ -48,7 +69,7 @@
     xticklabel style={yshift=4pt}
 	}
 }
-
+\usepackage{booktabs}
 %% `Elsevier LaTeX' style
 \bibliographystyle{elsarticle-num}
 %
@@ -63,238 +84,269 @@
 %
 \begin{frontmatter}
 %
-\title{A Linked Open Social Database for Scientific Benchmarking}
+\title{A Linked Open Social Dataset for Scientific Benchmarking}
 %
-\author[pwr]{Renato Fabbri\corref{corresponding}\fnref{kio-url}}
-\ead{fabbri@usp.br}
+\author[pws]{Renato Fabbri\corref{corresponding}}
+\ead{renato.fabbri@gmail.com}
 %
-\author[pwr]{Osvaldo Novais de Oliveira Junior\fnref{kio-url}}
+\author[pwr]{Osvaldo Novais de Oliveira Junior}
 \ead{chu@ifsc.usp.br}
 %
 \cortext[corresponding]{Corresponding author}
-\address[pwr]{S\~ao Carlos Institute of Physics, S\~ao Paulo
-University, Brazil}
-%
-\fntext[kio-url]{\textit{URL:} \url{http://www.ifsc.usp.br/}}
+  \address[pws]{Institute of Mathematics and Computer Sciences, University of São Paulo (ICMC/USP), Brazil}
+\address[pwr]{S\~ao Carlos Institute of Physics, University of  São Paulo
+(IFSC-USP), Brazil}
 %
 \begin{abstract}
 The fields of social network analysis and complex networks
 are widely researched.
-Recently, a myriad of results have been reported which are based in
-diverse datasets most often not accessible to researchers other than the publishing authors.
-This work exposes an open database with diverse provenance and oriented
+In fact, a myriad of results have been reported which are based in
+diverse data, most often not accessible to researchers other than the publishing authors.
+This work presents an open dataset with diverse provenance of 
+human social online networking 
+  and oriented
 to furnish the scientific community with a friendly and common repertoire.
-Current data was obtained from Facebook, Twitter, IRC, Email and the
-detached instances of ParticipaBR, AA and Cidade Democr\'atica.
-These were represented as linked data to homonenize access,
-conform to current best practices and ease analyzes which integrate third
+Current data was obtained in 2013-16 from well-known online social networking platforms:
+Facebook, Twitter, IRC, Email.
+Data from ParticipaBR, AA, and Cidade Democrática were also added as samples of
+less known instances.
+Authors recently recognized that no similar dataset was made available,
+and the potential benefit of the content for the research community.
+The linked data representation was adopted in order to
+comply with current best practices, homogenize access, enable discovery,
+and facilitate analyzes which integrate third
 party and provided instances.
+Futhermore, the method for obtaing and making the data available is potentially novel, and may of use for other research groups.
 This document presents an outline and overall statistics of the given
-database which should favor subsequent work.
+dataset, which should favor subsequent work in complex and social networks,
+  and in enhancing the available linked and social data.
 \end{abstract}
 %
 \begin{keyword}
-Big Data, Data Mining, Benchmark Data, Facebook, Twitter, IRC, Email,
-Complex Networks, Text Mining
+Big Data, Dataset, Benchmark Data, Facebook, Twitter, IRC, Email,
+Complex Networks, Social Networks, Text Mining
 %Hierarchy of Clusters \sep HoC \sep Benchmark Dataset \sep Benchmark Data Generator \sep Artificial Data \sep Cluster Analysis \sep Tree Structured Stick Breaking Process \sep TSSB \sep ...
 \end{keyword}
 
 \end{frontmatter}
 
 \section{Introduction}
-
-
 % In recent years, the web of linked data~\cite{lee1} has attracted wide attention in
 % both research and application realms.
-Open machine-readable contents and tools are desired
-in performing knowledge discovery in social data.
-% there is a lack of datasets for benchmarking results,
-However, there is a lack of open datasets for benchmarking results,
-specially associated to the complex networks field,
+The research on human social and complex networks often realy on data that express
+real phenomena~\cite{c1,c2,c3}.
+Such data is often not made publicly available, which hinders validation of the results and does not favor makes subsequent work.
+Furthermore, there is a lack of open datasets for benchmarking results,
+specially associated to the complex and social networks field,
 yielding diverse results from poorly related sources.
+Scarce and historical exceptions are the karate club or the dolphin datasets~\cite{newmanBook,dolphin}.
+For expressing the information,
+open machine-readable content and tools are desired for enabling
+data linkage and discovery~\cite{o1,o2},
+and the favoured protocol is thus RDF ``linked data''.
+Social networks linked data is currently not stable or rigorous enough to be
+a public reference on statistical physics and social networks research,
+with scarce exceptions~\cite{l1,l2}
+This work presents a collection of linked and open data
+about online human social networks,
+named LOSD (Linked Open Social Data).
+This has been achieved by linking social data into a dataset using diverse
+provenance, namely: Facebook, Twitter, IRC, Email groups, ParticipaBR, Cidade Democrática, and AA.
+Such data is proposed as a common and public repertoire for scientific
+research involving networks and textual content.
 
-The enormity of the digital data propels a rapid development of analysis methods
-from different perspectives.
-Even so, the used datasets in the literature differ within the scope of each research with
-scarce and historical exceptions such as the
-karate club dataset~\cite{newmanBook}.
-Beyond that, the available linked data is not 
-stable or rigorous enough to be
-a public reference on statistical physics and social networks research.
- 
-This work presents a framework that provides machine-readable contents with a
-database on social networks.
-This has been made by linkng social data into an open database with diverse
-provenance, including Facebook, Twitter, IRC, Email and detached
-instances.
-Such data is proposed as a common repertoire for scientific
-research involving networks and textual content and may be extended.
+\subsection{Related work}
+Most available datasets on human social networks rely on only one source~\cite{o1,o2,o3,o4},
+on specialized communities such as related to research and movies~\cite{s1,s2,s3,s4,s5},
+or present only statistics about social networks, and not the data that yields the networks~\cite{st1,st2,st3,st4}.
+Contributions which are most similar to LOSD are mentioned in this section.
+In~\cite{fb1}, data obtained only from Facebook is reported.
+With such a focus, the authors make available a number of statistics,
+but the data is offline at least since 2010.
+Linked human social network data is scarcely found in the scientific community.
+In~\cite{foaf1}, the authors presented a set of tools to obtain linked social data available in the public data cloud, and made available a dataset from the Advogato platform,
+dedicated to free software developers linked by trust relatioships.
+There are various datasets which makes available data obtained from Twitter (e.g.~\cite{tw1,tw2,t3,t4}),
+most often with a specific focus (users, tweets, hashtags, etc)
+and not presented to the scientific community by means of a research article.
+In summary, no human social network dataset presented to the
+scientific community containts the diverse provenance used in LOSD,
+potentially because researchers did not have the means to acquire and
+share the data described in Section~\ref{acq}.
+
+
 
 % \subsection{Benchmarking in the analysis of complexity}
 
-\section{Materials}\label{materials}
-Data was gathered from:
-\begin{itemize}
-    \item public APIs (Twitter, Email);
-    \item public logs (IRC and AA);
-    \item Netvizz software~\cite{netvizz} and subsequent donation by users (Facebook);
-    \item donation by system administrators (AA, ParticipaBR, Cidade Democr\'atica).
-\end{itemize}
-
-Integration and uniformity of access is obtained through linked data
-representation, as exposed in Section~\ref{queries}.
-This section introduce the underlying data in very concise terms.
-One should access the Supporting Information document for
-a thorough presentation of the database.
-
-\subsection{Snapshots}
-Of central importance to presented database is the concept of a snapshot.
-A snapshot is herein a set of data gathered together, at a contiguous time
-unit.
-Examples: the first 20 thousand email messages of an email list
-comprises a snapshot; the tweets from the MAMA music event is a
-snapshot; the friendship, interaction and posts structures of a facebook
-group, prospected at the same time, is a snapshot.
-
-\subsection{Facebook data}
-Friendship ego networks (networks whose constituents are friends of an user)
-were donated from individual users in 2013 and 2014.
-Friendship and interaction networks from groups were gathered from
-groups where the first author was a participant.
-Additionally, some groups have post texts along some metadata, such as
-the number of likes.
-
-\subsection{Twitter data}
-Tweets were gathered through the Twitter streaming public API.
-Each snapshot is unified by a distinct hashtag.
-Edges are canonically yield by retweets but replies and user mentions
-are also kept in the database.
-
-\subsection{IRC data}
-Public IRC logs were used to render IRC snapshots.
-The database has records of users to which the message is directed to or
-mentions.
-
-\subsection{Email data}
-Email snapshots refer to individual email lists.
-All messages were obtained from the Gmane public email database~\cite{gmane}.
-Each message has the original text and the text without some of the lines
-from previous messages or that are software code.
-Most importantly, each message instance holds the ID of the message it is
-a reply to, if any.
-
-\subsection{ParticipaBR data}
-The ParticipaBR is a Brazilian federal platform for social participation.
-Texts are derived from blog posts and networks are derived from
-friendship and interaction criteria.
-
-
-\subsection{Cidade Democr\'atica data}
-Cidade Democr\'atica is a Brazilian civil society social participation portal.
-Data gathered is complex in the number of types of instances.
-
-\subsection{AA data}
-The Algorithmic Autoregulation~\cite{aa} is a software development
-methodology based on testifying and sharing ongoing work.
-The data was gathered from different versions of the system and from an IRC
-log.
-
 \section{Methods}
-Data is represented as linked open data through
-RDF and ontologicaly described through a data-driven ontology synthesis
-method.
+LOSD is expressed as linked data through RDF
+and is ontologicaly described through the
+data-driven ontology synthesis method presented in Section~\ref{ont}.
+
+\subsection{Data acquisition}\label{acq}
+Research involving human subjects raise well-known ethic issues~\cite{}.
+Furthermore, the online social networking platforms often restrict access
+to the data and declare illegal the use of their data through web crowlers~\cite{ile1,ile2}.
+In this context, research using data, e.g. from Facebook, is considered
+problematic if not prohibited.
+We reached a potential solution to this issue through continuated research with
+collaborators in the fields of phylosophy, social sciences, and psychology.
+The conceptual framework is presented in~\cite{antphy,antphy2}, and in essence
+consists in researching first the social networks related to the researchers,
+and keeping the procedures, data, algorithms and results publicly available.
+This practices enabled collecting and sharing the data in LOSD.
+Notice that, although Twitter data is available through public APIs, the other sources are more problematic.
+
+% download via netviz when fb allowed it, donations
+% twitter, bots, gmane
+% contact with developers of AA, PBR, CD
+% Anthropological physics
 
 \subsection{Linked open data}
 Linked data refers to data published in the web in such a way that it is
 machine readable and conforms to a set of best practices.
-The web of data is constructed with documents on the web 
+The yielded web of data is composed of documents on the web
 such as the web of HTML documents.
-In practice, the idea of linked data can me summarized
+In practice, the publication of linked data can me summarized
 by 1) the use of RDF to publish data on the web and 2) the use of RDF
-links to interlink data from different sources.
+links to interlink data from different sources~\cite{ld1,ld2}.
 The web is expected to be interconnected and to grow by the systematic application of four
 steps~\cite{lee1}:
 \begin{itemize}
     \item Use URIs to identify things~\cite{uri}.
     \item Use HTTP URIs.
-    \item Provide useful information when an URI is accessed via HTTP.
+    \item Provide useful information when a URI is accessed via HTTP.
     \item Provide other URIs in the description of resources so human
         and machine agents can perform discovery.
 \end{itemize}
 
-The Linked Open Data~\cite{lod} builds an ever growing cloud of data,
+The Linked Open Data~\cite{lod} is a constantly growing cloud of data,
 the global data space, which is usually
 conceived as centered around the DBPedia, a linked data representation
-of data from Wikipedia~\cite{dbpedia0,dbpedia}.
+of data from Wikipedia~\cite{dbpedia0,dbpedia},
+and sometimes called the Giant Global Graph (GGG, akin to the WWW).
 
 \subsection{RDF}
 The Resource Description Framework (RDF), a W3C
 recommendation, is a model for data
-interchange.
+interchange~\cite{w3cr}.
 It is based on the idea of making statements about resources in the form
 of triples, i.e. expressions in the form ``subject - predicate -
 object''.
 RDF can be serialized in several file formats, including RDF/XML,
-Turtle and Manchester, all which, in essence, represent a labeled and
+Turtle and Manchester, which all, in essence, represent a labeled and
 directed multi-graph.
 RDF may be stored in a type of database called a triplestore~\cite{rdf}.
 
 As an example of an RDF statement, the following triple in the Turtle
 format asserts that ``the paper has color white'':\\
-\texttt{http://example.org/Things\#Paper http://example.org/hasColor\\
-http://example.org/Colors\#White .}
+\texttt{http://example.org/Thing\#Paper http://example.org/hasColor\\
+http://example.org/Color\#White .}
 
-\subsection{Data-driven ontology synthesis}
-OWL Ontologies are critical tools to describe taxonomies and the
-structure of knowledge.
+\subsection{RDFS and OWL ontologies}\label{sont}
+One of the most important notions of the semantic web is that of an ontology~\cite{ont}.
+An ontology, in this context, is a formalized conceptualization, comprised by
+concepts and relations between the concepts and between the relations themselves.
+In current semantic web, most simple ontologies are written using the RDFS protocol,
+by which one can specify, among other things~\cite{rdfs}:
+\begin{itemize}
+  \item concepts;
+  \item properties, which are concepts that are used as predicates and thus relate concepts;
+  \item special relations between concepts that state that one concept is more general than the other\footnote{This
+          kind of relation is called hypernymy. Examples: mammal is a hypernym of monkey, drink is a hypernym of beer.};
+  \item the subjects and objects that can occurs in a triple where a specific property is a predicate.
+\end{itemize}
+
+One can also write an ontology using the OWL protocol,
+with which all the expressive capabilities of RDFS are
+available, but one can also, among other things~\cite{owl}:
+\begin{itemize}
+  \item state ``property axioms'', i.e. specify if a property is e.g. reflexive or transitive;
+  \item state ``class restrictions'', i.e. specify if a class instance e.g. necessarily holds a relation to another class instance or data.
+\end{itemize}
+OWL has a richer vocabulary than RDFS and is (way more) complex.
+This complexity is a drawback together with the greater computational cost
+for performing inference.
+The advantage is the greater power to represent conceptualizations.
+Using ontologies enables automated reasoning.
+For example, if a property \textttt{:r} is known to relate only mokeys to trees,
+then, if there is a triple \textttt{:a :r :b}, the instance \textttt{:a} is considered a monkey,
+and instance \textttt{:b} is considered a tree,
+even if there is no explicit declaration similar
+to \textttt{:a rdf:type :Mokey}.
+
+For the data described in this article, the following features are most relevant~\cite{rdfs,owl}:
+\begin{itemize}
+  \item Using RDFS, one may define a property domain, i.e. the class instances that are allowed as the object in a triple with the property.
+  \item Using RDFS, one may define a property range, i.e. the class instances that are allowed as the predicate in a triple with the property.
+  \item Using OWL, one may define an existential restriction for a class \textttt{:C},
+    i.e. declare that an instance \textttt{:C\#I} of such class has at least one relation with a property \textttt{:p} and a class \textttt{:C2} in the form
+    \textttt{:C\#I :p :C2\#I}, where \textttt{:C2\#I} is an instance of the class \textttt{:C2}.
+  \item Using OWL, one may define an universal restriction for a class \textttt{:C},
+    i.e. declare that any relation of an instance \textttt{:C\#I} of such class, with a property \textttt{:p} of the form \textttt{:C\#I :p :CX\#I},
+    implies that \textttt{:CX\#I} is an instance of a specific class, e.g. \textttt{:C2}.
+\end{itemize}
+
+
+\subsection{Data-driven ontology synthesis}\label{ont}
+OWL Ontologies are tools to describe taxonomies and the
+structure of knowledge~\cite{owl1}.
 Most ontologies are created by domain experts even though the data they
 arrange is often given by a software system and has a predefined
-structure.  
+structure~\cite{owl2}. 
 
 We developed a simple ontology synthesis method that probes
-the ontological structure in data with
+the ontological structure in the data with
 SPARQL queries and post-processing.
 The results are OWL code and diagrams which are available in the
-Supporting Information document.
+Supporting Information document of this article.
 The method can be extended to comprise further OWL axioms and restrictions,
 but is currently performed to fit present needs with maximum simplicity.
 Present needs are limited to informative figures and
 the steps implemented are as follows:
 \begin{enumerate}[leftmargin=0cm]
     \item Obtain all distinct classes with the query:\\
-        \textttt{SELECT DISTINCT ?class\_uri WHERE \{ ?s a ?class\_uri \}}
+        \h\textttt{SELECT DISTINCT ?class\_uri WHERE \{ ?s a ?class\_uri .\}}
 \item For each class, obtain the properties that occur as predicates in triples where the subject is an instance of the class:\\
-	\textttt{SELECT DISTINCT ?property\_uri WHERE \{ ?s a <class\_uri> . ?s ?property\_uri ?o . \}}\\
+	\h\textttt{SELECT DISTINCT ?property\_uri WHERE \{ ?s a <class\_uri> . ?s ?property\_uri ?o .\}}\\
 Such properties are used to assert existential and universal restrictions for the class.
 \item Compare the total number of individuals (\textttt{?cs1}) of the class (\textttt{class\_uri}) with
 	the number of such individuals (\textttt{?cs2}) that are subjects of at least one triple where 
-	the predicate is the property (\textttt{property\_uri}).
-	If the numbers match, there is an existential restriction for the class. The queries are:\\
-	\textttt{SELECT (COUNT(DISTINCT ?s) as ?cs1) WHERE \{ ?s a <class\_uri> \}}\\
-	\textttt{SELECT (COUNT(DISTINCT ?s) as ?cs) WHERE \{\\
-	\h ?s a <class\_uri>. ?s <property\_uri> ?o .\\ \}}
-\item Find the number of instances which are subjects of triples where the predicate is the property but are not instances of the class.
-	If there is zero of such instances, there is an universal restriction:\\
-	\textttt{SELECT (COUNT(DISTINCT ?s)=0 as ?cs) WHERE \{\\
-	\h ?s <property\_uri> ?o . ?s a ?ca . FILTER(str(?ca) != 'class\_uri')\\ \}}
-\item To keep a record of the restrictions (and occurring triples), get all object classes or datatypes where the subject is an instance of the class and the predicate is the property:\\
-	\textttt{SELECT DISTINCT ?co (datatype(?o) as ?do) WHERE \{\\
-		\h ?s a <class\_uri>. ?s <property\_uri> ?o . OPTIONAL \{ ?o a ?co . \}\\
-\}}
+        the predicate is the property (\textttt{property\_uri}) and the object is
+        an instance of the same class (\textttt{class2\_uri}).
+	The queries are:\\
+	\h\textttt{SELECT (COUNT(DISTINCT ?s) as ?cs1) WHERE \{ ?s a <class\_uri> \}}\\
+        \h\textttt{SELECT DISTINCT ?oc WHERE \{\\
+	\h\h ?s a <class\_uri>. ?s <property\_uri> ?o . ?o a ?oc . \\ 
+        \h\}}\\
+        Then, for each object class (\textttt{object\_curi}) in \textttt{?oc}:\\
+	\h\textttt{SELECT (COUNT(DISTINCT ?s) as ?cs2) WHERE \{\\
+	\h\h ?s a <class\_uri>. ?s <property\_uri> ?o . ?o a <object\_curi> .\\         \h\}}\\
+        When \textttt{?cs1} matches \textttt{?cs2}, an existential restriction is found. And with the query:
+	\h\textttt{SELECT (COUNT(DISTINCT ?s) as ?cs) WHERE \{\\
+	\h\h ?s a <class\_uri> . ?s <property\_uri> ?o . ?o a ?oc .\\
+        \h\h FILTER(str(?oc) != 'object\_curi')\\
+        \h\}}\\
+       When \textttt{?cs} is 0, a universal restriction is found. 
+\item To keep a record of further restrictions, get all object classes or datatypes where the subject is an instance of the class and the predicate is the property:\\
+	\h\textttt{SELECT DISTINCT ?co (datatype(?o) as ?do) WHERE \{\\
+        \h\h ?s a <class\_uri>. ?s <property\_uri> ?o . OPTIONAL \{ ?o a ?co . \}\\
+        \h\}}
     \item Obtain all distinct properties:\\
-        \textttt{SELECT DISTINCT ?p WHERE \{ ?s ?p ?o \}}
+        \h\textttt{SELECT DISTINCT ?p WHERE \{ ?s ?p ?o \}}
     \item Check if each property is functional, i.e. if it
         occurs at most once with each subject.
         This is performed by counting the objects and further verifying
         that they are at most one. The query is:\\
-        \textttt{SELECT DISTINCT (COUNT(?o) as ?co) WHERE \{ ?s
+        \h\textttt{SELECT DISTINCT (COUNT(?o) as ?co) WHERE \{ ?s
             <property\_uri> ?o \} GROUP BY ?s}
-    \item For each property, find the incident range and domain with the
+          \item For each property, find the incident range (possible subjects) and domain (possible objects) with the
         queries:\\
-        \textttt{SELECT DISTINCT ?co (datatype(?o) as ?do) WHERE \{\\
-			\h ?s <property\_uri> ?o . OPTIONAL \{ ?o a ?co . \}\\\}} \\
+        \h\textttt{SELECT DISTINCT ?co (datatype(?o) as ?do) WHERE \{\\
+        \h\h ?s <property\_uri> ?o . OPTIONAL \{ ?o a ?co . \}\\
+        \h\}} \\
         and \\
-        \textttt{SELECT DISTINCT ?cs WHERE \{ ?s <property\_uri> ?o . ?s a ?cs . \}}
+        \h\textttt{SELECT DISTINCT ?cs WHERE \{ ?s <property\_uri> ?o . ?s a ?cs . \}}
 %     \item For each instance of each class, get all distinct predicates.
 %         For each predicate, check if all instances of the class
 %         hold such relationship (existential restriction):\\
@@ -306,24 +358,93 @@ Such properties are used to assert existential and universal restrictions for th
 %         (universal restriction):\\
 %         \textttt{SELECT DISTINCT ?s WHERE \{ ?s <property\_uri> ?o . \}}
 %     \item Draw each class, each property and the overall figure.
-\item Render diagrams as exposed in the next section and in the Supporting Information file.
+      \item Render diagrams to achieve figures as exemplified in Section~\ref{sdia} and in the Supporting Information document.
 %      \item Make \textttt{rdfs:subClassOf} and \texttt{rdfs:subPropertyOf}
 %          statements to better organize knowledge and link to third party
 %          ontologies and data. This step is left aside in current LOSD as 
 \end{enumerate}
+
+
+\section{Materials}\label{materials}
+Data was gathered from:
+\begin{itemize}
+    \item public APIs (Twitter, Email);
+    \item public logs (IRC and AA);
+    \item Netvizz software~\cite{netvizz} and subsequent donation by users (Facebook);
+    \item donation by system administrators (AA, ParticipaBR, Cidade Democr\'atica).
+\end{itemize}
+
+Integration and uniformity of access is obtained through linked data
+representation, as described in Section~\ref{queries}.
+This section introduces the underlying data in very concise terms.
+One should access the Supporting Information document for
+a more information about the dataset.
+
+\subsection{Snapshots}
+Of central importance to presented database is the concept of a snapshot.
+A snapshot is herein a set of data gathered together, at a contiguous time
+unit.
+Examples: the first 20 thousand email messages of an email list
+comprises a snapshot; the tweets from the MAMA music event is a
+snapshot; the friendship, interaction and posts structures of a facebook
+group, prospected at the same time, is a snapshot.
+
+\subsection{Facebook data}
+Friendship ego networks (networks whose nodes represent friends of a user)
+were donated from individual users in 2013 and 2014.
+Friendship and interaction networks from groups were gathered from
+groups where the first author was a participant.
+Additionally, some groups have post texts along some metadata, such as
+the number of likes.
+
+\subsection{Twitter data}
+Tweets were gathered through the Twitter streaming public API.
+Each snapshot is unified by a distinct hashtag.
+Network links are canonically yield by retweets,
+but replies and user mentions are also kept in the database.
+
+\subsection{IRC data}
+Public IRC (Internet Relay Chat) logs were used to obtain IRC snapshots.
+The database has records of relations yield by directed messages and
+mentions.
+
+\subsection{Email data}
+Email snapshots refer to individual email lists.
+All messages were obtained from the Gmane public email archive~\cite{gmane}.
+Each message has the original text and the text without some of the lines
+from previous messages or that are software code or author signature.
+Most importantly, each message instance holds the ID of the message it is
+a reply to, if any, which enables the achievement of interaction networks~\cite{bird,stab}
+
+\subsection{ParticipaBR data}
+ParticipaBR was a Brazilian federal platform for social participation,
+the most important platform from the myriad of social participation platforms
+that were available in 2011-2018~\cite{spbr}.
+Texts are derived from blog posts and networks may be obtained from
+friendship and interaction criteria.
+
+\subsection{Cidade Democr\'atica data}
+Cidade Democrática is a Brazilian civil society social participation portal.
+Data gathered is complex in the number of types of instances.
+
+\subsection{AA data}
+AA (Algorithmic Autoregulation~\cite{aa,aa2}) is a software to keep track of dedications,
+it is based on testifying and sharing ongoing work.
+The data was gathered from different versions of the system and from an IRC
+log.
  
 \section{Results}
 \label{outline}
-Current overall results concern data selection and preparation for knowledge discovery.
+Current overall results concern data selection and preparation for data discovery.
 The main result is the data made available, which enables benchmarking of scientific results
-and easy experimentations.
+and easy experimentations, and no compliant dataset was found by the authors.
 Secondary results include data outline through figures and tables,
 software support and example SparQL queries.
 
 \subsection{Standardization}
-The data is embedded into standard URIs and triples, i.e. translated to RDF.
+The data is embedded into URIs and triples, i.e. translated to RDF.
 URIs are built in the namespace \url{http://purl.org/socialparticipation/participationontology/}
-which are identified herein with the prefix \textttt{po:}.
+which are identified herein with the prefix ``\textttt{po:}''.
 Classes and properties are built by adding a suffix to the root, as in \textttt{po:Participant} or \textttt{po:text}.
 Classes have ``UpperCamelCase'' suffixes while properties have ``lowerCamelCase'' suffixes.
 All class instances, such as participants, messages, friendships and
@@ -342,9 +463,9 @@ To enable annotations which differ when the snapshot changes,
 The observation instances are then linked to the snapshot and the
 data.
 
-Instances are built on top of the class they derive from plus a hashtag character,
+Instance URIs are built using the URI from the class they derive from plus a hashtag character,
 a provenance string (e.g. \textttt{facebook-legacy} or
-\textttt{participabr-legacy}) of the snapshot they refer to, and an identifier;
+\textttt{participabr-legacy}), and an identifier;
 i.e. \textttt{po:Participant\#<provenance-legacy>-<id>}.
 All snapshot URIs follow the formation rule: \textttt{po:<SnapshotProvenance>\#<snapshot\_id>}.
 All snapshot ids follow the formation rule: \textttt{<platform>-legacy-<further\_identifier>}; e.g.
@@ -363,136 +484,250 @@ All snapshot ids follow the formation rule: \textttt{<platform>-legacy-<further\
 %% number of users
 % diagrams in the supporting information file
 \subsection{Software tools}
-The database is released with software for rendering itself, analyses and
-multimedia artifacts.
+The authors made available software for rendering analyses and
+the data set itself.
 \subsubsection{Triplification routines}
 For each social platform there is a \emph{triplification} routine,
-i.e. a script for translating data to RDF.
+i.e. a script for expressinf the data as RDF.
 Original formats and further observations are presented in
 Table~\ref{tab:provenance}.
+  {\renewcommand{\arraystretch}{1.2}
 \begin{table*}[h!]\scriptsize
 \begin{center}
 \caption{Social platforms, original formats and further observations for
 the database.}\label{tab:provenance}
-\begin{tabular}{| l || p{3cm} | p{3cm} | c |}\hline
-    \textbf{social platform} & \textbf{original format} & \textbf{further observations} & \textbf{toolbox} \\\hline\hline
+\begin{tabular}{ l | p{3cm} p{3cm} c }
+    \textbf{social platform} & \textbf{original format} & \textbf{further observations} & \textbf{toolbox} \\\specialrule{1.5pt}{1pt}{1pt}
     AA & MySQL and MongoDB databases; IRC text logs & donated by AA users & Participation~\cite{participation} \\\hline
     Cidade Democrática & MySQL database & donated by admins & Participation \\\hline
-    Email & mbox & obtained through Gmane public database & Gmane~\cite{gmane} \\\hline
+    Email & mbox & obtained through the Gmane public archive & Gmane~\cite{gmane} \\\hline
     Facebook & GDF, GML and TAB & obtained through Netvizz~\cite{netvizz} & Social~\cite{social} \\\hline
     IRC & plain text log & obtained through Supybot logging & Social \\\hline
     ParticipaBR & PostgreSQL database & donated by admins & Participation \\\hline
-    Twitter & JSON & obtained through Twitter streaming API & Social \\\hline
+    Twitter & JSON & obtained through Twitter streaming API & Social \\
 \end{tabular}\end{center}
 \end{table*}                    
+  }
 \subsubsection{Topological and textual analysis}\label{ana}
 Routines are available for taking topological and textual measures from
-the database.
-Auxiliary routines, such as performing principal component analysis
-and taking Kolmogorov-Smirnov measures, are available
-to ease pattern recognition.
-Single, timeline and multi-scale analyzes are automated.
+the LOSD data.
+  Auxiliary routines, such as for performing principal component analysis (PCA)
+  and obtaining statistics derived from the Kolmogorov-Smirnov test~\cite{kol}, are available to ease pattern recognition.
 
-\subsubsection{Multimedia rendering}\label{media}
-It is a core purpose of framework to provide routines for rendering
-audiovisualizations of the data.
-Social structures are rendered into music, images and video animations
-through the Percolation toolbox~\cite{percolation} in association with
-the Music and Visuals toolboxes~\cite{music,visuals}.
+% \subsubsection{Multimedia rendering}\label{media}
+% It is a core purpose of framework to provide routines for rendering
+% audiovisualizations of the data.
+% Social structures are rendered into music, images and video animations
+% through the Percolation toolbox~\cite{percolation} in association with
+% the Music and Visuals toolboxes~\cite{music,visuals}.
 
-\subsubsection{Migration from deprecated toolboxes}
-Routines mentioned in Sections~\ref{ana} and~\ref{media} are being migrated from deprecated
-toolboxes~\cite{gmaneLegacy,percolationLegacy} into newly designed
-toolboxes~\cite{percolation,visuals}.
+% \subsubsection{Migration from deprecated toolboxes}
+% Routines mentioned in Sections~\ref{ana} and~\ref{media} are being migrated from deprecated
+% toolboxes~\cite{gmaneLegacy,percolationLegacy} into newly designed
+% toolboxes~\cite{percolation,visuals}. TTM, recover?
 
-\subsection{Diagrams of the data and auxiliary tables}
-The database exploration can be assisted through diagrams which expose
+\subsection{Diagrams of the data and auxiliary tables}\label{sdia}
+LOSD navigation may be assisted through diagrams which describes
 the structure from each provenance.
 Such diagrams are in the Supporting Information document
-with some tables to ease understanding of the provided data.
-A simplified example is given in Figure~\ref{dia} where the friendship
-structure of the Facebook snapshots are exposed.
+together with tables to facilitate the appreciation of the provided data.
+A very simple example is given in Figure~\ref{dia} where the friendship
+structure of the Facebook snapshots is revealed.
 
 \begin{figure}[!ht]
     \centering
     \includegraphics[width=0.5\textwidth]{ontologies/facebook-legacy-AntonioAnzoategui18022013Friendship.ttl/draw}
-    \caption{A diagram of the structure involved in the friendship networks
-    of the Facebook snapshot. A green edge denotes an OWL existential class restriction; an inverted nip denotes an OWL universal class restriction; a full (non-dashed) edge denotes an OWL functional property axiom. Further information and complete diagrams for each provenance are in the Supporting Information document.}\label{dia}
+    \caption{A diagram of the core structure that entails the friendship networks
+    of the Facebook snapshots. A green edge denotes an OWL existential class restriction; an inverted nip denotes an OWL universal class restriction; a full (non-dashed) edge denotes an OWL functional property axiom (see Section~\ref{sont}). Further information and complete diagrams for each provenance are available in the Supporting Information document.}\label{dia}
 \end{figure}
 
-
 \subsection{SPARQL queries}\label{queries}
-There are numerous useful and general purpose SPARQL queries to be performed against the database.
-Here we write some of the most basic of such queries selected by their potential to be varied.
-All queries assume the use the preamble \textttt{PREFIX po: <http://purl.org/socialparticipation/po/>}.
+There are numerous useful and general purpose SPARQL queries to be performed against LOSD.
+In this section, a selection of some of the most basic queries are made available due to their potential to be varied.
+All queries assume the preamble \textttt{PREFIX po: <http://purl.org/socialparticipation/po/>}.
 \begin{enumerate}[leftmargin=0cm]
 	\item Retrieve the number of participants:\\
-            \textttt{SELECT (COUNT(DISTINCT ?author) as ?c) WHERE \{
+            \h\textttt{SELECT (COUNT(DISTINCT ?author) as ?c) WHERE \{
             ?author a po:Participant . \} }
 	\item Retrieve the number of relations, be them interactions or
             friendships:\\
-            \textttt{SELECT (COUNT(?interaction) as ?c) WHERE \{\\
-                    \h \{ ?interaction a po:Friendship \} UNION \{ ?interaction
-                    a po:Interaction \} UNION\\
-                    \h \{ ?interaction po:retweetOf
-                    ?message \} UNION \{ ?interaction po:replyTo ?message
+            \h\textttt{SELECT (COUNT(?interaction) as ?c) WHERE \{\\
+            \h        \h \{ ?interaction a po:Friendship \} UNION \{ ?interaction
+                    a po:Interaction \}\\
+            \h        \h  UNION \{ ?interaction po:retweetOf
+                    ?message \} \\
+            \h\h  UNION \{ ?interaction po:replyTo ?message \}\\
+            \h        \h UNION \{ ?interaction po:directedTo ?participant
                     \}\\
-                    \h UNION \{ ?interaction po:directedTo ?participant
-                    \}\\ \} }
-	\item Retrieve all text produced by an specific user:\\
-            \textttt{SELECT (CONCAT(?text) as ?texts) WHERE \{\\
-                    \h ?activity po:author <user\_uri> . ?activity po:text ?text .\\
-    \}}
+            \h\} }
+                  \item Retrieve all text produced by a specific user with URI \textttt{user\_uri}:\\
+            \h\textttt{SELECT (CONCAT(?text) as ?texts) WHERE \{\\
+            \h        \h ?activity po:author <user\_uri> . ?activity po:text ?text .\\
+            \h\}}
         \item List 1000 users (URIs and names) with the most friendships and the number of
             friendships in descending order by the number of friendships:\\
-            \textttt{SELECT DISTINCT ?participant (COUNT(?friendship)
-            as ?c) WHERE \{\\
-                \h ?friendship a po:Friendship . ?friendship po:member ?participant . \\
-            \} ORDER BY DESC(?c) LIMIT 1000}
-        \item Retrieve text messages with the word ``pineapple'' (case insensitive):\\
-            \textttt{SELECT ?text WHERE \{ \\
-                    \h ?activity po:text ?text . FILTER regex(?text, 'pineapple', 'i')\\
-    \}}
+            \h\textttt{SELECT DISTINCT ?participant (COUNT(?friendship) as ?c) WHERE \{\\
+            \h    \h ?friendship a po:Friendship . ?friendship po:member ?participant . \\
+            \h\} ORDER BY DESC(?c) LIMIT 1000}
+        \item Retrieve text messages with the word ``crucial'' (case insensitive):\\
+            \h\textttt{SELECT ?text WHERE \{ \\
+            \h        \h ?activity po:text ?text . FILTER regex(?text, 'crucial', 'i')\\
+            \h\}}
 \item List participants and respective full names whose name has the substring ``Amanda'':\\
-    \textttt{SELECT DISTINCT ?participant ?name WHERE \{\\
-    \h ?participant po:observation ?obs . ?obs po:name ?name .\\
-    \h FILTER regex(?name, 'Amanda', 'i') \\
-    \}}
-\item Return all pairs of friends of a participant which are friends themselves:\\
-    \textttt{SELECT DISTINCT ?friend1 ?friend2 WHERE \{\\
-     \h       ?friendship1 po:member <participant\_uri> .  ?friendship1 po:member ?friend1 .\\
-     \h       ?friendship2 po:member <participant\_uri> .  ?friendship2 po:member ?friend2 .\\
-     \h       ?friendship3 po:member ?friend1 .  ?friendship3 po:member ?friend2 .\\
-    \}}
+    \h\textttt{SELECT DISTINCT ?participant ?name WHERE \{\\
+    \h\h ?participant po:observation ?obs . ?obs po:name ?name .\\
+    \h\h FILTER regex(?name, 'Amanda', 'i') \\
+    \h\}}
+  \item Return all pairs of friends of a participant (with URI \textttt{participant\_uri}) which are friends themselves:\\
+     \h\textttt{SELECT DISTINCT ?friend1 ?friend2 WHERE \{\\
+     \h\h       ?friendship1 po:member <participant\_uri> . ?friendship1 po:member ?friend1 .\\
+     \h\h       ?friendship2 po:member <participant\_uri> . ?friendship2 po:member ?friend2 .\\
+     \h\h       ?friendship3 po:member ?friend1 . ?friendship3 po:member ?friend2 .\\
+     \h\}}
 \item Return all interactions from replies in a snapshot:\\
-    \textttt{SELECT ?from ?to WHERE \{\\
-          \h  ?message1 po:snapshot <snapshot\_uri> .  ?message2 po:replyTo ?message1 .\\
-          \h  ?message1 po:author ?from .  ?message2 po:author ?to .\\
-    \}}
+    \h\textttt{SELECT ?from ?to WHERE \{\\
+    \h      \h  ?message1 po:snapshot <snapshot\_uri> .  ?message2 po:replyTo ?message1 .\\
+    \h      \h  ?message1 po:author ?from .  ?message2 po:author ?to .\\
+    \h\}}
 \end{enumerate}
+
+\subsubsection{Obtaining the networks}\label{snet}
+A complex network $N=(n,l,m)$ may be regarded essentially as
+a set of nodes $n$, a set of links $l$ that related the nodes,
+and metadata $m$ such as node and link weights, text related to the nodes, etc.
+This section presents the queries for obtaining networks using LOSD
+which are promptly envisioned by the authors.
+Many other networks may be obtained because the criteria that entail
+links, and restrains in the set of nodes and of links,
+are determined by the research being developed.
+Furthermore, we do not focus here on multilayer networks (e.g. bipartite networks), or on multigraphs (or muldimensional networks), i.e. on networks with more than one type of node or of link.
+Here is a list with short descriptions of the networks and the corresponding SPARQL queries:
+\begin{itemize}
+  \item Overall facebook friendship network available in LOSD:
+\begin{lstlisting}[language=spq]
+SELECT ?a1 ?a2 WHERE { 
+  ?f a po:Friendship .  ?f po:member ?a1 . ?f po:member ?a2 .
+}
+\end{lstlisting}\vspace{-0.2cm}
+  \item Overall facebook friendship network derived only from ego networks:
+\begin{lstlisting}[language=spq]
+SELECT ?a1 ?a2 WHERE { 
+  ?f a po:Friendship . ?f po:snapshot ?s . ?s po:isEgo True .
+  ?f po:member ?a1 . ?f po:member ?a2 .
+
+}
+\end{lstlisting}\vspace{-0.2cm}
+  \item Overall facebook interaction network available in LOSD:
+\begin{lstlisting}[language=spq]
+SELECT ?a1 ?a2 WHERE { 
+  ?f a po:Interaction .
+  ?f po:interactionFrom ?a1 . ?f po:interactionTo ?a2 .
+}
+\end{lstlisting}\vspace{-0.2cm}
+  \item Email interaction network for email list shapshot with URI \verb|http://xxxx|, with the all (preliminarily cleaned) text related to each message (node atribute):
+\begin{lstlisting}[language=spq]
+SELECT ?a1 ?a2 ?t1 ?t2 WHERE { 
+  ?m po:snapshot <http://xxxx> . ?m a po:EmailMessage .
+  ?m po:author ?a1 . ?m po:replyTo ?m2 . ?m2 po:author ?a2 .
+  ?m po:cleanText ?t1 . ?m2 po:cleanText ?t2 .
+}
+\end{lstlisting}\vspace{-0.2cm}
+  \item IRC users related by messages directed to each other, and the text of each message (link attribute):
+\begin{lstlisting}[language=spq]
+SELECT ?a1 ?a2 ?t WHERE { 
+  ?m a po:IRCMessage .  ?m po:author ?a1 . ?m po:directedTo ?a2 .
+  ?m po:cleanText ?t .
+}
+\end{lstlisting}\vspace{-0.2cm}
+  \item Twitter users related by retweets:
+\begin{lstlisting}[language=spq]
+SELECT ?a1 ?a2 WHERE { 
+  ?m1 po:retweetOf ?m2 . ?m1 po:author ?a1 . ?m2 po:author ?a2 .
+}
+\end{lstlisting}\vspace{-0.2cm}
+  \item Twitter users related by user mentions and the text of the tweets:
+\begin{lstlisting}[language=spq]
+SELECT ?a1 ?a2 ?t WHERE { 
+  ?m a po:Tweet . ?m po:author ?a1 . ?m po:userMention ?a2 .
+  ?m po:text ?t .
+}
+\end{lstlisting}\vspace{-0.2cm}
+  \item Friendship network from ParticipaBR, with the date when each frienship was established:
+\begin{lstlisting}[language=spq]
+SELECT ?a1 ?a2 ?d WHERE { 
+  ?s po:shapshotID 'participabr-legacy' . ?f po:snapshot ?s .
+  ?f a po:Friendship . 
+  ?f po:member ?a1 . ?f po:member ?a2 . ?f po:createdAt ?d .
+}
+\end{lstlisting}\vspace{-0.2cm}
+  \item Interaction network from ParticipaBR obtained by comments on articles:
+\begin{lstlisting}[language=spq]
+SELECT ?a1 ?a2 WHERE { 
+  ?s po:shapshotID 'participabr-legacy' . ?a po:snapshot ?s .
+  ?a a po:Article .
+  ?a po:author ?a1 . ?c po:article ?a . ?c po:author ?a2 .
+}
+\end{lstlisting}\vspace{-0.2cm}
+  \item Interaction network from ParticipaBR obtained by comments and votes on comments:
+\begin{lstlisting}[language=spq]
+SELECT ?a1 ?a2 WHERE { 
+  ?s po:shapshotID 'participabr-legacy' . ?c po:snapshot ?s .
+  ?c a po:Comment .  ?c po:author ?a1 .
+  { ?v a po:Vote . ?v po:reference ?c . ?v po:author ?a2 .
+  } UNION {
+    ?c2 a po:Comment . ?c2 po:replyTo ?c . ?c2 po:author ?a2 .
+  }
+}
+\end{lstlisting}\vspace{-0.2cm}
+  \item Interaction network from Cidade Democrática obtained by comments on Topics:
+\begin{lstlisting}[language=spq]
+SELECT ?a1 ?a2 WHERE { 
+  ?s po:shapshotID 'cidadedemocratica-legacy' . ?t po:snapshot ?s .
+  ?t a po:Topic .  ?t po:author ?a1 .
+  ?c a po:Comment . ?c po:topic ?t . ?c po:author ?a2 .
+}
+\end{lstlisting}\vspace{-0.2cm}
+  \item AA users, related by AA session validations:
+\begin{lstlisting}[language=spq]
+SELECT ?a1 ?a2 WHERE { 
+  ?s po:author ?a1 . ?s po:checkParticipant ?a2 .
+}
+\end{lstlisting}\vspace{-0.2cm}
+\end{itemize}
+
+Again, this is not an exaustive list.
+For example, other instances which are related in LOSD, and have authors,
+also yield valid criteria for interaciton networks.
+For a less canonical example for obtaining networks, links may be derived from sufficiently similar vocabulary used by participants, or from activity is sufficiently similar dates, which yield networks which are not interaction or friendship networks.
+% mk figure with two participants and their relation though response, retweet, or friendship
 
 \section{License issues}
 % Facebook, Twitter, IRC, Gmane, Participa, CD, AA.
-The database presented in this article is released under public domain.
+The data presented in this article is released under public domain.
 Computer scripts are in git repositories and PyPI Python packages, also under public domain.
 Although most data is already in open licenses (Twitter, Email, Participabr, Cidade Democrática, and AA data), IRC and Facebook data was collected
-and donated by the individuals which yield the data.
-This rises the the understanding of the right to study such data as the right to access the self,
-in parity with anthropological endaviors~\cite{antphy,antphy2}.
+and donated by the individuals which yield the data, in a practice compliant with the framework described in Section~\ref{acq}.
 % Of central importance to the obtainment of the data is the concept of
 % anthropological physics~\cite{antphy}
 \section{Conclusions}
 \label{conclusions}
-The database presented in this article
-constitutes a large database with diverse provenance.
-Even so, database should be expanded in upon need or requests from feedback.
+This article outlines LOSD, a large human online social networking dataset (with almost 35 million triples) with diverse provenance.
+Tools and procedures used to achieve LOSD, and fundamental queries needed to retrieve the data, are also described to the convenience of the newcommer
+and for a consistent exposition.
+The resulting dataset should be expanded upon need or request from interested parties.
 All data should be available online in the \url{http://linkedopensocialdata.org}
 address in near future to fulfill the purpose of being a common
 repertoire in current research.
-One should reach the diagrams and tables of the 
-Supporting Information document of this article
+All data is publicly available though the endpoint \url{xxxyyyzzz},
+through which the scientific community now has consistent and curated data
+that enables research validation, continuity, and benchmarking.
+The diagrams and tables of the Supporting Information document of this article
 for further directions
 on the available structures and for an overview complement.
+
+% further work: link participants in Facebook with those in ParticipaBR, for example
+% crowsorce more data
+% assure data is 5 starts TTM
 
 % Supporting Information
 % diverse provenance, large database, should be expanded, waits feedback
