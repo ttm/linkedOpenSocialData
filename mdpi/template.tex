@@ -2,7 +2,7 @@
 %  In case you need support, please attach all files that are necessary for compiling as well as the log file, and specify the details of your LaTeX setup (which operating system and LaTeX version / tools you are using).
 
 %=================================================================
-\documentclass[journal,article,submit,moreauthors,pdftex]{Definitions/mdpi} 
+\documentclass[data,datadescriptor,submit,moreauthors,pdftex]{Definitions/mdpi} 
 
 \usepackage{enumitem}
 \hypersetup{
@@ -135,7 +135,7 @@
 
 %=================================================================
 % Full title of the paper (Capitalized)
-\Title{A Linked Open Social Dataset for Scientific Benchmarking}
+\Title{LOSD: A Linked Open Social Dataset for Scientific Benchmarking}
 
 % Author Orchid ID: enter ID or remove command
 \newcommand{\orcidauthorA}{https://orcid.org/0000-0002-9699-629X} % Add \orcidA{} behind the author's name
@@ -170,7 +170,7 @@ The fields of social network analysis and complex networks
 are widely researched.
 In fact, a myriad of results have been reported which are based in
 diverse data, most often not accessible to researchers other than the publishing authors.
-In order to furnish the scientific community with a common repertoire,
+In order to provide the scientific community a common repertoire,
 this work presents an open dataset with diverse provenance of 
 human social online networking.
 Current data was obtained in 2013-16 from well-known online social networking platforms:
@@ -178,10 +178,11 @@ Facebook, Twitter, IRC, Email.
 Data from ParticipaBR, AA, and Cidade Democrática are also supplied as samples of less known instances.
 The linked data representation was adopted in order to
 comply with current best practices, homogenize access, facilitate discovery
-and analyzes which integrate third party and provided instances.
-Futhermore, the method for obtaing and making the data available is potentially novel, and may of use for other research groups.
-This document presents a description, usage remarks and overall statistics of the dataset, which should favor subsequent work in complex and social networks
-  and enhancements to the dataset.
+and analyzes which integrate third party and provided data.
+Futhermore, the method for obtaing and making the data available is potentially novel,
+and may be of use for other research groups.
+This document presents a description, usage remarks and overall statistics of the dataset,
+which should favor subsequent work in complex and social networks and enhancements to the dataset.
 }
 
 % Keywords
@@ -195,7 +196,8 @@ This document presents a description, usage remarks and overall statistics of th
 
 \begin{document}
 \section{Summary}
-The research on human social and complex networks often rely on data that express real phenomena~\cite{c1,c2,c3}.
+The research on human social and complex networks often
+rely on data that express real phenomena~\cite{c1,c2,c3}.
 Such data is regularly not made publicly available,
 which hinders validation of the results
 and does not favor subsequent work.
@@ -206,19 +208,29 @@ Social networks linked data is currently scarce and not stable
 or rigorous enough to be a public reference on statistical physics
 and social networks research~\cite{l1,l2}.
 
-This work presents a collection of linked and open data
+This work presents a linked and open dataset
 derived from online human social networks.
 The dataset is named LOSD (Linked Open Social Data),
 and has been achieved by linking social data into a dataset derived from diverse
 provenance, namely: Facebook, Twitter, IRC, Email groups, ParticipaBR, Cidade Democrática, and AA.
-Such data is proposed as a common and public repertoire for scientific
-research involving networks and textual content.
-In fact, the data has already been used in scientific research~\cite{stab,thesis} (CNPq grant ), and should be used in further research in complex networks and data visualization (FAPESP grant ) which relies on networks enriched by textual data and on dynamic (or time-evolving) networks.
+Such data may be of use as a common and public repertoire for scientific
+research involving complex networks, specially if social networks and textual content are pinpointed.
+In fact, the data has already been used in scientific research~\cite{stab,thesis} (CNPq grant ),
+and should be further used e.g. in researching complex networks and data visualization (FAPESP grant )
+which relies on networks enriched by textual data and on dynamic (or time-evolving) networks.
 
+Data collection was performed by a potentially innovative method which places the researcher
+at the core of data collection, and keeps the resources (e.g. code, data, documents) open,
+in order to ammeliorate ethical issues involved in studying human social systems.
+
+This paper is organized as follows. Next subsection briefly discusses related work.
+Section~\ref{materials} describes the data currently available.
+Section~\ref{methods} describes the methods used for data gathering, translation into RDF linked data, and the synthesis of auxiliary structures.
+Section~\ref{usage} contains direction for using the data. 
 
 \subsection{Related work}
 Most available datasets on human social networks rely on only one source~\cite{o1,o2,o3,o4},
-on specialized communities such as related to research and movies~\cite{s1,s2,s3,s4,s5},
+on specialized communities such as related to research or movies~\cite{s1,s2,s3,s4,s5},
 or present only statistics about social networks, and not the data that yields the networks~\cite{st1,st2,st3,st4}.
 Contributions which are most similar to LOSD are mentioned in this section.
 In~\cite{fb1}, data obtained only from Facebook is reported.
@@ -228,7 +240,7 @@ Linked human social network data is scarcely found in the scientific community.
 In~\cite{foaf1}, the authors presented a set of tools to obtain linked social data available in the public data cloud, and made available a dataset from the Advogato platform,
 dedicated to free software developers linked by trust relatioships.
 There are various datasets which makes available data obtained from Twitter (e.g.~\cite{tw1,tw2,t3,t4}),
-most often with a specific focus (users, tweets, hashtags, etc)
+most often with a specific focus (users, retweets, hashtags, etc)
 and not presented to the scientific community by means of a research article.
 In summary, no human social network dataset presented to the
 scientific community containts the diverse provenance used in LOSD,
@@ -236,50 +248,14 @@ potentially because researchers did not have the means to acquire and
 share the data as described in Section~\ref{acq}.
 
 \section{Data Description}\label{materials}
-\subsection{Data outline}
-\input{../misc/overallText}
+\subsection{Data outline}\label{outline}
+% scripts/percolationUse2.py
+The database consists of 31,996,740 triples, 3,030,433 network links yield by main interactions or relations, 350,284 participants and 245,194,377 characters. Among all snapshots, 63 are ego snapshots, 54 are group snapshots; 50 have interaction edges, 89 have friendship edges; 43 have text content from messages.
+Appendix~\ref{aoverall} holds the queries used to obtain such data.
+This section describes de data in LOSD in very brief terms.
+The Supplementary document is provided for further information about the dataset.
 
-
-\input{../tables/nsnapshots}
-\label{outline}
-Current overall results concern data selection and preparation for data discovery.
-The main result is the data made available, which enables benchmarking of scientific results
-and easy experimentations, and no compliant dataset was found by the authors.
-Secondary results include data outline through figures and tables,
-software support and example SparQL queries.
-
-\subsection{Standardization}
-The data is embedded into URIs and triples, i.e. translated to RDF.
-URIs are built in the namespace \url{http://purl.org/socialparticipation/participationontology/}
-which are identified herein with the prefix ``\textttt{po:}''.
-Classes and properties are built by adding a suffix to the root, as in \textttt{po:Participant} or \textttt{po:text}.
-Classes have ``UpperCamelCase'' suffixes while properties have ``lowerCamelCase'' suffixes.
-All class instances, such as participants, messages, friendships and
-interactions, are linked to
-snapshots through the triple \textttt{<instance> po:snapshot <snapshot\_uri>}.
-Message texts, including comments, are objects in the triple: \textttt{<message\_id> po:text <message\_text>}.
-Preprocessed texts are objects of triples: \textttt{<message\_id> po:cleanText <message\_text>}.
-More specialized predicates are used for delivering text when necessary,
-such as \textttt{po:htmlBodyText} and \textttt{po:cleanBodyText} used
-for ParticipaBR articles.
-A participant URI is unique throughout the provenance (e.g. the same for
-the same participant in all Twitter snapshots).
-To enable annotations which differ when the snapshot changes,
-\texttt{po:Observation} class instances are used in the triple
-\textttt{<participant\_uri> po:observation <observation\_uri>}.
-The observation instances are then linked to the snapshot and the
-data.
-
-Instance URIs are built using the URI from the class they derive from plus a hashtag character,
-a provenance string (e.g. \textttt{facebook-legacy} or
-\textttt{participabr-legacy}), and an identifier;
-i.e. \textttt{po:Participant\#<provenance-legacy>-<id>}.
-All snapshot URIs follow the formation rule: \textttt{po:<SnapshotProvenance>\#<snapshot\_id>}.
-All snapshot ids follow the formation rule: \textttt{<platform>-legacy-<further\_identifier>}; e.g.
-\textttt{irc-legacy-labmacambira} or
-\textttt{email-legacy-linux.audio.devel1-20000}.
-
-Data was gathered from:
+\noindent Data was gathered from:
 \begin{itemize}
     \item public APIs (Twitter, Email);
     \item public logs (IRC and AA);
@@ -287,23 +263,20 @@ Data was gathered from:
     \item donation by system administrators (AA, ParticipaBR, Cidade Democr\'atica).
 \end{itemize}
 
-Integration and uniformity of access is obtained through linked data
-representation, as described in Section~\ref{queries}.
-This section introduces the underlying data in very concise terms.
-One should access the Supporting Information document for
-a more information about the dataset.
-
 \subsection{Snapshots}
-Of central importance to presented database is the concept of a snapshot.
+Of central importance to the presented dataset is the concept of a snapshot.
 A snapshot is herein a set of data gathered together, at a contiguous time
 unit.
 Examples: the first 20 thousand email messages of an email list
 comprises a snapshot; the tweets from the MAMA music event is a
 snapshot; the friendship, interaction and posts structures of a facebook
 group, prospected at the same time, is a snapshot.
+Table~\ref{tsnap} holds the number of snapshots from each provenance in LOSD.
+
+\input{../tables/nsnapshots}
 
 \subsection{Facebook data}
-Friendship ego networks (networks whose nodes represent friends of a user)
+Friendship ego networks (networks whose nodes represent friends of a user and links represent friendships)
 were donated from individual users in 2013 and 2014.
 Friendship and interaction networks from groups were gathered from
 groups where the first author was a participant.
@@ -315,11 +288,12 @@ Tweets were gathered through the Twitter streaming public API.
 Each snapshot is unified by a distinct hashtag.
 Network links are canonically yield by retweets,
 but replies and user mentions are also kept in the database.
+LOSD kept the main data fields returned by Twitter API, such as creation date, text, and hashtags.
 
 \subsection{IRC data}
 Public IRC (Internet Relay Chat) logs were used to obtain IRC snapshots.
-The database has records of relations yield by directed messages and
-mentions.
+LOSD holds records of relations yield by directed messages and
+mentions and the text related to each message.
 
 \subsection{Email data}
 Email snapshots refer to individual email lists.
@@ -327,50 +301,60 @@ All messages were obtained from the Gmane public email archive~\cite{gmane}.
 Each message has the original text and the text without some of the lines
 from previous messages or that are software code or author signature.
 Most importantly, each message instance holds the ID of the message it is
-a reply to, if any, which enables the achievement of interaction networks~\cite{bird,stab}
+a reply to, if any, which enables the achievement of canonical interaction networks~\cite{bird,stab}.
 
 \subsection{ParticipaBR data}
-ParticipaBR was a Brazilian federal platform for social participation,
+ParticipaBR is a Brazilian federal platform for social participation,
 the most important platform from the myriad of social participation platforms
 that were available in 2011-2018~\cite{spbr}.
 Texts are derived from blog posts and networks may be obtained from
-friendship and interaction criteria.
+both friendship and interaction criteria.
 
-\subsection{Cidade Democr\'atica data}
+\subsection{Cidade Democrática data}
 Cidade Democrática is a Brazilian civil society social participation portal.
-Data gathered is complex in the number of types of instances.
+Data gathered is complex in the number of types of instances as noticeable in the Supplementary document.
 
 \subsection{AA data}
-AA (Algorithmic Autoregulation~\cite{aa,aa2}) is a software to keep track of dedications,
-it is based on testifying and sharing ongoing work.
+AA (Algorithmic Autoregulation~\cite{aa,aa2}) is a software to keep track of dedications by sharing sentences about ongoing work and testifying about their quality.
 The data was gathered from different versions of the system and from an IRC
 log.
  
  
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\section{Methods}
+\section{Methods}\label{methods}
 LOSD is expressed as linked data through RDF
 and is ontologicaly described through the
 data-driven ontology synthesis method presented in Section~\ref{ont}.
 
 \subsection{Data acquisition}\label{acq}
-Research involving human subjects raise well-known ethic issues~\cite{}.
+Research involving human subjects raise well-known ethic issues~\cite{eth}.
 Furthermore, the online social networking platforms often restrict access
 to the data and declare illegal the use of their data through web crowlers~\cite{ile1,ile2}.
-In this context, research using data, e.g. from Facebook, is considered
-problematic if not prohibited.
+Although Twitter and GMANE (email) data is available through public APIs,
+the other sources are more problematic.
+In this context, research using data, e.g. from Facebook, is precarious
+if not prohibited.
 We reached a potential solution to this issue through continuated research with
-collaborators in the fields of phylosophy, social sciences, and psychology.
+collaborators in the fields of phylosophy, social sciences, antropology and psychology.
 The conceptual framework is presented in~\cite{antphy,antphy2}, and in essence
 consists in researching first the social networks related to the researchers,
 and keeping the procedures, data, algorithms and results publicly available.
-This practices enabled collecting and sharing the data in LOSD.
-Notice that, although Twitter data is available through public APIs, the other sources are more problematic.
+These practices enabled collecting and sharing the data in LOSD,
+and was called ``Anthropological Physics'' because it relies in the
+etnographic tecnique of investigating the social structures
+by studying the researcher, as to ammeliorate the ethic issues.
+Accordingly, aside from the data acquired from Twitter, all data in LOSD
+was gathered from social instances where the first author is a participant.
+For example, all Facebook ego networks were donated to the first author by
+users which know him and were interested in his research and intervention on the networks,
+and all email and Facebook groups data was obtained from groups where the first author is a member.
 
-% download via netviz when fb allowed it, donations
-% twitter, bots, gmane
-% contact with developers of AA, PBR, CD
-% Anthropological physics
+Facebook data was obtained through the Netvizz software~\cite{netviz},
+Facebook allowed downloading friendships and interaction data as available in LOSD.
+Data from Twitter was obtained through the Twitter streamming API.
+Data From IRC was obtained through bots that kept logs of the messages.
+Email data was obtained through the GMANE public API.
+Data from ParticipaBR, Cidade Democrática, and AA was obtained through contact
+of the researcher with the developers of the platforms.
 
 \subsection{Linked open data}
 Linked data refers to data published in the web in such a way that it is
@@ -378,9 +362,10 @@ machine readable and conforms to a set of best practices.
 The yielded web of data is composed of documents on the web
 such as the web of HTML documents.
 In practice, the publication of linked data can me summarized
-by 1) the use of RDF to publish data on the web and 2) the use of RDF
+by 1) the use of RDF and 2) the use of RDF
 links to interlink data from different sources~\cite{ld1,ld2}.
-The web is expected to be interconnected and to grow by the systematic application of four
+The web is expected to be interconnected and to
+grow by the systematic application of four
 steps~\cite{lee1}:
 \begin{itemize}
     \item Use URIs to identify things~\cite{uri}.
@@ -390,7 +375,7 @@ steps~\cite{lee1}:
         and machine agents can perform discovery.
 \end{itemize}
 
-The Linked Open Data~\cite{lod} is a constantly growing cloud of data,
+The Linked Open Data~\cite{lod} cloud is a constantly growing cloud of data,
 the global data space, which is usually
 conceived as centered around the DBPedia, a linked data representation
 of data from Wikipedia~\cite{dbpedia0,dbpedia},
@@ -457,19 +442,15 @@ For the data described in this article, the following features are most relevant
     implies that \textttt{:CX\#I} is an instance of a specific class, e.g. \textttt{:C2}.
 \end{itemize}
 
-
 \subsection{Data-driven ontology synthesis}\label{ont}
-OWL Ontologies are tools to describe taxonomies and the
-structure of knowledge~\cite{owl1}.
 Most ontologies are created by domain experts even though the data they
 arrange is often given by a software system and has a predefined
-structure~\cite{owl2}. 
-
+structure~\cite{owl1,owl2}.  
 We developed a simple ontology synthesis method that probes
 the ontological structure in the data with
 SPARQL queries and post-processing.
 The results are OWL code and diagrams which are available in the
-Supporting Information document of this article.
+Supplementary document of this article.
 The method can be extended to comprise further OWL axioms and restrictions,
 but is currently performed to fit present needs with maximum simplicity.
 Present needs are limited to informative figures and
@@ -534,9 +515,40 @@ Such properties are used to assert existential and universal restrictions for th
 %          ontologies and data. This step is left aside in current LOSD as 
 \end{enumerate}
 
+\subsection{Standardization}
+The data is embedded into URIs and triples, i.e. translated to RDF.
+URIs are built in the namespace \url{http://purl.org/socialparticipation/participationontology/}
+which are identified herein with the prefix ``\textttt{po:}''.
+Classes and properties are built by adding a suffix to the root, as in \textttt{po:Participant} or \textttt{po:text}.
+Classes have ``UpperCamelCase'' suffixes while properties have ``lowerCamelCase'' suffixes.
+All class instances, such as participants, messages, friendships and
+interactions, are linked to
+snapshots through the triple \textttt{<instance> po:snapshot <snapshot\_uri>}.
+Message texts, including comments, are objects in the triple: \textttt{<message\_id> po:text <message\_text>}.
+Preprocessed texts are objects of triples: \textttt{<message\_id> po:cleanText <message\_text>}.
+More specialized predicates are used for delivering text when necessary,
+such as \textttt{po:htmlBodyText} and \textttt{po:cleanBodyText} used
+for ParticipaBR articles.
+A participant URI is unique throughout the provenance (e.g. the same for
+the same participant in all Twitter snapshots).
+To enable annotations which differ when the snapshot changes,
+\texttt{po:Observation} class instances are used in the triple
+\textttt{<participant\_uri> po:observation <observation\_uri>}.
+The observation instances are then linked to the snapshot and the
+data.
+
+Instance URIs are built using the URI from the class they derive from plus a hashtag character,
+a provenance string (e.g. \textttt{facebook-legacy} or
+\textttt{participabr-legacy}), and an identifier;
+i.e. \textttt{po:Participant\#<provenance-legacy>-<id>}.
+All snapshot URIs follow the formation rule: \textttt{po:<SnapshotProvenance>\#<snapshot\_id>}.
+All snapshot ids follow the formation rule: \textttt{<platform>-legacy-<further\_identifier>}; e.g.
+\textttt{irc-legacy-labmacambira} or
+\textttt{email-legacy-linux.audio.devel1-20000}.
 
 
-\section{Usage notes}
+
+\section{Usage notes}\label{usage}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \vspace{6pt} 
 \subsection{Software tools}
