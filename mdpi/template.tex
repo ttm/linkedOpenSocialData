@@ -792,7 +792,7 @@ PREFIX po: <http://purl.org/socialparticipation/po/>
 SELECT ?a1 ?a2 WHERE {
   ?f a po:Friendship . ?f po:snapshot <snapshot_uri> .
   ?f po:member ?a1, ?a2 .
-  FILTER(?a1 != ?a2 && ?a1 > ?a2)
+  FILTER(?a1 != ?a2)
 }
 \end{lstlisting}
 
