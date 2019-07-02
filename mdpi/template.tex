@@ -180,7 +180,7 @@ The linked data representation was adopted in order to
 comply with current best practices, homogenize access, facilitate discovery
 and analyzes which integrate third party and provided data,
 and make available a dataset with multiple metadata that admits on-demand retrieval of structures.
-Futhermore, the method for obtaing and making the data available is potentially novel,
+Furthermore, the method for obtaining and making the data available is potentially novel,
 and may be of use for collecting and sharing additional data and for other research groups.
 This document presents a description, usage remarks and overall statistics of the dataset,
 which should favor subsequent work in complex and social networks and enhancements to the dataset.
@@ -218,7 +218,7 @@ and should be further exploited e.g. in researching complex networks and data vi
 which relies on networks enriched by textual data and on dynamic (or time-evolving) networks.
 Data collection was performed by a potentially innovative method which places the researcher
 at the core of data collection, and keeps the resources (e.g. code, data, documents) open,
-in order to ammeliorate ethical issues involved in studying human social systems.
+in order to ameliorate ethical issues involved in studying human social systems.
 
 This paper is organized as follows. Next subsection briefly discusses related work.
 Section~\ref{materials} describes the data currently available in LOSD.
@@ -232,7 +232,7 @@ on specialized communities such as related to research or movies (e.g.~\cite{s1}
 or present only statistics about social networks, and not the data that yields the networks (e.g.~\cite{st1}.
 In~\cite{foaf1}, the authors presented a set of tools to obtain linked social data available in the public data cloud,
 and made available a dataset from the Advogato platform,
-dedicated to free software developers connected by trust relatioships.
+dedicated to free software developers connected by trust relationships.
 There are various datasets which provide data obtained from Twitter (e.g.~\cite{tw1,tw2}),
 most often with a specific focus (users, retweets, hashtags, user mentions, etc)
 and not presented to the scientific community by means of a research article.
@@ -244,9 +244,9 @@ a fraction of them are social networks from diverse provenance and
 of various types (e.g. simple, directed, weighted, bipartite, temporal networks).
 Compared to LOSD, KONECT, SNAP, Network Repository, and ICON are complementary, providing a further diversity of networks,
 but only as simplified data, i.e. in specialized formats, most often expressed as columns of node ids
-that are connected and metadata (such as timestaps for temporal networks).
+that are connected and metadata (such as timestamps for temporal networks).
 In summary, no linked human social network dataset presented to the
-scientific community containts the diverse provenance used in LOSD,
+scientific community contains the diverse provenance used in LOSD,
 or provides such a wide range of metadata,
 potentially because researchers did not have the means to acquire and
 share the data as described in Section~\ref{acq},
@@ -278,7 +278,7 @@ A snapshot is herein a set of data gathered together, at a contiguous time
 unit.
 Examples: the first 20 thousand email messages of an email list
 comprises a snapshot; the tweets from the MAMA music event is a
-snapshot; the friendship, interaction and posts structures of a facebook
+snapshot; the friendship, interaction and posts structures of a Facebook
 group, prospected at the same time, is a snapshot.
 Table~\ref{tsnap} denotes the number of snapshots from each provenance in LOSD.
 
@@ -334,7 +334,7 @@ log.
 
 \section{Methods}\label{methods}
 LOSD is expressed as RDF linked data
-and is ontologicaly described through the
+and is ontologically described through the
 data-driven ontology synthesis method presented in Section~\ref{ont}.
 
 \subsection{Data acquisition}\label{acq}
@@ -347,15 +347,15 @@ Although Twitter and GMANE (email) data are available through public APIs,
 the other sources are more problematic.
 In this context, research using data, e.g. from Facebook, is precarious
 if not prohibited.
-We reached a potential solution to this issue through continuated research with
-collaborators in the fields of phylosophy, social sciences, antropology and psychology.
+We reached a potential solution to this issue through continued research with
+collaborators in the fields of philosophy, social sciences, anthropology and psychology.
 The conceptual framework is presented in~\cite{antphy,antphy2,antphy3}, and in essence
 consists in researching first the social networks related to the researchers,
 and keeping the procedures, data, algorithms and results publicly available.
 These practices enabled collecting and sharing the data in LOSD,
 and was called ``Anthropological Physics'' because it relies in the
-etnographic tecnique of investigating social structures
-by studying the researcher, as to ammeliorate the ethical issues
+ethnographic technique of investigating social structures
+by studying the researcher, as to ameliorate the ethical issues
 (not to be confused e.g. with ``virtual ethnography''~\cite{veth}).
 Accordingly, aside from the data acquired from Twitter, all data in LOSD
 was gathered from social instances where the first author was a participant.
@@ -365,12 +365,12 @@ and all email and Facebook groups data was obtained from groups where the first 
 
 Facebook data was obtained through the Netvizz software~\cite{netviz},
 when Facebook allowed downloading friendships and interaction data as available in LOSD.
-Data from Twitter was obtained through the Twitter streamming API.
+Data from Twitter was obtained through the Twitter streaming API.
 Data From IRC was obtained through bots that kept logs of the messages.
 Email data was obtained through the GMANE public API.
 Data from Participa.BR, Cidade Democrática, and AA was obtained through contact
 of the researcher with the developers of the platforms.
-These sources are expreesed in Table~\ref{tab:provenance}.
+These sources are expressed in Table~\ref{tab:provenance}.
 
 \subsection{Linked open data}
 Linked data refers to data published in the web in such a way that it is
@@ -440,11 +440,11 @@ This complexity is a drawback together with the greater computational cost
 for performing inference.
 The advantage is the greater power to represent conceptualizations.
 Using ontologies enables automated reasoning (usually called ``inference'').
-A very simple example: if a property \te{:r} is known to relate only mokeys to trees,
+A very simple example: if a property \te{:r} is known to relate only monkeys to trees,
 then, if there is a triple \te{:a :r :b}, the instance \te{:a} is considered a monkey,
 and instance \te{:b} is considered a tree,
 even if there is no explicit declaration similar
-to \te{:a rdf:type :Mokey}.
+to \te{:a rdf:type :Monkey}.
 
 For the data described in this article, the following features are most relevant~\cite{rdfs,ont}:
 \begin{itemize}
@@ -567,9 +567,9 @@ All snapshot ids follow the formation rule: \te{<platform>-legacy-<further\_iden
 
 The authors chose to express all URIs in LOSD locally (i.e. within a local namespace), and linkage with external namespaces may be achieved e.g. by using subclass and ``same as'' relations.
 Also, each snapshot holds a specific \te{po:Observation} instance related to each participant,
-allowing for specific metadata such as provided by the original data or as may be provided uppon analysis.
+allowing for specific metadata such as provided by the original data or as may be provided upon analysis.
 Current LOSD does not hold statistics about each snapshot, or linkage to external namespaces (such as FOAF and Dublin Core),
-to avoid overcomplicating this initial contribution and unecessary use of storage space.
+to avoid overcomplicating this initial contribution and unnecessary use of storage space.
 
 \section{Usage notes}\label{usage}
 \subsection{Triplification routines}
@@ -688,32 +688,32 @@ Many other networks may be obtained because the criteria that entail
 links and nodes, and restrictions to the set of nodes and of links,
 are determined by the research or application being developed.
 Furthermore, we do not focus here on multilayer networks (e.g. bipartite networks),
-or on multigraphs (or muldimensional networks),
+or on multigraphs (or multidimensional networks),
 i.e. on networks with more than one type of node or of link.
 Here is a list with short descriptions of the resulting networks and the corresponding SPARQL queries:
 \begin{itemize}
-  \item Overall facebook friendship network available in LOSD:
+  \item Overall Facebook friendship network available in LOSD:
 \begin{lstlisting}[language=spq]
 SELECT ?a1 ?a2 WHERE { 
   ?f a po:Friendship .  ?f po:member ?a1 . ?f po:member ?a2 .
 }
 \end{lstlisting}
-  \item Overall facebook friendship network derived only from ego networks:
+  \item Overall Facebook friendship network derived only from ego networks:
 \begin{lstlisting}[language=spq]
 SELECT ?a1 ?a2 WHERE { 
   ?f a po:Friendship . ?f po:snapshot ?s . ?s po:isEgo True .
   ?f po:member ?a1 . ?f po:member ?a2 .
 }
 \end{lstlisting}
-  \item Overall facebook interaction network available in LOSD:
+  \item Overall Facebook interaction network available in LOSD:
 \begin{lstlisting}[language=spq]
 SELECT ?a1 ?a2 WHERE { 
   ?f a po:Interaction .
   ?f po:interactionFrom ?a1 . ?f po:interactionTo ?a2 .
 }
 \end{lstlisting}
-  \item Email interaction network for email list shapshot with URI \verb|snapshot_uri|,
-    with the all (preliminarily cleaned) text related to each message (node atribute):
+  \item Email interaction network for email list snapshot with URI \verb|snapshot_uri|,
+    with the all (preliminarily cleaned) text related to each message (node attribute):
 \begin{lstlisting}[language=spq]
 SELECT ?a1 ?a2 ?t1 ?t2 WHERE { 
   ?m po:snapshot <snapshot_uri> . ?m po:author ?a1 .
@@ -741,7 +741,7 @@ SELECT ?a1 ?a2 ?t WHERE {
   ?m po:text ?t .
 }
 \end{lstlisting}
-  \item Friendship network from Participa.BR, with the date when each frienship was established:
+  \item Friendship network from Participa.BR, with the date when each friendship was established:
 \begin{lstlisting}[language=spq]
 SELECT ?a1 ?a2 ?d WHERE { 
   ?s po:shapshotID 'participabr-legacy' . ?f po:snapshot ?s .
@@ -785,13 +785,12 @@ SELECT ?a1 ?a2 WHERE {
 \end{lstlisting}
 \end{itemize}
 
-This is not an exaustive list.
+This is not an exhaustive list.
 For a less canonical example for obtaining networks,
 links may be derived from sufficiently similar vocabulary used by participants,
 or from activity with sufficiently similar dates,
 which yield networks which are not (standard) interaction or friendship networks.
 Figure~\ref{fnet} describes most often criteria used to obtain social networks.
-% mk figure with two participants and their relation though response, retweet, or friendship TTM
 
 \begin{figure}[H]
     \centering
@@ -834,7 +833,7 @@ SELECT ?a1 ?a2 WHERE {
 \section{Conclusions and further work}
 \label{conclusions}
 This article outlined LOSD, a large dataset of human and complex networks, with almost 32 million triples and diverse provenance.
-Tools and procedures used to achieve LOSD, and fundamental queries needed to retrieve the data, were also described to the convenience of the newcommer
+Tools and procedures used to achieve LOSD, and fundamental queries needed to retrieve the data, were also described to the convenience of the newcomer
 and for a consistent exposition.
 All data is publicly available to provide the scientific community with a consistent and curated linked data dataset
 that enables research validation, continuity, and benchmarking.

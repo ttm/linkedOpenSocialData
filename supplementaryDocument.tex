@@ -30,10 +30,10 @@
 
 % \usepackage[showframe=true]{geometry}
 %
-\newcommand{\textttt}[1] {\texttt{\footnotesize#1}}
+\newcommand{\te}[1] {\texttt{\footnotesize#1}}
 \newcommand{\h} {\hphantom ~ }
-% \newcommand{\textttt}[1] {\mbox{\texttt{\footnotesize#1}}}
-% \newcommand{\textttt}[1] {
+% \newcommand{\te}[1] {\mbox{\texttt{\footnotesize#1}}}
+% \newcommand{\te}[1] {
 % \begin{verbatim} #1 \end{verbatim}
 % }
 \pgfplotsset{compat=1.5}
@@ -70,33 +70,32 @@
 %
 \begin{frontmatter}
 %
-\title{Linked Open Social Data for Scientific Benchmarking (Supporting
-Information document)}
+\title{LOSD: A Linked Open Social Dataset for Scientific Research
+  (Supplementary document)}
 %
-\author[pwr]{Renato Fabbri\corref{corresponding}\fnref{kio-url}}
+\author[pwa]{Renato Fabbri\corref{corresponding}\fnref{kii-url}}
 \ead{fabbri@usp.br}
 %
 \author[pwr]{Osvaldo Novais de Oliveira Junior\fnref{kio-url}}
 \ead{chu@ifsc.usp.br}
 %
 \cortext[corresponding]{Corresponding author}
-\address[pwr]{S\~ao Carlos Institute of Physics, S\~ao Paulo
-University, Brazil}
+\address[pwa]{
+Institute of Mathematical and Computer Sciences, University of São Paulo (ICMC/USP), São Carlos, Brazil
+}
+\address[pwr]{
+São Carlos Institute of Physics, University of São Paulo (IFSC/USP), São Carlos, Brazil
+}
 %
+\fntext[kii-url]{\textit{URL:} \url{https://icmc.usp.br/}}
 \fntext[kio-url]{\textit{URL:} \url{http://www.ifsc.usp.br/}}
 %
 \begin{abstract}
-This is a Supporting Information document which exposes ontological
-diagrams and auxiliary tables for the Linked Open Social Database.
+This is a Supplementary document which provides ontological
+diagrams and auxiliary tables for the LOSD dataset.
 The main document of the article is in~\cite{losd}.
 \end{abstract}
 %
-\begin{keyword}
-Big Data, Data Mining, Benchmark Data, Facebook, Twitter, IRC, Email,
-Complex Networks, Text Mining
-%Hierarchy of Clusters \sep HoC \sep Benchmark Dataset \sep Benchmark Data Generator \sep Artificial Data \sep Cluster Analysis \sep Tree Structured Stick Breaking Process \sep TSSB \sep ...
-\end{keyword}
-
 \end{frontmatter}
 \newcommand{\foo}{\textheight}
 \newcommand{\foobar}{\pdfpageheight}
@@ -106,36 +105,30 @@ Complex Networks, Text Mining
 \section{General guidance}
 % \paperheight = 200pt
 In this document we provide diagrams
-for the social protocols in the Linked Open Social Database:
-Facebook, Twitter, IRC, Email, ParticipaBR, Cidade Democrática and AA.
-Each social protocol diagram was broken in two, one presents the relations
-among main classes (blue nodes) and data types (orange nodes),
-the other presents metadata for the
-snapshots.
+for the provenances in LOSD, namely
+Facebook, Twitter, IRC, Email, Participa.BR, Cidade Democrática and AA.
+Each provenance has two diagrams: one presents the relations
+among classes (blue nodes) and data types (orange nodes),
+the other presents metadata for the snapshot provenance.
 Every class instance is related to the snapshot instance
-by the triple \textttt{class\_uri po:snapshot snapshot\_uri}.
+by the triple \te{class\_uri po:snapshot snapshot\_uri}.
 Such triples are omitted for simplicity.
 Due to the large number of relations, the rendering of diagrams are
-automatized and displays some overlaps.
-Even so, the images are useful for grasping what is in the current
-database and for conducting explorations.
-Edges in the diagrams have:
+automatized and displays some overlaps of the nodes related to each class or datatype.
+Even so, the images are useful for grasping what is available in current LOSD
+and exploration assistance.
+Edges in the diagrams have (see OWL official documentation or the article~\cite{losd}:
 \begin{itemize}
     \item green color if representing an OWL existential
-class restriction (all individuals from the class present at least one triple with
-the property as predicate);
-    \item inverted nip if representing an OWL universal class
-        restriction (all individuals presenting triples with the
-        property as predicate are from the class);
+class restriction;
+    \item inverted arrow tip if representing an OWL universal class
+        restriction;
     \item full edges (non-dashed) if representing a functional property
-        axiom (there is at most one triple with the property as the
-        predicate for each individual).
+        axiom.
 \end{itemize}
 
-% \textheight = 100pt
-% \pdfpageheight 300pt
 Furthermore, this document ends with two sets of tables, one with
-references for snapshot groups, such as wikipedia or
+references for snapshot groups, such as Wikipedia or
 contact links, 
 the other with 
 counts of
@@ -143,13 +136,12 @@ triples, participants, edges/interactions/relations and characters.
 
 
 \section{Facebook data}
-Each Facebook snapshot is yield by either an user, from which the
-friends constitute a friendship network, or a group, which participants
+Each Facebook snapshot is yield by either a user, from which the
+friends are in the friendship network, or a group, in which participants
 can yield friendship and interaction networks and posts information with
 text and some metadata.
-Further information is found on the following diagrams, the tables on
-the end of this document or in the main document of this
-article~\cite{losd}.
+Further information is found in the following diagrams, in the tables at
+the end of this document or in the main document of this article~\cite{losd}.
 
 % \includepdf{ontologies/aairc.ttl/draw.pdf}
 \incgraph[
@@ -166,12 +158,11 @@ article~\cite{losd}.
 
 \section{Twitter data}
 Each Twitter snapshot is yield by a hashtag.
-Retweets (\textttt{po:retweetOf} are usually considered the interactions between users.
-The database present also \textttt{po:replyTo} and \textttt{po:userMention}
-which might be useful in understanding the networking.
-Further information is found on the following diagrams, the tables on
-the end of this document or in the main document of this
-article~\cite{losd}.
+Retweets (\te{po:retweetOf} are usually considered the interactions between users.
+The database present also \te{po:replyTo} and \te{po:userMention}
+which may be useful in understanding the networking and provides additional networks.
+Further information is found in the following diagrams, in the tables at
+the end of this document or in the main document of this article~\cite{losd}.
 
 \incgraph[
   overlay={\node[red,below right] at (page.north west) {\Huge
@@ -186,13 +177,12 @@ article~\cite{losd}.
 
 \section{IRC data}
 Each IRC snapshot is yield by an IRC channel.
-IRC messages are either server messages (e.g. join and exit)
-marked with \textttt{po:systemMessage true} and having an \textttt{po:impliedUser user\_uri},
-or user messages, which yield interactions through \textttt{po:directedTo} and \textttt{po:mentions} properties.
-Text messages without the user names are delivered through the \textttt{po:cleanText} property.
-Further information is found on the following diagrams, the tables on
-the end of this document or in the main document of this
-article~\cite{losd}.
+IRC messages are either 1) server messages (e.g. join and exit)
+marked with \te{po:systemMessage true} and having an \te{po:impliedUser user\_uri},
+or 2) user messages, which yield interactions through \te{po:directedTo} and \te{po:mentions} properties.
+Text messages without the user names are provided through the \te{po:cleanText} property.
+Further information is found in the following diagrams, in the tables at
+the end of this document or in the main document of this article~\cite{losd}.
 \incgraph[
   overlay={\node[red,below right] at (page.north west) {\Huge IRC};}
     paper=graphics
@@ -204,14 +194,13 @@ article~\cite{losd}.
 
 \section{Email data}
 Each email snapshot is yield by an Email list.
-Interactions are yield through \textttt{po:replyTo} relations
-although \textttt{po:to} and \textttt{po:cc} might also be considered.
-The email body is given by \textttt{po:text} relations while
-\textttt{po:cleanText} links to text with lines removed where they are
-trivially from previous messages or computer code.
-Further information is found on the following diagrams, the tables on
-the end of this document or in the main document of this
-article~\cite{losd}.
+Interactions are entailed by \te{po:replyTo} relations
+although \te{po:to} and \te{po:cc} may also be considered.
+The email body is given by \te{po:text} relations while
+\te{po:cleanText} links to text with lines removed where they are
+obviously from previous messages or computer code.
+Further information is found in the following diagrams, in the tables at
+the end of this document or in the main document of this article~\cite{losd}.
 \incgraph[
   overlay={\node[red,below right] at (page.north west) {\Huge Email};}
     paper=graphics
@@ -223,35 +212,34 @@ article~\cite{losd}.
     paper=graphics
 ][scale=.5]{ontologies/email-legacy-linux.audio.devel1-20000Meta.ttl/draw.png}
 
-\section{ParticipaBR data}
-The ParticipaBR snapshot is yield by a data dump donated by the system
-administrators of the federal portal of social participation ParticipaBR.
-Articles can have parent articles (\textttt{po:parent}), be step of a
-collection of articles (\textttt{po:stepOf}) and be a mediation of other
-articles (\textttt{po:mediationOf}).
-Interactions are yield by comments which are \textttt{po:replyTo} other
+\section{Participa.BR data}
+The Participa.BR snapshot is yield by a data dump donated by the system
+administrators of the federal portal of social participation Participa.BR.
+Articles can have parent articles (\te{po:parent}), can be a step of a
+collection of articles (\te{po:stepOf}) and can be a mediation of other
+articles (\te{po:mediationOf}).
+Interactions are entailed by comments which are \te{po:replyTo} other
 comments or which are made directly to an article.
-This snapshot holds also friendship structures.
+This snapshot also holds friendship structures.
 The language used is mainly Brazilian Portuguese, but English and
 Spanish are also incident.
-Due to the higher complexity of the diagram, an additional figure is
-given rendered with another layout algorithm.
-Further information is found on the following diagrams, the tables on
-the end of this document or in the main document of this
-article~\cite{losd}.
+Due to the higher complexity of the diagram, an additional figure,
+obtained through another layout algorithm, is given.
+Further information is found in the following diagrams, in the tables at 
+the end of this document or in the main document of this article~\cite{losd}.
 \incgraph[
   overlay={\node[red,below right] at (page.north west) {\Huge
-  ParticipaBR};}
+  Participa.BR};}
     paper=graphics
 ][scale=.5]{ontologies/participabr.ttl/draw.png}
 \incgraph[
   overlay={\node[red,below right] at (page.north west) {\Huge
-  ParticipaBR};}
+  Participa.BR};}
     paper=graphics
 ][scale=.7]{ontologies/participabr.ttl/draw_circo.png}
 \incgraph[
   overlay={\node[red,below right] at (page.north west) {\Huge
-  ParticipaBR};}
+  Participa.BR};}
     paper=graphics
 ][scale=.7]{ontologies/participabrMeta.ttl/draw.png}
 
@@ -260,14 +248,13 @@ The Cidade Democrática snapshot is yield by a data dump donated by the system
 administrators of the civil society social participation portal Cidade
 Democrática.
 This snapshot holds a complex structure of both
-Topics/Inspirati-ons/Observatories/Supports/Competitions/Prizes
-and of State/City/Neighbor-hood/Place.
+Topics/Inspirations/Observatories/Supports/Competitions/Prizes
+and of State/City/Neighborhood/Place.
 The language used is mainly Brazilian Portuguese.
-Due to the higher complexity of the diagram, an additional figure is
-given rendered with another layout algorithm.
-Further information is found on the following diagrams, the tables on
-the end of this document or in the main document of this
-article~\cite{losd}.
+Due to the higher complexity of the diagram, an additional figure,
+obtained through another layout algorithm, is given.
+Further information is found in the following diagrams, in the tables at
+the end of this document or in the main document of this article~\cite{losd}.
 \incgraph[
   overlay={\node[red,below right] at (page.north west) {\Huge Cidade
   Democrática};}
@@ -290,11 +277,10 @@ article~\cite{losd}.
 \section{AA data}
 The AA (Algorithmic Autoregulation) snapshots are yield by a data dump donated by the system
 administrators and by a mined IRC log.
-The system pursue simplicity and most of data consists of detached
-shouts with \textttt{po:text} and \textttt{po:author}.
-Further information is found on the following diagrams, the tables on
-the end of this document or in the main document of this
-article~\cite{losd}.
+The system aims at simplicity and most of the data consists of
+shouts with \te{po:text} and \te{po:author}.
+Further information is found in the following diagrams, in the tables at
+the end of this document or in the main document of this article~\cite{losd}.
 \incgraph[
   overlay={\node[red,below right] at (page.north west) {\Huge AA};}
     paper=graphics
@@ -315,8 +301,8 @@ article~\cite{losd}.
 
 \begin{table*}[h!]\scriptsize
 \begin{center}
-\caption{Different Twitter snapshots are yield by different hashtags. In this
-table we present each snapshot with the respective hashtag and a
+\caption{Different Twitter snapshots are yield by different hashtags.
+  This table presents each snapshot with the respective hashtag and a
 reference to the subject.}\label{tab:provenance}
 \begin{tabular}{| l || p{4cm} | p{4cm} | }\hline
     \textbf{snapshot hashtag} & \textbf{observation} & \textbf{reference} \\\hline\hline
@@ -342,8 +328,8 @@ reference to the subject.}\label{tab:provenance}
 
 \begin{table*}[h!]\scriptsize
 \begin{center}
-\caption{Different IRC snapshots are yield by different channels. In this
-table we present each snapshot with the respective channel and a
+\caption{Different IRC snapshots are yield by different IRC channels.
+  This table presents each snapshot with the respective channel and a
 reference to the subject.}\label{tab:provenance}
 \begin{tabular}{| l || p{4cm} | p{4cm} | }\hline
     \textbf{snapshot channel} & \textbf{observation} & \textbf{reference} \\\hline\hline
@@ -356,8 +342,8 @@ reference to the subject.}\label{tab:provenance}
 
 \begin{table*}[h!]\scriptsize
 \begin{center}
-\caption{Different Email snapshots are yield by different email lists. In this
-table we present each snapshot with the respective list and a
+\caption{Different Email snapshots are yield by different email lists.
+  This table presents each snapshot with the respective list and a
 reference to the subject.}\label{tab:provenance}
 \begin{tabular}{| p{4cm} || p{4cm} | p{4cm} | }\hline
     \textbf{Gmane ID} & \textbf{observation} & \textbf{reference} \\\hline\hline
@@ -370,11 +356,11 @@ reference to the subject.}\label{tab:provenance}
  
 \begin{table*}[h!]\scriptsize
 \begin{center}
-\caption{References for the snapshots of the detached instances
-ParticipaBR, Cidade Democrática and AA.}\label{tab:provenance}
+\caption{References for the snapshots of
+Participa.BR, Cidade Democrática and AA.}\label{tab:provenance}
 \begin{tabular}{| l || p{4cm} | p{3cm} | }\hline
     \textbf{social protocol} & \textbf{observations} & \textbf{reference} \\\hline\hline
-    ParticipaBR & a Brazilian federal portal of social participation & \url{http://www.participa.br/} \\\hline
+    Participa.BR & a Brazilian federal portal of social participation & \url{http://www.participa.br/} \\\hline
     Cidade Demorática & a Brazilian civil society portal of social participation & \url{http://www.cidadedemocratica.org.br/} \\\hline
     AA & the Algorithmic Autoregulation software development methodology & \cite{aarticle} \\\hline
 \end{tabular}\end{center}
